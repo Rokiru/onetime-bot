@@ -1,0 +1,290 @@
+{
+  "environment": "Headless Chromium, 873×393 CSS pixels, DPR 2.75, auto quality. Frozen physical scene: median of 5 batches × 20 draws; moving camera: median and p95 of 120 draws at 4.8 m/s, one pixel readback per draw forces raster completion. This is a comparative raster workload, not phone FPS.",
+  "versions": {
+    "0.18": {
+      "backing": [
+        1440,
+        648
+      ],
+      "rows": [
+        {
+          "route": 0,
+          "region": 0,
+          "medianMs": 22.5,
+          "movingMedianMs": 24.8,
+          "movingP95Ms": 32.1,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 5,
+            "fill": 482,
+            "drawImage": 90,
+            "stroke": 219,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 1,
+          "region": 1,
+          "medianMs": 24.255,
+          "movingMedianMs": 21.9,
+          "movingP95Ms": 32.3,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 5,
+            "fill": 464,
+            "stroke": 105,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 2,
+          "region": 2,
+          "medianMs": 23.65,
+          "movingMedianMs": 23.4,
+          "movingP95Ms": 30.2,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 5,
+            "fill": 545,
+            "drawImage": 90,
+            "stroke": 186,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 9,
+          "region": 3,
+          "medianMs": 23.11,
+          "movingMedianMs": 22.7,
+          "movingP95Ms": 28.8,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 5,
+            "fill": 455,
+            "stroke": 100,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 12,
+          "region": 4,
+          "medianMs": 25.325,
+          "movingMedianMs": 24.7,
+          "movingP95Ms": 31.6,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 5,
+            "fill": 450,
+            "drawImage": 97,
+            "stroke": 240,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 15,
+          "region": 5,
+          "medianMs": 23.685,
+          "movingMedianMs": 24.1,
+          "movingP95Ms": 33.3,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 5,
+            "fill": 493,
+            "drawImage": 97,
+            "stroke": 204,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 46,
+          "region": 0,
+          "medianMs": 24.67,
+          "movingMedianMs": 26,
+          "movingP95Ms": 34.1,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 5,
+            "fill": 482,
+            "drawImage": 90,
+            "stroke": 218,
+            "createPattern": 1
+          },
+          "cache": null
+        },
+        {
+          "route": 47,
+          "region": 1,
+          "medianMs": 26.27,
+          "movingMedianMs": 26.5,
+          "movingP95Ms": 34,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 5,
+            "fill": 510,
+            "stroke": 142,
+            "createPattern": 1
+          },
+          "cache": null
+        }
+      ]
+    },
+    "current": {
+      "backing": [
+        1440,
+        648
+      ],
+      "rows": [
+        {
+          "route": 0,
+          "region": 0,
+          "medianMs": 19.285,
+          "movingMedianMs": 15.7,
+          "movingP95Ms": 22.8,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 3,
+            "fill": 132,
+            "drawImage": 92,
+            "stroke": 219
+          },
+          "cache": {
+            "soilBuilds": 6,
+            "soilTiles": 6
+          }
+        },
+        {
+          "route": 1,
+          "region": 1,
+          "medianMs": 15.2,
+          "movingMedianMs": 13.9,
+          "movingP95Ms": 17.8,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 3,
+            "fill": 114,
+            "stroke": 105,
+            "drawImage": 2
+          },
+          "cache": {
+            "soilBuilds": 12,
+            "soilTiles": 12
+          }
+        },
+        {
+          "route": 2,
+          "region": 2,
+          "medianMs": 17.94,
+          "movingMedianMs": 16.8,
+          "movingP95Ms": 21.2,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 3,
+            "fill": 195,
+            "drawImage": 92,
+            "stroke": 186
+          },
+          "cache": {
+            "soilBuilds": 18,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 9,
+          "region": 3,
+          "medianMs": 14.285,
+          "movingMedianMs": 13.7,
+          "movingP95Ms": 17.1,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 3,
+            "fill": 105,
+            "stroke": 100,
+            "drawImage": 2
+          },
+          "cache": {
+            "soilBuilds": 24,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 12,
+          "region": 4,
+          "medianMs": 17.645,
+          "movingMedianMs": 16,
+          "movingP95Ms": 22.3,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 3,
+            "fill": 100,
+            "drawImage": 99,
+            "stroke": 240
+          },
+          "cache": {
+            "soilBuilds": 30,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 15,
+          "region": 5,
+          "medianMs": 17.39,
+          "movingMedianMs": 16.2,
+          "movingP95Ms": 20.8,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 3,
+            "fill": 143,
+            "drawImage": 99,
+            "stroke": 204
+          },
+          "cache": {
+            "soilBuilds": 36,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 46,
+          "region": 0,
+          "medianMs": 16.28,
+          "movingMedianMs": 16,
+          "movingP95Ms": 20,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 3,
+            "fill": 132,
+            "drawImage": 92,
+            "stroke": 218
+          },
+          "cache": {
+            "soilBuilds": 42,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 47,
+          "region": 1,
+          "medianMs": 15.475,
+          "movingMedianMs": 15.2,
+          "movingP95Ms": 19.2,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 3,
+            "fill": 162,
+            "stroke": 142,
+            "drawImage": 2
+          },
+          "cache": {
+            "soilBuilds": 49,
+            "soilTiles": 16
+          }
+        }
+      ]
+    }
+  }
+}

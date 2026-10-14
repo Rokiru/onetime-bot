@@ -2,9 +2,10 @@
 /* An authored art direction: layered landscape, weathered metal, readable silhouettes.
  * Collision geometry and suspension are always taken from the live physics bodies. */
 const ExpeditionArt=(()=>{
- const originalTruck=truck,originalTerrain=terrain,originalDraw=draw;
- const treeCache=new Map(),noise=document.createElement('canvas');noise.width=noise.height=96;
- const nc=noise.getContext('2d');for(let i=0;i<650;i++){nc.fillStyle=i%2?'#fff':'#000';nc.globalAlpha=.1+hash(i)*.14;nc.fillRect(hash(i+19)*96,hash(i+302)*96,1,1);}
+ const originalTruck=truck,originalDraw=draw;
+ const treeCache=new Map(),soilCache=new Map();
+ const cacheStats={soilBuilds:0};
+ function remember(cache,key,value,limit){cache.set(key,value);if(cache.size>limit)cache.delete(cache.keys().next().value);return value;}
  const palettes=[
   {sky:['#8caaa1','#d6d1b4','#bbc3a5'],peaks:['#a4b5a5','#7e9b8c','#517d6a','#294f3c'],trees:'#294f38',earth:['#8b8860','#666347','#343b29'],road:'#c6be87'},
   {sky:['#7b8887','#d1bca0','#b8ac88'],peaks:['#b7ae9b','#9b9078','#80795c','#595e43'],trees:'#515d36',earth:['#a69675','#756f55','#3c4132'],road:'#d1bc93'},
@@ -53,6 +54,20 @@ const ExpeditionArt=(()=>{
    }ctx.globalAlpha=1;
   }
  }
+ // Reuse world-space geometry and submit each colour as one path. This
+ // avoids hundreds of per-frame ellipse calls without large bitmap layers.
+ function soilTexture(route,tile){
+  const key=route+':'+tile;let value=soilCache.get(key);if(value)return value;
+  const from=tile*8,to=from+8,light=new Path2D(),dark=new Path2D();
+  for(let n=Math.ceil(from/.48);n*.48<to;n++){
+   const x=n*.48,base=CP.groundHeight(x,route);
+   for(let j=0;j<4;j++){
+    const seed=x*37+j*41,px=x+hash(seed)*.3,py=base-.23-j*.65-hash(seed+17)*.35,size=.015+hash(seed+28)*.04,path=j%2?light:dark;
+    path.moveTo(px+size*1.8*Math.cos(-.4),py+size*1.8*Math.sin(-.4));path.ellipse(px,py,size*1.8,size,-.4,0,Math.PI*2);
+   }
+  }
+  value={light,dark};cacheStats.soilBuilds++;return remember(soilCache,key,value,16);
+ }
  function house(x,y,k,region){
   const night=region===2;ctx.fillStyle=night?'#304132':'#56634d';ctx.fillRect(x-k*.7,y-k*.72,k*1.4,k*.72);
   path([[x-k*.85,y-k*.72],[x-k*.05,y-k*1.25],[x+k*.8,y-k*.72]],'#42513d');
@@ -99,12 +114,8 @@ const ExpeditionArt=(()=>{
   for(let row=0;row<3;row++){
    ctx.beginPath();visible.forEach((v,i)=>{const x=sx(v.x),y=sy(v.y-.45-row*.8+Math.sin(v.x*.63+row)*.11);if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);});ctx.lineWidth=scale*(row===0?.08:.035);ctx.strokeStyle=row===0?'#ddd6b12b':'#202f2240';ctx.stroke();
   }
-  if(save.quality!=='low')for(let x=Math.floor(from/.48)*.48;x<to;x+=.48){
-   const base=CP.groundHeight(x,r);
-   for(let j=0;j<4;j++){
-    const n=x*37+j*41,px=sx(x+hash(n)*.3),py=sy(base-.23-j*.65-hash(n+17)*.35),size=scale*(.015+hash(n+28)*.04);
-    ctx.fillStyle=j%2?'#d9c79929':'#14271735';ctx.beginPath();ctx.ellipse(px,py,size*1.8,size,.4,0,Math.PI*2);ctx.fill();
-   }
+  if(save.quality!=='low')for(let tile=Math.floor(from/8);tile<=Math.floor(to/8);tile++){
+   const texture=soilTexture(r,tile);ctx.save();ctx.translate(sx(0),sy(0));ctx.scale(scale,-scale);ctx.fillStyle='#d9c79929';ctx.fill(texture.light);ctx.fillStyle='#14271735';ctx.fill(texture.dark);ctx.restore();
   }
   ctx.restore();
   ctx.beginPath();road.forEach((v,i)=>i?ctx.lineTo(...v):ctx.moveTo(...v));ctx.lineWidth=Math.max(7,scale*.23);ctx.lineJoin='round';ctx.strokeStyle='#354634';ctx.stroke();ctx.lineWidth=Math.max(4,scale*.13);ctx.strokeStyle=p.road;ctx.stroke();ctx.lineWidth=1;ctx.strokeStyle='#f1e2b74b';ctx.stroke();
@@ -115,14 +126,20 @@ const ExpeditionArt=(()=>{
   // Keep authored depots and the physical end marker from the original renderer.
   if(sim){const end=sim.route.length+6,x=sx(end),y=sy(CP.height(end,r)),k=scale;if(x<W+250&&x>-300){line(x,y,x,y-k*3.25,'#c1c7a7',k*.05);path([[x,y-k*3.25],[x+k*.9,y-k*3.05],[x,y-k*2.62]],'#d99464');const bx=x+k*1.6;ctx.fillStyle='#40583a';ctx.fillRect(bx,y-k*2.0,k*3.2,k*2.0);path([[bx-k*.15,y-k*2],[bx+k*1.6,y-k*2.8],[bx+k*3.35,y-k*2]],'#8c8d63','#c3bf93',1);ctx.fillStyle='#263d28';ctx.fillRect(bx+k*.5,y-k*1.7,k*1.8,k*1.7);for(let j=0;j<4;j++)line(bx+k*.5,y-k*(.4+j*.4),bx+k*2.3,y-k*(.4+j*.4),'#667454',1);ctx.fillStyle='#d2c6a1';ctx.font='bold '+Math.round(k*.2)+'px sans-serif';ctx.textAlign='left';ctx.fillText('ПРИЁМКА',bx+k*.4,y-k*2.14);}}
  }
+ let wheelSprite=null;
+ function makeWheel(){
+  const c=document.createElement('canvas');c.width=c.height=192;const a=c.getContext('2d'),r=90;
+  a.translate(96,96);const disk=(radius,color)=>{a.fillStyle=color;a.beginPath();a.arc(0,0,radius,0,Math.PI*2);a.fill();};
+  const polygon=(pts,color)=>{a.fillStyle=color;a.beginPath();pts.forEach((q,i)=>i?a.lineTo(...q):a.moveTo(...q));a.closePath();a.fill();};
+  const rubber=a.createRadialGradient(-r*.2,-r*.3,r*.1,0,0,r);rubber.addColorStop(0,'#475446');rubber.addColorStop(.5,'#18251c');rubber.addColorStop(1,'#111a13');disk(r,rubber);
+  for(let i=0;i<20;i++){a.save();a.rotate(i*Math.PI/10);polygon([[-r*.12,-r*.98],[r*.04,-r*.98],[r*.12,-r*.82],[-r*.05,-r*.82]],i%2?'#69705b':'#4e5c47');a.restore();}
+  disk(r*.69,'#132017');disk(r*.52,'#b5baa4');disk(r*.43,'#414f3e');
+  for(let i=0;i<5;i++){a.save();a.rotate(i*Math.PI*2/5);polygon([[-r*.055,r*.12],[r*.055,r*.12],[r*.12,r*.39],[-r*.12,r*.39]],'#b5b89f');a.fillStyle='#172218';a.beginPath();a.arc(0,r*.31,r*.05,0,Math.PI*2);a.fill();a.restore();}
+  disk(r*.15,'#a3aa90');disk(r*.045,'#e4d4a9');return c;
+ }
  function wheel(w,m){
-  const p=pose(w),x=sx(p.x),y=sy(p.y),r=scale*m.radius;
-  const rubber=ctx.createRadialGradient(x-r*.2,y-r*.3,r*.1,x,y,r);rubber.addColorStop(0,'#475446');rubber.addColorStop(.5,'#18251c');rubber.addColorStop(1,'#111a13');circle(x,y,r,rubber);
-  ctx.save();ctx.translate(x,y);ctx.rotate(-p.a);
-  for(let i=0;i<20;i++){ctx.save();ctx.rotate(i*Math.PI/10);path([[-r*.12,-r*.98],[r*.04,-r*.98],[r*.12,-r*.82],[-r*.05,-r*.82]],i%2?'#69705b':'#4e5c47');ctx.restore();}
-  circle(0,0,r*.69,'#132017');circle(0,0,r*.52,'#b5baa4');circle(0,0,r*.43,'#414f3e');
-  for(let i=0;i<5;i++){ctx.save();ctx.rotate(i*Math.PI*2/5);path([[-r*.055,r*.12],[r*.055,r*.12],[r*.12,r*.39],[-r*.12,r*.39]],'#b5b89f');circle(0,r*.31,r*.05,'#172218');ctx.restore();}
-  circle(0,0,r*.15,'#a3aa90');circle(0,0,r*.045,'#e4d4a9');ctx.restore();
+  const p=pose(w),x=sx(p.x),y=sy(p.y),r=scale*m.radius;if(!wheelSprite)wheelSprite=makeWheel();
+  ctx.save();ctx.translate(x,y);ctx.rotate(-p.a);const extent=r*192/90;ctx.drawImage(wheelSprite,-extent/2,-extent/2,extent,extent);ctx.restore();
   ctx.strokeStyle='#b3bca23d';ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(x,y,r*.86,Math.PI*1.05,Math.PI*1.77);ctx.stroke();
  }
  function metal(body,m,top=1.5){
@@ -176,9 +193,9 @@ const ExpeditionArt=(()=>{
   const lampx=W*.23;line(lampx,0,lampx,H*.28,'#16291c',3);path([[lampx-20,H*.28],[lampx+20,H*.28],[lampx+27,H*.30],[lampx-27,H*.30]],'#9eae85');line(lampx-24,H*.302,lampx+24,H*.302,'#ead5a4',2);
   ctx.fillStyle='#d0c5a557';ctx.font='8px sans-serif';ctx.textAlign='left';ctx.fillText('МАСТЕРСКАЯ / ЛИСИЙ БРОД',W*.08,H*.91);
  }
- function grain(){if(save.quality==='low')return;const pattern=ctx.createPattern(noise,'repeat');ctx.save();ctx.globalAlpha=.075;ctx.fillStyle=pattern;ctx.fillRect(0,0,W,H);ctx.restore();}
- function drawPremium(dt){originalDraw(dt);grain();}
- return {background,terrain,wheel,metal,driver,rig,menuScene,garageScene,draw:drawPremium};
+ function drawPremium(dt){originalDraw(dt);}
+ return {background,terrain,wheel,metal,driver,rig,menuScene,garageScene,draw:drawPremium,
+  stats:()=>({...cacheStats,soilTiles:soilCache.size})};
 })();
 background=ExpeditionArt.background;terrain=ExpeditionArt.terrain;vehicleWheel=ExpeditionArt.wheel;
 vehicleMetal=ExpeditionArt.metal;drawMax=ExpeditionArt.driver;truck=ExpeditionArt.rig;

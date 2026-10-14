@@ -10,12 +10,12 @@ export ANDROID_HOME="$PWD/.tools/android-sdk"
 node tests/verify-expedition18.cjs
 python3 scripts/gradle.py --no-daemon --max-workers=2 :app:assembleDebug :app:lintDebug
 mkdir -p artifacts
-cp app/build/outputs/apk/debug/app-debug.apk artifacts/Dustrivo-0.18.apk
-.tools/android-sdk/build-tools/35.0.0/apksigner verify --verbose artifacts/Dustrivo-0.18.apk
+cp app/build/outputs/apk/debug/app-debug.apk artifacts/Dustrivo-0.19.apk
+.tools/android-sdk/build-tools/35.0.0/apksigner verify --verbose artifacts/Dustrivo-0.19.apk
 python3 - <<'PY'
 from pathlib import Path
 import zipfile
-apk=Path('artifacts/Dustrivo-0.18.apk')
+apk=Path('artifacts/Dustrivo-0.19.apk')
 with zipfile.ZipFile(apk) as z:
     assert z.testzip() is None, 'APK CRC failure'
     for source in Path('game/assets').rglob('*'):
@@ -23,5 +23,5 @@ with zipfile.ZipFile(apk) as z:
             assert z.read('assets/'+source.relative_to('game/assets').as_posix())==source.read_bytes(), 'APK asset mismatch: '+str(source)
 print('All bundled assets match the tested game.')
 PY
-sha256sum artifacts/Dustrivo-0.18.apk > artifacts/Dustrivo-0.18.apk.sha256
-printf 'APK: %s/artifacts/Dustrivo-0.18.apk\n' "$PWD"
+sha256sum artifacts/Dustrivo-0.19.apk > artifacts/Dustrivo-0.19.apk.sha256
+printf 'APK: %s/artifacts/Dustrivo-0.19.apk\n' "$PWD"
