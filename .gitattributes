@@ -1,2 +1,4 @@
 # Preserve upstream font license text byte-for-byte, including original line endings.
 game/assets/fonts/OFL-*.txt -text whitespace=-blank-at-eol
+# The bundled unmodified Planck distribution also retains its upstream formatting.
+game/assets/planck.min.js -text whitespace=-blank-at-eol
