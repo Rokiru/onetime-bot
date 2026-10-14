@@ -252,9 +252,25 @@ zones[47]=[{from:72,to:96,type:'gravel',friction:.93},{from:157,to:178,type:'gra
 landmarks[46]=[{x:35,type:'pine'},{x:105,type:'pine'},{x:153,type:'house'},{x:214,type:'pine'}];
 landmarks[47]=[{x:55,type:'rock'},{x:115,type:'crane'},{x:165,type:'rock'}];
 
+// Versioned contracts add tasks without changing collision geometry or old saves.
+const contractCache=new Map();
+function contractRoute(id,edition=20){
+ const base=routes[id]||routes[0];if(edition!==20)return base;if(contractCache.has(id))return contractCache.get(id);
+ const stops=base.stops?base.stops.map(s=>({...s})):[];
+ if(id===0)stops.push({x:50,name:'ЛЕСНИЧЕСТВО'});
+ if(id===4)stops.push({x:53,name:'ЭКСПРЕСС-ПОСТ'});
+ const sectors=[],points=profiles[id];
+ for(let n=1;n<points.length&&sectors.length<2;n++){
+  const a=points[n-1],b=points[n],gap=gaps[id];
+  if(a[0]<25||b[0]>base.length-15||b[0]-a[0]<6||a[1]-b[1]<1.8||gap&&gap.from>a[0]-12&&gap.from<b[0]+15)continue;
+  sectors.push({from:a[0],to:b[0],limit:3.3,reward:35,name:'ПЛАВНЫЙ СПУСК'});
+ }
+ const route={...base,...(stops.length?{stops}:{}),sectors};contractCache.set(id,route);return route;
+}
+
 class Drive{
- constructor(id,levels,vehicleId='rover',setup='standard'){
- this.id=id;this.route=routes[id]||routes[0];this.levels=levels||[0,0,0];this.vehicle=preparedVehicle(vehicleId,setup);const m=this.vehicle;if(this.route.requires&&m.id!==this.route.requires)throw new Error(this.route.requires==='timber'?'Для этого рейса нужен лесовоз LARCH':this.route.requires==='tanker'?'Для этого рейса нужна автоцистерна BRINE':'Для этого рейса нужен грузовик MULE');if(m.onlyCargo&&this.route.cargo!==m.onlyCargo)throw new Error('Автоцистерна перевозит только жидкость');
+ constructor(id,levels,vehicleId='rover',setup='standard',edition=0){
+ this.id=id;this.edition=edition===20?20:0;this.route=contractRoute(id,this.edition);this.sectors=(this.route.sectors||[]).map(s=>({...s,entered:false,done:false,passed:false,maxSpeed:0,initialCargo:0,initialHits:0}));this.levels=levels||[0,0,0];this.vehicle=preparedVehicle(vehicleId,setup);const m=this.vehicle;if(this.route.requires&&m.id!==this.route.requires)throw new Error(this.route.requires==='timber'?'Для этого рейса нужен лесовоз LARCH':this.route.requires==='tanker'?'Для этого рейса нужна автоцистерна BRINE':'Для этого рейса нужен грузовик MULE');if(m.onlyCargo&&this.route.cargo!==m.onlyCargo)throw new Error('Автоцистерна перевозит только жидкость');
  this.world=new P.World(V(0,-12));this.lowGear=false;this.shiftCooldown=0;this.gearShifts=0;this.time=0;this.fuel=this.route.fuelStart??100;this.fuelUsed=0;this.lastFuelX=6;this.winchCharges=2;this.winchTime=0;this.winchAnchor=null;this.checkpoints=(this.route.checkpoints||[]).map(s=>({...s,done:false}));this.coins=0;this.distance=0;this.state='drive';this.reason='';this.flip=0;this.stuckTime=0;this.groundCount=0;this.events=[];this.paid=false;this.throttle=0;this.hardLandings=0;this.condition=this.route.conditionStart??100;this.temperature=this.route.heatStart??35;this.overheated=false;this.peakTemperature=this.temperature;this.services=(this.route.services||[]).map(x=>({...x,done:false,elapsed:0}));this.serviceHold=false;this.rocks=[];this.airDrop=0;this.airTicks=0;this.wasAir=false;this.brakeHeld=0;this.slip=0;this.slipTime=0;this.trace=[];this.traceOverflow=false;this.traceAt=0;this.lastImpact=0;this.fluidCapacity=this.route.litres||0;this.fluidLitres=this.fluidCapacity;this.fluidDelivered=0;this.fluidSlosh=0;this.peakSlosh=0;this.fluidLeak=0;this.fluidMasses=[];this.gates=[];this.stops=(this.route.drops||this.route.stops||[]).map((s,i)=>({...s,index:i,done:false,elapsed:0,boxIndex:-1,warned:false}));this.parkingHold=false;
  const ground=this.world.createBody();ground.setUserData('ground');const vertices=groundVertices(this.id).map(p=>V(p.x,p.y));this.groundVertices=vertices;ground.createFixture(P.Chain(vertices),{friction:1.0});
  const y=m.radius+.50;
@@ -345,17 +361,28 @@ for(const data of this.route.gates||[]){const h=height(data.x,this.id),pivot=V(d
  for(let item of this.items){if(!item.got&&Math.hypot(item.x-p.x,item.y-p.y)<2.15){item.got=true;if(item.type==='coin'){this.coins+=10;this.events.push({type:'coin'});}else{const amount=item.amount||18;this.fuel=Math.min(100,this.fuel+amount);this.events.push({type:'fuel',amount});}}}
  for(const point of this.checkpoints)if(!point.done&&p.x>=point.x-2&&p.x<=point.x+6&&this.groundCount>0){point.done=true;this.events.push({type:'survey'});}
  this.measureSlip();this.slipTime=gas&&!brake&&this.slip>.55&&this.groundCount>0?this.slipTime+dt:Math.max(0,this.slipTime-dt*2);this.recordTrace();this.updateStops(gas,brake,dt);this.updateServices(gas,brake,dt);this.updateEngine(gas,brake,dt);this.updateFluid(dt);
- const air=this.groundCount===0;if(air){this.airTicks+=dt;this.airDrop=Math.max(this.airDrop,-this.car.getLinearVelocity().y);}else if(this.wasAir){if(this.airTicks>.10&&this.airDrop>7){this.hardLandings++;const slope=(height(p.x+1,this.id)-height(p.x-1,this.id))/2,align=Math.abs(Math.atan2(Math.sin(this.car.getAngle()-Math.atan(slope)),Math.cos(this.car.getAngle()-Math.atan(slope))));const severity=34+(this.airDrop-7)*6+align*8;const damage=Math.round(Math.max(10,Math.min(65,severity*(m.closed?.84:m.id==='scrambler'?1.12:1)/(1+this.levels[1]*.035))));this.lastImpact=this.airDrop;this.condition=Math.max(0,this.condition-damage);this.events.push({type:'impact',damage});if(this.condition<=0)this.end('damage');}this.airTicks=0;this.airDrop=0;}this.wasAir=air;
+ const air=this.groundCount===0;if(air){this.airTicks+=dt;this.airDrop=Math.max(this.airDrop,-this.car.getLinearVelocity().y);}else if(this.wasAir){if(this.airTicks>.10&&this.airDrop>7){this.hardLandings++;const slope=(height(p.x+1,this.id)-height(p.x-1,this.id))/2,align=Math.abs(Math.atan2(Math.sin(this.car.getAngle()-Math.atan(slope)),Math.cos(this.car.getAngle()-Math.atan(slope))));const severity=34+(this.airDrop-7)*6+align*8;const damage=Math.round(Math.max(10,Math.min(65,severity*(m.closed?.84:m.id==='scrambler'?1.12:1)/(1+this.levels[1]*.035))));this.lastImpact=this.airDrop;this.condition=Math.max(0,this.condition-damage);this.events.push({type:'impact',damage});if(this.condition<=0)this.end('damage');}this.airTicks=0;this.airDrop=0;}this.wasAir=air;this.updateSectors();
  const angle=Math.atan2(Math.sin(this.car.getAngle()),Math.cos(this.car.getAngle()));if(Math.abs(angle)>2.05&&p.y<height(p.x,this.id)+(m.closed?3.1:2.5))this.flip+=dt;else this.flip=Math.max(0,this.flip-dt*2);
  if(Math.abs(angle)>1.5&&Math.abs(this.car.getLinearVelocity().x)<.08&&gas&&p.y<height(p.x,this.id)+3)this.stuckTime+=dt;else this.stuckTime=0;if(this.stuckTime>4)this.end('flipped');
   if(this.route.kind==='timed'&&this.time>this.route.limit)this.end('timeout');
  else if(p.x>=this.route.length+6){if(this.fluidCapacity&&this.fluidLitres<(this.route.minLitres||0))this.end('liquid');else if(this.liftBridges.some(b=>!b.done))this.end('bridge');else if(this.gates.some(g=>!g.open))this.end('gate');else if(this.services.some(s=>s.required&&!s.done))this.end('service');else if(this.nextStop())this.end('stops');else if(this.stops.length&&this.aboard()===0)this.end('cargo');else if(this.route.kind==='eco'&&this.fuel<this.route.minFuel)this.end('eco');else if(this.route.kind==='survey'&&this.checkpoints.some(p=>!p.done))this.end('survey');else if(this.route.kind==='careful'&&this.remaining()!==this.route.boxes)this.end('fragile');else this.end('delivered');}
  else if(gaps[this.id]&&p.x>gaps[this.id].from&&p.x<gaps[this.id].to&&p.y<gaps[this.id].y-gaps[this.id].depth*.55)this.end('ravine');else if(this.flip>1.4)this.end('flipped');else if(this.remaining()===0||this.stops.length&&this.aboard()===0)this.end('cargo');else if(this.fuel<=0)this.end('fuel');else if(p.y<-30||p.x<-15||!Number.isFinite(p.x)||!Number.isFinite(p.y))this.end('road');
  }
+ updateSectors(){
+  const x=this.car.getPosition().x,speed=Math.abs(this.car.getLinearVelocity().x);
+  for(const sector of this.sectors){
+   if(sector.done||x<sector.from)continue;
+   if(!sector.entered&&x>sector.to){sector.done=true;continue;}
+   if(!sector.entered){sector.entered=true;sector.initialCargo=this.fluidCapacity?this.fluidLitres+this.fluidDelivered:this.remaining();sector.initialHits=this.hardLandings;}
+   sector.maxSpeed=Math.max(sector.maxSpeed,speed);
+   if(x>sector.to){sector.done=true;sector.passed=sector.maxSpeed<=sector.limit&&(this.fluidCapacity?this.fluidLitres+this.fluidDelivered:this.remaining())>=sector.initialCargo-.5&&this.hardLandings===sector.initialHits;
+    if(sector.passed)this.coins+=sector.reward;this.events.push({type:'sector',passed:sector.passed,reward:sector.reward});}
+  }
+ }
  reward(){return this.coins+(this.state==='win'?Math.round(this.route.reward*(this.fluidCapacity?(this.fluidLitres+this.fluidDelivered)/this.fluidCapacity:this.remaining()/this.route.boxes)):0);}
 }
 const crossingFactory=typeof module==='object'?require('./crossing-physics.js'):root.CrossingPhysics;Object.assign(Drive.prototype,crossingFactory({P,V,height,groundHeight}));
 const groundCache=new Map();
 function groundVertices(id){if(!groundCache.has(id)){const points=[];for(let x=-30;x<=routes[id].length+45;x+=.5)points.push({x,y:groundHeight(x,id)});groundCache.set(id,points);}return groundCache.get(id);}
-const api={SETUPS,preparedVehicle,weatherAt,WEATHER,fuelPlan,groundVertices,Drive,routes,profiles,gaps,vehicles,regions,height,groundHeight,surfaceAt,bridges,landmarks};if(typeof module==='object')module.exports=api;else root.CargoPhysics=api;
+const api={SETUPS,contractRoute,preparedVehicle,weatherAt,WEATHER,fuelPlan,groundVertices,Drive,routes,profiles,gaps,vehicles,regions,height,groundHeight,surfaceAt,bridges,landmarks};if(typeof module==='object')module.exports=api;else root.CargoPhysics=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

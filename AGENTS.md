@@ -5,6 +5,8 @@
 - Increment the Android version in `app/build.gradle` and `game/AndroidManifest.xml`, and update the filename in `scripts/build-apk.sh`, for each subsequent delivered build.
 - This project continues the user-supplied Dustrivo sources. The package is `ru.rokiru.cargo`. Preserve existing vehicle/route IDs, career progress, storage keys, and checkpoint compatibility.
 - Gameplay assets and simulation are in `game/assets/`. Premium rendering is in `premium-render.js`, current interface styling in `expedition.css`, and the drivetrain/UI integration in `expedition-ui.js`.
+- Road contracts for new runs use `CargoPhysics.contractRoute(id, 20)` and the fifth `Drive` argument `20`. Legacy constructors and checkpoints keep the original contract. Preserve base `CP.routes`/profiles and the optional checkpoint `journey` edition/state.
+- `depot-art20.js` caches roadside architecture; `journey20.js` renders mission maps and missed-stop/sector cues. Mini-map rendering is separate from text HUD updates.
 - Run relevant physics, UI, delivery, checkpoint and storage tests for changes. The current road count is 48; older tests have historical fixtures. Test fixtures must select their intended career/test profile explicitly.
 - Android builds use the pinned tools in `.tools/` and `scripts/gradle.py` for proxy and CA trust. Never disable TLS or archive checksum verification.
 - The original development signing key supplied in the archive is retained under ignored `.tools/dustrivo-signing/`. Never commit it, passwords or `signing.properties`. A fresh clone without that key uses a different debug key and cannot update the supplied older development APK in place.

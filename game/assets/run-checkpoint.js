@@ -19,6 +19,7 @@
   if(!s.attemptId)s.attemptId=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12);
   const data={schema:1,engine:'river17',attempt:s.attemptId,id:s.id,car:s.vehicle.id,levels:s.levels.slice(),setup:s.vehicle.setup,signature:fingerprint(CP,s.id,s.vehicle.id,s.levels,s.vehicle.setup),state:copy(s,fields),drivetrain:{lowGear:!!s.lowGear,shiftCooldown:s.shiftCooldown||0,gearShifts:s.gearShifts||0},anchor:s.winchAnchor?{x:s.winchAnchor.x,y:s.winchAnchor.y}:null,trace:s.trace.map(p=>p.slice()),groups:{},bodies:[]};
   for(const [name,keys] of Object.entries(groups))data.groups[name]=s[name].map(x=>({...copy(x,keys),...(name==='boxes'?{strap:!!x.strap,strap2:!!x.strap2}:{})}));
+  if(s.edition===20)data.journey={edition:20,sectors:s.sectors.map(o=>copy(o,['entered','done','passed','maxSpeed','initialCargo','initialHits']))};
   data.solver=solverCapture(s);data.motors=[...s.joints,...s.gates.map(g=>g.joint),...s.liftBridges.map(b=>b.joint)].map(j=>[j.isMotorEnabled(),j.getMotorSpeed(),j.getMaxMotorTorque()]);
   data.bodies=bodies(s).map(b=>{const p=b.getPosition(),v=b.getLinearVelocity();return {x:p.x,y:p.y,a:b.getAngle(),vx:v.x,vy:v.y,w:b.getAngularVelocity(),active:b.isActive(),awake:b.isAwake(),fixtures:fixtures(b).map(f=>({density:f.getDensity(),sensor:f.isSensor()}))};});
   return validate(data,CP);
@@ -28,6 +29,7 @@
    if(!d||d.schema!==1||d.engine!=='river17'||typeof d.attempt!=='string'||! /^[a-z0-9-]{4,60}$/.test(d.attempt)||!Number.isInteger(d.id)||!CP.routes[d.id]||!CP.vehicles.some(m=>m.id===d.car)||!CP.SETUPS[d.setup]||!Array.isArray(d.levels)||d.levels.length!==3||d.levels.some(x=>!Number.isInteger(x)||x<0||x>5))return null;
    if(d.signature!==fingerprint(CP,d.id,d.car,d.levels,d.setup)||!d.state||!d.groups||!Array.isArray(d.bodies)||d.bodies.length>100||!Array.isArray(d.trace)||d.trace.length>800)return null;
    for(const k of fields)if(typeof d.state[k]!=='boolean'&&!finite(d.state[k]))return null;
+   if(d.journey){const j=d.journey;if(j.edition!==20||!Array.isArray(j.sectors)||j.sectors.length!==CP.contractRoute(d.id,20).sectors.length)return null;for(const o of j.sectors)if(!o||['entered','done','passed'].some(k=>typeof o[k]!=='boolean')||!finite(o.maxSpeed,500)||o.maxSpeed<0||!finite(o.initialCargo,5000)||o.initialCargo<0||!Number.isInteger(o.initialHits)||o.initialHits<0||o.initialHits>10000||o.passed&&(!o.done||!o.entered))return null;}
    if(d.drivetrain&&(typeof d.drivetrain.lowGear!=='boolean'||!finite(d.drivetrain.shiftCooldown)||d.drivetrain.shiftCooldown<0||d.drivetrain.shiftCooldown>1||!Number.isInteger(d.drivetrain.gearShifts)||d.drivetrain.gearShifts<0))return null;
    if(d.state.time<0||d.state.time>7200||d.state.fuel<0||d.state.fuel>100||d.state.condition<0||d.state.condition>100||d.state.winchCharges<0||d.state.winchCharges>2||d.state.coins<0||d.state.coins>10000)return null;
    if(d.anchor!==null&&(!d.anchor||!finite(d.anchor.x)||!finite(d.anchor.y)))return null;
@@ -46,10 +48,11 @@
  function restore(data,CP){
   const d=validate(data,CP);if(!d)return null;
   try{
-   const s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup),list=bodies(s);if(list.length!==d.bodies.length)return null;
+   const s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,d.journey?20:0),list=bodies(s);if(list.length!==d.bodies.length)return null;
    for(const name of Object.keys(groups)){if(s[name].length!==d.groups[name].length)return null;for(let i=0;i<s[name].length;i++){const o=s[name][i],saved=d.groups[name][i];for(const k of groups[name]){if(saved[k]!==undefined){if(o[k]!==undefined&&typeof o[k]!==typeof saved[k])return null;o[k]=saved[k];}}if(name==='boxes')for(const k of ['strap','strap2']){if(!saved[k]&&o[k]){s.world.destroyJoint(o[k]);o[k]=null;}}}}
    for(const k of fields){if(typeof s[k]!==typeof d.state[k])return null;s[k]=d.state[k];}
    if(d.drivetrain)Object.assign(s,d.drivetrain);
+   if(d.journey)for(let i=0;i<s.sectors.length;i++)Object.assign(s.sectors[i],d.journey.sectors[i]);
    s.attemptId=d.attempt;s.started=true;s.winchAnchor=d.anchor?{...d.anchor}:null;s.trace=d.trace.map(p=>p.slice());s.events=[];s.previous=null;
    for(let i=0;i<list.length;i++){const b=list[i],v=d.bodies[i],fs=fixtures(b);if(fs.length!==v.fixtures.length)return null;b.setActive(false);b.setTransform({x:v.x,y:v.y},v.a);b.m_sweep.a=b.m_sweep.a0=v.a;for(let n=0;n<fs.length;n++){fs[n].setDensity(v.fixtures[n].density);fs[n].setSensor(v.fixtures[n].sensor);}b.resetMassData();b.setActive(v.active);b.setLinearVelocity({x:v.vx,y:v.vy});b.setAngularVelocity(v.w);b.setAwake(v.awake);}
    const motors=[...s.joints,...s.gates.map(g=>g.joint),...s.liftBridges.map(b=>b.joint)];if(motors.length!==d.motors.length)return null;for(let i=0;i<motors.length;i++){motors[i].enableMotor(d.motors[i][0]);motors[i].setMotorSpeed(d.motors[i][1]);motors[i].setMaxMotorTorque(d.motors[i][2]);}

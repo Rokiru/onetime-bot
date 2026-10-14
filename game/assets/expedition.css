@@ -70,3 +70,23 @@ body[data-page="routes"] .scene-shade,body[data-page="settings"] .scene-shade,bo
 #lesson,#driver-radio{left:calc(var(--hud-gap) + var(--safe-left,0px))!important}
 .overlay{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 @media(max-height:370px){:root{--page-gap:18px;--page-top:60px;--page-bottom:11px;--header-gap:18px;--hud-gap:13px}#routes .page-title h2{font-size:22px}#routes .region-tabs,#routes .region-tabs button{min-height:32px}#routes .route-grid{grid-auto-rows:76px}#routes .route-card{height:76px!important}#routes .route-card .route-art,#routes .route-card .route-art>svg{width:70px!important}#routes .route-card h3{font-size:17px!important}#selected-order h3{font-size:20px;margin:2px 0 3px}.route-detail-art{min-height:32px;max-height:64px}#selected-order .route-detail-heading{padding-top:6px}.route-detail-description{font-size:9px;margin:5px 12px;max-height:68px}#routes #route-start{margin-bottom:8px;min-height:44px}#routes .route-browser{gap:10px}#routes #order-count{flex-basis:100%;margin-left:6px;line-height:1.2}}
+/* Clear sky; contrast comes from the individual instruments. */
+#hud:before,#hud:after{content:none!important;background:none!important}
+.hud-top{background:none!important;backdrop-filter:none!important}
+.hud-top .trip,.hud-top .fuel{background:#17281ee8;border-radius:4px;padding:6px 9px}
+#missed-stop{position:absolute;top:100px;left:calc(17px + var(--safe-left,0px));max-width:42vw;display:flex;align-items:center;gap:10px;padding:12px;background:#432d23f5;border:1px solid #e4aa76;border-radius:4px;color:#f0d7b4;pointer-events:none}
+#missed-stop .return-arrow{font:42px Road,sans-serif;line-height:1;color:#efb482}
+#missed-stop div{display:flex;flex-direction:column;gap:4px}#missed-stop b{font-size:11px;letter-spacing:.7px}#missed-stop span{font-size:10px}#missed-stop small{font-size:8px}
+#journey-cue{position:absolute;top:93px;left:50%;transform:translateX(-50%);max-width:38vw;display:flex;flex-direction:column;gap:3px;padding:8px 12px;border-left:2px solid #dda578;background:#1c2e23ec;border-radius:3px;color:#e5d4b5;pointer-events:none}
+#journey-cue b{font-size:10px;letter-spacing:.5px}#journey-cue span{font-size:9px;color:#bdc7ad}#journey-cue[data-failed=true]{opacity:.8}
+body:not([data-page=drive]) #missed-stop,body:not([data-page=drive]) #journey-cue{display:none!important}
+.route-detail-art{background:#2c4033}.route-detail-art>span{display:none}.open-mission-plan{position:absolute;right:7px;top:7px;border:1px solid #c9c5aa55;border-radius:3px;padding:6px 9px;background:#1b2e23ed;color:#eddbbc;font:8px Barlow,sans-serif;min-height:32px}
+#routes .route-card .route-art svg{object-fit:cover}
+.mission-plan-dialog{width:min(900px,92vw);max-height:calc(100vh - 28px);overflow-y:auto;padding:16px!important;touch-action:pan-y}
+.mission-plan-dialog h2{font-size:24px!important;margin:4px 0 8px}.mission-plan-dialog .dialog-title{margin-bottom:6px}#mission-plan-art svg{width:100%;max-height:45vh;display:block}#mission-plan-stops{display:flex;flex-direction:column;gap:6px;font-size:10px;margin-top:10px;line-height:1.5;color:#d3ddc5}.map-key{font-size:9px!important;line-height:1.5;margin:8px 0 0!important}
+@media(max-height:370px){#missed-stop{top:88px;padding:8px;max-width:43vw}#missed-stop b{font-size:9px}#missed-stop span{font-size:8px}#missed-stop small{font-size:7px}#journey-cue{top:81px;max-width:37vw;padding:7px 9px}#journey-cue b{font-size:8px}#journey-cue span{font-size:8px}.open-mission-plan{top:3px;right:3px;font-size:7px;padding:4px 6px}.mission-plan-dialog h2{font-size:21px!important}}
+#mission-plan-art{width:100%;min-width:0}
+#mission-plan-art>svg{width:100%!important;height:auto!important;max-height:45vh!important;min-height:100px!important;border:0!important;box-shadow:none!important;opacity:1!important;transform:none!important}
+#missed-stop,#journey-cue{z-index:21}
+#mission-plan-art>svg,.route-detail-art>svg,#routes .route-art>svg{stroke:none!important}
+#mission-plan-art svg text,.route-detail-art svg text,#routes .route-art svg text{stroke:none!important;font-family:Barlow,Arial,sans-serif}

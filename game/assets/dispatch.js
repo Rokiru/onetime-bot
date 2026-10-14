@@ -26,7 +26,7 @@ function renderMedals(){
  const whole=sim.state==='win'&&sim.wholeCargo(),smooth=whole&&sim.hardLandings===0;
  $('result-medals').innerHTML=[['ВЕСЬ ГРУЗ',whole],['МЯГКИЙ ХОД',smooth],...(sim.stops.length?[['РАЗВОЗЧИК',sim.state==='win'&&sim.stops.every(s=>s.done)]]:[])].map(([name,done])=>'<span class="'+(done?'won':'')+'">'+(done?'✓ ':'')+name+'</span>').join('');
  const bonus=(sim.awards||[]).reduce((a,b)=>a+b.amount,0),delivery=sim.reward()-sim.coins;
- $('result-breakdown').textContent='ДОРОГА +'+sim.coins+' · ГРУЗ +'+delivery+' · НОВЫЕ ЗНАКИ +'+bonus;
+ const sectors=sim.sectors||[],sectorBonus=sectors.filter(s=>s.passed).reduce((a,s)=>a+s.reward,0);$('result-breakdown').textContent='ДОРОГА +'+(sim.coins-sectorBonus)+(sectors.length?' · СПУСКИ '+sectors.filter(s=>s.passed).length+'/'+sectors.length+' +'+sectorBonus:'')+' · ГРУЗ +'+delivery+' · НОВЫЕ ЗНАКИ +'+bonus;
 }
 const VILLAGE=[
  {name:'ЛЕСНИЧЕСТВО',job:0,x:110,y:85,kind:'wood',hint:'Расчистка дороги'},

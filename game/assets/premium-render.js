@@ -123,8 +123,7 @@ const ExpeditionArt=(()=>{
    const y=CP.groundHeight(x,r),a=sx(x),b=sy(y),h=hash(x*3+id*101);const bridge=CP.bridges[r];if(bridge&&x>bridge.from&&x<bridge.to)continue;
    if(id===5){line(a-4,b-1,a+5,b-1,'#e5e7d7',3);}else if((id===0||id===4)&&h>.42){for(let j=0;j<3;j++)line(a+j*2,b-1,a+j*2-2,b-4-h*6,id===4?'#88945c':'#8c9a64',1);}else if(h>.78){ctx.fillStyle='#57644d';ctx.beginPath();ctx.ellipse(a,b-1,2+hash(x)*3,1.5,0,0,Math.PI*2);ctx.fill();}
   }
-  // Keep authored depots and the physical end marker from the original renderer.
-  if(sim){const end=sim.route.length+6,x=sx(end),y=sy(CP.height(end,r)),k=scale;if(x<W+250&&x>-300){line(x,y,x,y-k*3.25,'#c1c7a7',k*.05);path([[x,y-k*3.25],[x+k*.9,y-k*3.05],[x,y-k*2.62]],'#d99464');const bx=x+k*1.6;ctx.fillStyle='#40583a';ctx.fillRect(bx,y-k*2.0,k*3.2,k*2.0);path([[bx-k*.15,y-k*2],[bx+k*1.6,y-k*2.8],[bx+k*3.35,y-k*2]],'#8c8d63','#c3bf93',1);ctx.fillStyle='#263d28';ctx.fillRect(bx+k*.5,y-k*1.7,k*1.8,k*1.7);for(let j=0;j<4;j++)line(bx+k*.5,y-k*(.4+j*.4),bx+k*2.3,y-k*(.4+j*.4),'#667454',1);ctx.fillStyle='#d2c6a1';ctx.font='bold '+Math.round(k*.2)+'px sans-serif';ctx.textAlign='left';ctx.fillText('ПРИЁМКА',bx+k*.4,y-k*2.14);}}
+
  }
  let wheelSprite=null;
  function makeWheel(){

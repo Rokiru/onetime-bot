@@ -4,10 +4,10 @@ const LESSONS=[
  ['1 / 4 · ТРОГАНИЕ','Подержи правую педаль — машина плавно наберёт ход.','gas'],
  ['2 / 4 · ТОРМОЖЕНИЕ','Отпусти газ и подержи левую педаль. Так бережём груз.','brake'],
  ['3 / 4 · МЯГКАЯ ЕЗДА','Снова разгонись. После 25 метров отпусти обе педали: дай подвеске отработать.','coast'],
- ['4 / 4 · ТВОЙ ПЕРВЫЙ РЕЙС','Ящики уже в кузове. Довези хотя бы один до базы. В полёте газ поднимает нос, тормоз опускает.','done']
+ ['4 / 4 · ТВОЙ ПЕРВЫЙ РЕЙС','Сначала доставь ящик в лесничество: у жёлтого знака держи тормоз. Потом — на базу. За спуски до 36 км/ч без жёстких посадок получишь премию.','done']
 ];
 function startLesson(){lesson={active:true,step:0,held:0};showLesson();}
-function showLesson(){const row=LESSONS[lesson.step];$('lesson-title').textContent=row[0];$('lesson-text').textContent=row[1];$('lesson-next').textContent=lesson.step===3?'ПОНЯЛ, ЕДУ!':'ПРОПУСТИТЬ';$('lesson-meter').style.width='0%';visibility('lesson',true);for(const id of ['gas','brake'])$(id).classList.toggle('coach-focus',row[2]===id);}
+function showLesson(){const row=LESSONS[lesson.step];$('lesson-title').textContent=row[0];$('lesson-text').textContent=lesson.step===3&&sim?.edition!==20?'Довези груз до базы. В полёте газ поднимает нос, тормоз опускает.':row[1];$('lesson-next').textContent=lesson.step===3?'ПОНЯЛ, ЕДУ!':'ПРОПУСТИТЬ';$('lesson-meter').style.width='0%';visibility('lesson',true);for(const id of ['gas','brake'])$(id).classList.toggle('coach-focus',row[2]===id);}
 function endLesson(done=true){lesson.active=false;save.tutorialDone=done;persist();visibility('lesson',false);for(const id of ['gas','brake'])$(id).classList.remove('coach-focus');}
 function updateCoach(dt){
  if(mode!=='drive'||!sim)return;
