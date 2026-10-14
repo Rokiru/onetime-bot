@@ -1,15 +1,39 @@
 plugins { id 'com.android.application' }
 android {
-    namespace 'ru.iskra.lastlight'
+    namespace 'ru.rokiru.cargo'
     compileSdk 35
     defaultConfig {
-        applicationId 'ru.iskra.lastlight'
+        applicationId 'ru.rokiru.cargo'
         minSdk 26
         targetSdk 35
-        versionCode 1
-        versionName '0.1.0'
+        versionCode 19
+        versionName '0.18'
+    }
+    sourceSets {
+        main {
+            manifest.srcFile '../game/AndroidManifest.xml'
+            java.srcDirs = ['../game/src']
+            res.srcDirs = ['../game/res']
+            assets.srcDirs = ['../game/assets']
+        }
+    }
+    def signingProperties = new Properties()
+    def signingFile = rootProject.file('.tools/dustrivo-signing/signing.properties')
+    if (signingFile.exists()) {
+        signingFile.withInputStream { signingProperties.load(it) }
+        signingConfigs {
+            originalDevelopment {
+                storeFile file(signingProperties['storeFile'])
+                storePassword signingProperties['storePassword']
+                keyAlias signingProperties['keyAlias']
+                keyPassword signingProperties['keyPassword']
+            }
+        }
     }
     buildTypes {
+        debug {
+            if (signingFile.exists()) signingConfig signingConfigs.originalDevelopment
+        }
         release { minifyEnabled false }
     }
     compileOptions {

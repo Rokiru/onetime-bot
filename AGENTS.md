@@ -1,11 +1,13 @@
-# Working on Iskra
+# Working on Dustrivo
 
-- This cloud workspace is already isolated. Use the existing checkout; do not create a worktree unless the user asks.
-- The user requires an APK with every completed game update. Run `bash scripts/build-apk.sh`, verify success, and provide the resulting APK file in the final response.
-- Increment `versionCode` and `versionName` in `app/build.gradle` for subsequent delivered versions. Update the artifact filename in `scripts/build-apk.sh` to match.
-- Copy each delivered APK and its SHA-256 into `releases/` after successful validation so the user has a downloadable file through GitHub. These small, versioned playtest binaries are intentionally tracked; never add SDKs, build caches or signing keys.
-- Game simulation lives in `app/src/main/assets/game/engine.js`; keep it independent of DOM and Android for deterministic tests.
-- For changes to gameplay or UI, run the engine tests and browser smoke checks. Serve bundled assets on localhost for internal validation; do not present localhost as a downloadable game or preview.
-- Preserve TLS and official archive checksum verification. Use `scripts/gradle.py` for this cloud machine's proxy and CA settings.
-- The current APK is a debug-signed playtest build. Never describe it as a store-ready release. Never commit signing keys or credentials.
-- Keep Android permissions minimal. The game works offline, with no ads, analytics, external assets or Internet permission.
+- Work in the existing isolated checkout; do not create a worktree unless the user requests one.
+- Every completed game update MUST include a newly built APK and a download link. Run `bash scripts/build-apk.sh`, verify success, then copy the delivered APK and SHA-256 into `releases/`.
+- Increment the Android version in `app/build.gradle` and `game/AndroidManifest.xml`, and update the filename in `scripts/build-apk.sh`, for each subsequent delivered build.
+- This project continues the user-supplied Dustrivo sources. The package is `ru.rokiru.cargo`. Preserve existing vehicle/route IDs, career progress, storage keys, and checkpoint compatibility.
+- Gameplay assets and simulation are in `game/assets/`. Premium rendering is in `premium-render.js`, current interface styling in `expedition.css`, and the drivetrain/UI integration in `expedition-ui.js`.
+- Run relevant physics, UI, delivery, checkpoint and storage tests for changes. The current road count is 48; older tests have historical fixtures. Test fixtures must select their intended career/test profile explicitly.
+- Android builds use the pinned tools in `.tools/` and `scripts/gradle.py` for proxy and CA trust. Never disable TLS or archive checksum verification.
+- The original development signing key supplied in the archive is retained under ignored `.tools/dustrivo-signing/`. Never commit it, passwords or `signing.properties`. A fresh clone without that key uses a different debug key and cannot update the supplied older development APK in place.
+- Development APKs are playtest builds. Real-device validation and permanent release signing remain prerequisites for a RuStore release.
+- Keep the game offline. Do not add ads, analytics, external resources or Internet permission without a user request.
+- Do not restore the discarded Iskra project. Localhost/browser servers are for internal verification and are not user download links.

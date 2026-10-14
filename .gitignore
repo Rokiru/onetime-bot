@@ -6,4 +6,12 @@ local.properties
 artifacts/
 *.jks
 *.keystore
+__pycache__/
+dist/
+*-results.txt
+verification*.json
+signing.properties
 .env
+
+*-results.json
+*-checks.txt

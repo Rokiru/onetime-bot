@@ -5,5 +5,5 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories { maven { url 'https://dl.google.com/dl/android/maven2/' }; mavenCentral() }
 }
-rootProject.name = 'IskraLastLight'
+rootProject.name = 'Dustrivo'
 include ':app'

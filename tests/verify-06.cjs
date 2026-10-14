@@ -1,0 +1,32 @@
+const {chromium}=require('./browser-tools.cjs');
+const input08=require('./driving-input08.cjs');
+const assert=require('assert'),path=require('path');
+(async()=>{
+ const b=await chromium.launch({executablePath:'/workspace/scratch/3a1db8127c97/browser-tools/chrome-headless-shell-linux64/chrome-headless-shell',args:['--no-sandbox']});
+ try{
+  const p=await b.newPage({viewport:{width:850,height:393},hasTouch:true}),errors=[];p.on('pageerror',e=>errors.push(e.message));
+  await p.addInitScript(()=>{if(!localStorage.getItem('cargo-save-v1'))localStorage.setItem('cargo-save-v1',JSON.stringify({wallet:98940,devBonus04:true,vehicle:'mule',owned:['rover','mule'],levels:[2,1,0],runs:5,stats:[{wins:1}],tutorialDone:true}));});
+  await p.addInitScript('window.testDriveInput='+input08.toString());await p.goto('file://'+path.resolve('game/assets/index.html'));await p.click('#boot-skip');await p.waitForTimeout(650);
+  assert.equal(await p.evaluate(()=>CargoGame.save.wallet),98940);await p.click('#profiles-open');await p.waitForTimeout(400);await p.screenshot({path:'review-06-modes.png'});await p.click('[data-profile="career"]');
+  assert.equal(await p.evaluate(()=>CargoGame.profile),'career');assert.equal(await p.evaluate(()=>CargoGame.save.wallet),0);assert.deepEqual(await p.evaluate(()=>CargoGame.save.owned),['rover']);
+  await p.click('#routes-open');assert.equal(await p.locator('.route-card:not(:disabled)').count(),1);await p.click('[data-region="2"]');assert.equal(await p.locator('.route-card:not(:disabled)').count(),0);assert(await p.locator('#route-start').isDisabled());
+  await p.click('[data-home]:visible');await p.click('#garage-open');assert.equal(await p.locator('[data-buy="0"]').isDisabled(),true);assert.equal(await p.locator('[data-paint="pine"]').isDisabled(),true);await p.click('#garage-close');
+  for(const id of [0,3,4,1,5,6,2,7,8]){
+   await p.evaluate(id=>{selected=id;save.selected=id;start();},id);if(await p.locator('#briefing').isVisible())await p.click('#briefing-drive');await p.waitForFunction(()=>CargoGame.mode==='drive');if(await p.locator('#lesson').isVisible())await p.click('#lesson-next');
+   await p.evaluate(()=>{const s=CargoGame.sim,speed=s.route.kind==='careful'?2.5:7.3;for(let i=0;i<18000&&s.state==='drive';i++){const a=Math.atan2(Math.sin(s.car.getAngle()),Math.cos(s.car.getAngle())),v=s.car.getLinearVelocity();{const input=testDriveInput(s,CargoPhysics);s.step(input[0],input[1]);}}});
+   await p.waitForFunction(()=>CargoGame.mode==='result');assert.equal(await p.evaluate(()=>CargoGame.sim.state),'win','career route '+id);
+   const money=await p.evaluate(()=>CargoGame.save.wallet);await p.evaluate(()=>settle());assert.equal(await p.evaluate(()=>CargoGame.save.wallet),money,'no double payment');
+   if(id===3){await p.click('#result-garage');assert.equal(await p.locator('[data-paint="pine"]').isDisabled(),false);await p.click('#paint-open');await p.click('[data-paint="pine"]');await p.waitForTimeout(400);await p.screenshot({path:'review-06-career-garage.png'});await p.click('[data-buy="1"]');assert.equal(await p.evaluate(()=>CargoGame.save.levels[1]),1);await p.click('#garage-close');}
+   else{await p.click('#result-home');assert(await p.evaluate(()=>routeUnlocked(selected)));if(id===0)assert.equal(await p.evaluate(()=>selected),3);}
+  }
+  assert.equal(await p.evaluate(()=>CargoGame.save.stats.filter(x=>x.wins>0).length),9);await p.click('#journal-open');assert((await p.locator('#journal-ending').textContent()).includes('Свет вернулся'));await p.click('#journal-close');
+  await p.click('#garage-open');await p.click('[data-vehicle="scrambler"]');await p.click('#vehicle-confirm');await p.click('#paint-open');await p.click('[data-paint="cherry"]');const careerWallet=await p.evaluate(()=>CargoGame.save.wallet);await p.click('#garage-close');
+  await p.click('#profiles-open');await p.click('[data-profile="test"]');assert.equal(await p.evaluate(()=>CargoGame.save.wallet),98940);assert.equal(await p.evaluate(()=>CargoGame.save.vehicle),'mule');assert.deepEqual(await p.evaluate(()=>CargoGame.save.levels),[2,1,0]);
+  await p.click('#garage-open');await p.click('#paint-open');await p.click('[data-paint="sand"]');await p.waitForTimeout(400);await p.screenshot({path:'review-06-test-garage.png'});await p.click('#garage-close');
+  await p.click('#profiles-open');await p.click('[data-profile="career"]');assert.equal(await p.evaluate(()=>CargoGame.save.wallet),careerWallet);assert.equal(await p.evaluate(()=>CargoGame.save.paints.scrambler),'cherry');await p.reload();await p.click('#boot-skip');await p.waitForTimeout(600);assert.equal(await p.evaluate(()=>CargoGame.profile),'career');assert.equal(await p.evaluate(()=>CargoGame.save.wallet),careerWallet);
+  await p.waitForTimeout(400);await p.screenshot({path:'review-06-home.png'});await p.click('#settings-open');assert.equal(await p.locator('#music-toggle').getAttribute('aria-checked'),'true');await p.click('#music-toggle');await p.click('#settings-close');await p.click('#play');if(await p.locator('#briefing').isVisible())await p.click('#briefing-drive');await p.waitForFunction(()=>CargoGame.mode==='drive');await p.waitForTimeout(300);assert.equal(await p.evaluate(()=>RoadAudio.musicVoices.size),0);
+  await p.click('#pause');await p.click('#pause-settings');await p.click('#music-toggle');await p.click('#settings-close');await p.click('#resume');await p.waitForTimeout(500);assert(await p.evaluate(()=>RoadAudio.musicVoices.size>0));await p.click('#pause');assert.equal(await p.evaluate(()=>RoadAudio.musicVoices.size),0);await p.click('#resume');await p.waitForTimeout(500);await p.click('#sound-run');assert.equal(await p.evaluate(()=>RoadAudio.musicVoices.size),0);
+  await p.evaluate(()=>window.androidPause());await p.click('#exit');await p.setViewportSize({width:640,height:320});await p.click('#profiles-open');await p.waitForTimeout(400);await p.screenshot({path:'review-06-small-modes.png'});const rects=await p.locator('.profile-cards button').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};}));assert(rects.every(r=>r.x>=0&&r.y>=0&&r.x+r.w<=640&&r.y+r.h<=320));
+  assert.equal(errors.length,0,errors.join('\n'));console.log('PASS: legacy save isolated; zero-budget career; 9 physical deliveries/locks/payments; upgrades/vehicles/paints; profile persistence; music toggle/mute/pause; 640x320 mode cards');
+ }finally{await b.close();}
+})();
