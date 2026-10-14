@@ -25,3 +25,5 @@ body[data-page="routes"] .scene-shade,body[data-page="settings"] .scene-shade,bo
 #gas:after{content:'';position:absolute;left:4px;bottom:7px;width:3px;height:calc(var(--pedal-pressure,0) * 70px);max-height:80%;background:#e6ba86;pointer-events:none;border-radius:1px}#transfer-case:before,#winch-button:before{display:none!important}
 
 .dashboard{box-shadow:none!important}.pedals .dashboard{box-shadow:none!important}
+
+.route-grid{display:grid!important;overflow-x:hidden!important;overflow-y:auto!important;scroll-snap-type:none!important;touch-action:pan-y!important}.route-grid .route-card{min-width:0!important}

@@ -13,6 +13,9 @@ const assert=require('node:assert/strict'),{chromium,serveGame,readyGame}=requir
    if(size.width===1000)await page.screenshot({path:'artifacts/dustrivo-garage.png'});
    await page.click('#garage-close');await page.waitForTimeout(300);await page.click('#routes-open');await page.waitForTimeout(400);
    if(size.width===1000)await page.screenshot({path:'artifacts/dustrivo-routes.png'});
+   await page.evaluate(()=>{switchProfile('test');selected=46;save.selected=46;region=0;goPage('routes');});await page.waitForTimeout(300);
+   const visibleRoad=await page.evaluate(()=>{const title=document.querySelector('.route-card.selected h3').getBoundingClientRect(),grid=document.querySelector('#route-grid').getBoundingClientRect();return title.top>=grid.top-1&&title.bottom<=grid.bottom+1&&title.left>=grid.left-1&&title.right<=grid.right+1;});
+   assert.ok(visibleRoad,'selected new road remains visible on a small screen');
    await page.evaluate(()=>{save.tutorialDone=true;save.dialogues=false;save.sound=false;save.music=false;save.motion=false;applySettings();selected=0;beginDrive();completeDispatch();});
    await page.waitForFunction(()=>sim&&sim.groundCount>0);await page.click('#transfer-case');assert.equal(await page.evaluate(()=>sim.lowGear),true);assert.equal(await page.locator('#transfer-case').getAttribute('aria-pressed'),'true');
    const pedal=await page.locator('#gas').boundingBox(),touch=await context.newCDPSession(page),x=pedal.x+pedal.width/2;
