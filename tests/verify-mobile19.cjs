@@ -13,7 +13,7 @@ const fs=require('node:fs');
      const r=await element.boundingBox();if(!r)continue;assert.ok(r.x>=size.left-1&&r.y>=-1&&r.x+r.width<=size.width-size.right+1&&r.y+r.height<=size.height-size.bottom+1,selector+' outside phone safe area: '+JSON.stringify(r));
     }
    };
-   await fits('#play,#routes-open,#garage-open,#more-open,#brand-home,#settings-open');
+   await page.locator('#home-story25').tap();await fits('#play,#routes-open,#garage-open,#brand-home,#settings-open');
    await page.click('#routes-open');
    assert.ok(await page.locator('[data-region]').evaluateAll(buttons=>buttons.every(b=>b.scrollWidth<=b.clientWidth+1)),'region labels fit their own touch targets');
    for(const id of [0,46,47,33]){
