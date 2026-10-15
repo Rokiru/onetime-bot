@@ -23,7 +23,7 @@ const journeyCue=document.createElement('div');journeyCue.id='journey-cue';journ
 const missedStop=document.createElement('div');missedStop.id='missed-stop';missedStop.className='hidden';missedStop.setAttribute('role','status');$('hud').appendChild(missedStop);
 let previousMissed=null;
 function updateJourneyCue(next){
- const missed=next.missed&&['stop','service','survey'].includes(next.type);visibility('missed-stop',missed);
+ const missed=next.missed&&['stop','service','survey','gate'].includes(next.type);visibility('missed-stop',missed);
  if(missed){missedStop.innerHTML='<span class="return-arrow">←</span><div><b>ТОЧКА ПРОПУЩЕНА</b><span>'+next.name+'</span><small>НАЗАД '+next.metres+' М · ДЕРЖИ ТОРМОЗ ДЛЯ ЗАДНЕГО ХОДА</small></div>';if(previousMissed!==next.x){toast('ПРОЕХАЛ ТОЧКУ · СЛЕВА ПОЗАДИ');previousMissed=next.x;}}else previousMissed=null;
  const x=sim.car.getPosition().x,sector=sim.sectors?.find(s=>!s.done&&x>=s.from-18&&x<=s.to);
  visibility('journey-cue',!!sector&&!missed);

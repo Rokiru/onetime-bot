@@ -7,7 +7,7 @@ function prepareStopHud(){
 function updateStopHud(){
  if(!sim||!sim.stops.length){if(sim&&sim.checkpoints.length){surveyHud();return;}visibility('stop-panel',false);return;}
  visibility('stop-panel',true);const stop=sim.nextStop(),x=sim.car.getPosition().x;const meter=$('stop-progress');
- if(stop){const duration=sim.fluidCapacity?2:1.3,distance=Math.round(Math.abs(stop.x-x)*3),near=Math.abs(x-stop.x)<=3.1;
+ if(stop){const duration=sim.fluidCapacity?2:(stop.duration||1.3),distance=Math.round(Math.abs(stop.x-x)*3),near=Math.abs(x-stop.x)<=3.1;
   $('stop-label').textContent=(stop.index+1)+' / '+sim.stops.length+' · '+stop.name;
   $('stop-distance').textContent=stop.elapsed>0?(sim.fluidCapacity?'ПЕРЕКАЧКА ':'РАЗГРУЗКА ')+Math.round(Math.min(100,stop.elapsed/duration*100))+'%':near&&gas?'ОТПУСТИ ГАЗ':near?'ДЕРЖИ ТОРМОЗ':x>stop.x+3.1?'ВЕРНИСЬ · '+distance+' М':distance+' М ДО ОСТАНОВКИ';
   meter.style.width=Math.min(100,stop.elapsed/duration*100)+'%';$('stop-panel').classList.toggle('docking',near);$('stop-panel').classList.toggle('complete',false);
@@ -17,7 +17,7 @@ function updateStopHud(){
 function isStopCrate(box){if(!sim||box.delivered||box.lost)return false;const stop=sim.nextStop();return !!(stop&&stop.elapsed>0&&stop.boxIndex===box.index);}
 function drawStopCrate(){
  if(!sim||sim.fluidCapacity)return;const stop=sim.nextStop();if(!stop||!stop.elapsed||stop.boxIndex<0)return;const box=sim.boxes[stop.boxIndex];if(!box||box.lost||box.delivered)return;
- const p=pose(box.body),t=Math.max(0,Math.min(1,stop.elapsed/1.3)),ease=t*t*(3-2*t),destination={x:stop.x+4.25,y:CP.height(stop.x,sim.roadId)+.39};
+ const p=pose(box.body),t=Math.max(0,Math.min(1,stop.elapsed/(stop.duration||1.3))),ease=t*t*(3-2*t),destination={x:stop.x+4.25,y:CP.height(stop.x,sim.roadId)+.39};
  crate({...box,body:{getPosition:()=>({x:p.x+(destination.x-p.x)*ease,y:p.y+(destination.y-p.y)*ease+Math.sin(t*Math.PI)*1.6}),getAngle:()=>p.a*(1-ease)}});
 }
 function deliveryDepots(){

@@ -12,7 +12,7 @@ function saveBestGhost(s,stats){
 }
 function ghostPoseAt(g,time){if(!g||time>g.duration)return null;const tick=time*60,p=g.points;let lo=0,hi=p.length-1;while(lo+1<hi){const mid=(lo+hi)>>1;if(p[mid][0]<=tick)lo=mid;else hi=mid;}const a=p[lo],b=p[hi],t=Math.max(0,Math.min(1,(tick-a[0])/(b[0]-a[0])));return {x:(a[1]+(b[1]-a[1])*t)/100,y:(a[2]+(b[2]-a[2])*t)/100,a:(a[3]+(b[3]-a[3])*t)/1000};}
 function drawBestGhost(){
- if(mode!=='drive'||!save.ghostEnabled||!sim||sim.edition===21)return;const g=save.stats[sim.id].ghost;if(!ghostMatches(g,sim))return;const p=ghostPoseAt(g,sim.time);if(!p||sx(p.x)<-scale*5||sx(p.x)>W+scale*5)return;
+ if(mode!=='drive'||!save.ghostEnabled||!sim||sim.edition===21||sim.edition===22)return;const g=save.stats[sim.id].ghost;if(!ghostMatches(g,sim))return;const p=ghostPoseAt(g,sim.time);if(!p||sx(p.x)<-scale*5||sx(p.x)>W+scale*5)return;
  const body={getPosition:()=>({x:p.x,y:p.y}),getAngle:()=>p.a},m=sim.vehicle,c=Math.cos(p.a),sn=Math.sin(p.a),wheels=(m.axles||[-m.base,m.base]).map(off=>({getPosition:()=>({x:p.x+off*c+.5*sn,y:p.y+off*sn-.5*c}),getAngle:()=>-sim.time*4}));
  ctx.save();ctx.globalAlpha=.23;truck(body,wheels);if(m.closed)vanFrame(body);ctx.restore();ctx.fillStyle='#d1ded29c';ctx.font='700 '+Math.max(8,Math.round(scale*.18))+'px sans-serif';ctx.textAlign='center';ctx.fillText('ТВОЙ РЕКОРД',sx(p.x),sy(p.y+2.4));ctx.textAlign='start';
 }

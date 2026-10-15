@@ -1,5 +1,5 @@
 const {chromium}=require('./browser-tools.cjs');
-const path=require('path'),assert=require('assert'),input=require('./driving-input21.cjs');
+const path=require('path'),assert=require('assert'),input=require('./driving-input22.cjs');
 (async()=>{const server=await require('./browser-tools.cjs').serveGame('game/assets');const b=await chromium.launch({executablePath:process.env.CARGO_CHROME||require('./browser-tools.cjs').executablePath,args:['--no-sandbox']});
 try{const p=await b.newPage({viewport:{width:850,height:393}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.addInitScript('window.testDriveInput='+input.browserSource);await p.goto(server.url);await require('./browser-tools.cjs').readyGame(p);await p.waitForTimeout(550);
 await p.evaluate(()=>{switchProfile('career');save.sound=false;save.music=false;save.motion=false;save.dialogues=false;save.tutorialDone=true;persist();applySettings();});assert.equal(await p.evaluate(()=>save.wallet),0);

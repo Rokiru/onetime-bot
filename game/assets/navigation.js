@@ -3,7 +3,7 @@ function previewStarGoals(r){return [{id:'delivery',title:'Доставка',det
 function renderStarGoals(id,goals,preview=false){$(id).innerHTML=goals.map(g=>'<div class="star-goal '+(g.done?'done':'')+'" data-star-goal="'+g.id+'"><b>'+icon('star')+g.title+'</b><small>'+g.detail+(preview?'':g.done?' · выполнено':' · не выполнено')+'</small></div>').join('');}
 function navigationData(s,pedals={}){
  const x=s.car.getPosition().x,candidates=[];
- for(const stop of s.stops)if(!stop.done)candidates.push({type:'stop',x:stop.x,name:stop.name,elapsed:stop.elapsed,duration:s.fluidCapacity?2:1.3,object:stop});
+ for(const stop of s.stops)if(!stop.done)candidates.push({type:'stop',x:stop.x,name:stop.name,elapsed:stop.elapsed,duration:s.fluidCapacity?2:(stop.duration||1.3),object:stop});
  for(const br of s.liftBridges||[])if(!br.done)candidates.push({type:'bridge',x:br.control,name:br.name,elapsed:br.elapsed,duration:1,object:br});
  for(const gate of s.gates)if(!gate.open)candidates.push({type:'gate',x:gate.x,name:gate.name,elapsed:gate.elapsed,duration:1,object:gate});
  for(const site of s.services)if(!site.done&&(site.required||s.condition<70||s.fuel<30||s.temperature>100))candidates.push({type:'service',x:site.x,name:site.name,elapsed:site.elapsed,duration:2.2,object:site,optional:!site.required});
