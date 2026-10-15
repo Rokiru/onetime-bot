@@ -23,7 +23,7 @@ const RoadAudio={
  mute(){if(!this.context)return;const t=this.context.currentTime;for(const g of [this.engine,this.road,this.wind]){g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(0,t);}},
  update(sim,active,gas,brake){
   if(!this.context)return;if(!active||!sim){this.mute();this.lastVy=0;return;}
-  const a=this.context,t=a.currentTime,v=sim.car.getLinearVelocity(),speed=Math.abs(v.x),ground=sim.groundCount>0,surface=CargoPhysics.surfaceAt(sim.car.getPosition().x,sim.id).type;
+  const a=this.context,t=a.currentTime,v=sim.car.getLinearVelocity(),speed=Math.abs(v.x),ground=sim.groundCount>0,surface=CargoPhysics.surfaceAt(sim.car.getPosition().x,sim.roadId).type;
   const hz=32+Math.min(75,Math.abs(sim.wheels[0].getAngularVelocity())*2)+(gas?18:0)+(sim.vehicle.id==='scrambler'?15:sim.vehicle.id==='tanker'?-10:sim.vehicle.id==='timber'?-6:sim.vehicle.id==='mule'?-7:0);
   this.tones.forEach((o,i)=>o.frequency.setTargetAtTime(hz*[1,.5,2][i],t,.08));
   this.filter.frequency.setTargetAtTime(gas?500:240,t,.15);this.engine.gain.setTargetAtTime(brake?.028:gas?.065:.032,t,.09);

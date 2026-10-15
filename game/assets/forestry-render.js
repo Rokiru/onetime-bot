@@ -25,7 +25,7 @@ function weatherEffects(){
   const intensity=w.intensity;for(let i=0;i<count;i++){const x=(hash(i+121)*W+clock*(28+w.wind*90))%(W+40)-20,y=(hash(i+38)*H+clock*(145+hash(i+41)*90))%(H+20)-20;line(x,y,x-3-intensity*2,y+9+intensity*6,'#c9e3dc66',1);}
   ctx.fillStyle='#12384d'+(w.type==='storm'?'22':'10');ctx.fillRect(0,0,W,H);
   // Stable glints on wet ground, independent of camera sampling.
-  const from=Math.floor((cam.x-W*.4/scale)/2)*2,to=cam.x+W*.7/scale;for(let x=from;x<to;x+=2){const g=CP.gaps[sim.id];if(g&&x>g.from-.5&&x<g.to+.5)continue;line(sx(x),sy(CP.groundHeight(x,sim.id))-1,sx(x+.55),sy(CP.groundHeight(x+.55,sim.id))-1,'#cbdfca55',Math.max(1,scale*.023));}
+  const from=Math.floor((cam.x-W*.4/scale)/2)*2,to=cam.x+W*.7/scale;for(let x=from;x<to;x+=2){const g=CP.gaps[sim.roadId];if(g&&x>g.from-.5&&x<g.to+.5)continue;line(sx(x),sy(CP.groundHeight(x,sim.roadId))-1,sx(x+.55),sy(CP.groundHeight(x+.55,sim.roadId))-1,'#cbdfca55',Math.max(1,scale*.023));}
  }else if(w.type==='snow'||w.type==='blizzard'){
   const density=w.type==='blizzard'?count*1.6:count*.7;for(let i=0;i<density;i++){const x=(hash(i+12)*W+clock*(w.type==='blizzard'?55:10)*(1+hash(i+93)))%W,y=(hash(i+75)*H+clock*(18+hash(i+22)*15))%H;circle(x,y,.8+hash(i+34)*1.2,'#edf6ec9c');}
  }
@@ -33,7 +33,7 @@ function weatherEffects(){
  if(w.type==='wind'&&save.quality!=='low')for(let i=0;i<8;i++){const x=(hash(i+412)*W+clock*34)%W,y=H*(.34+hash(i+86)*.40);line(x,y,x+9,y-2,'#d6ca9350',1);}
 }
 function winchCable(){if(!sim||sim.winchTime<=0||!sim.winchAnchor)return;const a=bodyPoint(sim.car,sim.vehicle.width*.45,.28),b=[sx(sim.winchAnchor.x),sy(sim.winchAnchor.y)];line(...a,...b,'#213b32',Math.max(2,scale*.042));line(...a,...b,'#d7c491',Math.max(1,scale*.018));circle(...b,scale*.10,'#c8b77b');circle(...b,scale*.055,'#324c37');}
-function surveyPosts(){if(!sim)return;for(const point of sim.checkpoints){const x=sx(point.x),y=sy(CP.height(point.x,sim.id)),k=scale;if(x<-k*3||x>W+k*3)continue;line(x,y,x,y-k*2.15,'#798365',k*.05);path([[x-k*.35,y-k*2.1],[x+k*.35,y-k*2.1],[x+k*.35,y-k*2.70],[x-k*.35,y-k*2.70]],point.done?'#74a580':'#d9b764','#364d38',k*.03);ctx.fillStyle='#244031';ctx.textAlign='center';ctx.font='900 '+Math.max(8,k*.23)+'px monospace';ctx.fillText(point.done?'✓':String(sim.checkpoints.indexOf(point)+1),x,y-k*2.27);ctx.textAlign='start';}}
+function surveyPosts(){if(!sim)return;for(const point of sim.checkpoints){const x=sx(point.x),y=sy(CP.height(point.x,sim.roadId)),k=scale;if(x<-k*3||x>W+k*3)continue;line(x,y,x,y-k*2.15,'#798365',k*.05);path([[x-k*.35,y-k*2.1],[x+k*.35,y-k*2.1],[x+k*.35,y-k*2.70],[x-k*.35,y-k*2.70]],point.done?'#74a580':'#d9b764','#364d38',k*.03);ctx.fillStyle='#244031';ctx.textAlign='center';ctx.font='900 '+Math.max(8,k*.23)+'px monospace';ctx.fillText(point.done?'✓':String(sim.checkpoints.indexOf(point)+1),x,y-k*2.27);ctx.textAlign='start';}}
 function skyLight(id){
  if(!save.effects||save.quality==='low'||id===2)return;const weather=sim?CP.weatherAt(sim.id,sim.time):CP.weatherAt(selected);if(['storm','blizzard'].includes(weather.type))return;
  const x=W*.78-cam.x*.15,y=H*.2;for(let i=0;i<4;i++){const shift=(i-1.5)*H*.15;path([[x-4+i,y],[x+6+i,y],[x+shift+H*.05,H*.80],[x+shift-H*.10,H*.80]],'#fff1cb08');}

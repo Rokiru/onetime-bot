@@ -17,16 +17,16 @@ function updateStopHud(){
 function isStopCrate(box){if(!sim||box.delivered||box.lost)return false;const stop=sim.nextStop();return !!(stop&&stop.elapsed>0&&stop.boxIndex===box.index);}
 function drawStopCrate(){
  if(!sim||sim.fluidCapacity)return;const stop=sim.nextStop();if(!stop||!stop.elapsed||stop.boxIndex<0)return;const box=sim.boxes[stop.boxIndex];if(!box||box.lost||box.delivered)return;
- const p=pose(box.body),t=Math.max(0,Math.min(1,stop.elapsed/1.3)),ease=t*t*(3-2*t),destination={x:stop.x+4.25,y:CP.height(stop.x,sim.id)+.39};
+ const p=pose(box.body),t=Math.max(0,Math.min(1,stop.elapsed/1.3)),ease=t*t*(3-2*t),destination={x:stop.x+4.25,y:CP.height(stop.x,sim.roadId)+.39};
  crate({...box,body:{getPosition:()=>({x:p.x+(destination.x-p.x)*ease,y:p.y+(destination.y-p.y)*ease+Math.sin(t*Math.PI)*1.6}),getAngle:()=>p.a*(1-ease)}});
 }
 function deliveryDepots(){
  if(!sim||!sim.stops.length||sim.fluidCapacity)return;const k=scale;
- for(const stop of sim.stops){const px=sx(stop.x),ground=CP.height(stop.x,sim.id),py=sy(ground);if(px<-k*8||px>W+k*5)continue;
+ for(const stop of sim.stops){const px=sx(stop.x),ground=CP.height(stop.x,sim.roadId),py=sy(ground);if(px<-k*8||px>W+k*5)continue;
   const paint=stop.done?'#73ad81':'#efc067';
   // Bay markings are painted on the same stable world geometry as the road.
-  for(let x=stop.x-3.1;x<stop.x+3.1;x+=.5)line(sx(x),sy(CP.groundHeight(x,sim.id))-k*.03,sx(x+.25),sy(CP.groundHeight(x+.25,sim.id))-k*.03,paint,Math.max(2,k*.08));
-  for(const x of [stop.x-3.5,stop.x+3.5]){const y=CP.height(x,sim.id);path([[sx(x-.12),sy(y)],[sx(x),sy(y+.4)],[sx(x+.12),sy(y)]],paint,'#334e42',k*.015);}
+  for(let x=stop.x-3.1;x<stop.x+3.1;x+=.5)line(sx(x),sy(CP.groundHeight(x,sim.roadId))-k*.03,sx(x+.25),sy(CP.groundHeight(x+.25,sim.roadId))-k*.03,paint,Math.max(2,k*.08));
+  for(const x of [stop.x-3.5,stop.x+3.5]){const y=CP.height(x,sim.roadId);path([[sx(x-.12),sy(y)],[sx(x),sy(y+.4)],[sx(x+.12),sy(y)]],paint,'#334e42',k*.015);}
   const bx=px+k*4.4,by=py,h=k*1.5,w=k*1.55,snow=sim.route.region===5;
   path([[bx-w*.55,by],[bx-w*.55,by-h],[bx+w*.55,by-h],[bx+w*.55,by]],sim.route.region===3?'#9c7961':'#53715c','#263f3d',k*.028);
   path([[bx-w*.68,by-h],[bx,by-h-k*.60],[bx+w*.68,by-h]],snow?'#e6eddf':'#a17b5a','#354d43',k*.025);

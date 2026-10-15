@@ -1,9 +1,9 @@
 'use strict';
 function roadsideDepots(){
  if(!sim)return;const k=scale;
- for(const site of sim.services){const x=sx(site.x),y=sy(CP.height(site.x,sim.id));if(x<-k*10||x>W+k*8)continue;
- const paint=site.done?'#7aab83':'#91c09c';for(let q=site.x-3;q<site.x+3;q+=.5)line(sx(q),sy(CP.groundHeight(q,sim.id))-.03*k,sx(q+.28),sy(CP.groundHeight(q+.28,sim.id))-.03*k,paint,Math.max(2,k*.075));
- const bx=x+k*6.2,by=sy(CP.height(site.x+6.2,sim.id)),w=k*3.3,h=k*2.15;
+ for(const site of sim.services){const x=sx(site.x),y=sy(CP.height(site.x,sim.roadId));if(x<-k*10||x>W+k*8)continue;
+ const paint=site.done?'#7aab83':'#91c09c';for(let q=site.x-3;q<site.x+3;q+=.5)line(sx(q),sy(CP.groundHeight(q,sim.roadId))-.03*k,sx(q+.28),sy(CP.groundHeight(q+.28,sim.roadId))-.03*k,paint,Math.max(2,k*.075));
+ const bx=x+k*6.2,by=sy(CP.height(site.x+6.2,sim.roadId)),w=k*3.3,h=k*2.15;
  path([[bx-w/2,by],[bx-w/2,by-h],[bx+w/2,by-h],[bx+w/2,by]],'#687965','#2c4739',k*.028);
  path([[bx-w*.58,by-h],[bx-w*.4,by-h-k*.6],[bx+w*.43,by-h-k*.6],[bx+w*.58,by-h]],sim.route.region===5?'#c8d5c6':'#ac9a71','#34493b',k*.035);
  ctx.fillStyle='#223d37';ctx.fillRect(bx-w*.20,by-h*.75,w*.52,h*.75);for(let q=0;q<5;q++)line(bx-w*.17,by-h*.70+q*k*.24,bx+w*.29,by-h*.70+q*k*.24,'#698278',k*.022);
@@ -16,7 +16,7 @@ function roadsideDepots(){
  }
 }
 function physicalRocks(){
- if(!sim)return;const k=scale;for(const rock of sim.rocks){const body=rock.body,p=pose(body);if(sx(p.x)<-k||sx(p.x)>W+k)continue;const r=rock.radius,pts=Array.from({length:7},(_,i)=>{const a=i*Math.PI*2/7,t=r*(i%2?.9:1);return [Math.cos(a)*t,Math.sin(a)*t];});circle(sx(p.x),sy(CP.groundHeight(p.x,sim.id))+.015*k,r*k*1.03,'#142b2a35');circle(sx(p.x),sy(p.y),r*k,'#7d857a');ctx.strokeStyle='#384f48';ctx.lineWidth=Math.max(1,k*.025);ctx.beginPath();ctx.arc(sx(p.x),sy(p.y),r*k,0,Math.PI*2);ctx.stroke();bpoly(body,pts,'#858d7d');bpoly(body,[[-r*.7,r*.25],[r*.08,r*.8],[r*.65,r*.23],[r*.13,-r*.2]],'#a5ab94');bodyLine(body,-r*.55,-r*.12,r*.45,-r*.48,'#556858',.018);}
+ if(!sim)return;const k=scale;for(const rock of sim.rocks){const body=rock.body,p=pose(body);if(sx(p.x)<-k||sx(p.x)>W+k)continue;const r=rock.radius,pts=Array.from({length:7},(_,i)=>{const a=i*Math.PI*2/7,t=r*(i%2?.9:1);return [Math.cos(a)*t,Math.sin(a)*t];});circle(sx(p.x),sy(CP.groundHeight(p.x,sim.roadId))+.015*k,r*k*1.03,'#142b2a35');circle(sx(p.x),sy(p.y),r*k,'#7d857a');ctx.strokeStyle='#384f48';ctx.lineWidth=Math.max(1,k*.025);ctx.beginPath();ctx.arc(sx(p.x),sy(p.y),r*k,0,Math.PI*2);ctx.stroke();bpoly(body,pts,'#858d7d');bpoly(body,[[-r*.7,r*.25],[r*.08,r*.8],[r*.65,r*.23],[r*.13,-r*.2]],'#a5ab94');bodyLine(body,-r*.55,-r*.12,r*.45,-r*.48,'#556858',.018);}
 }
 function vehicleWearEffects(){
  if(!sim)return;const b=sim.car,k=scale,m=sim.vehicle;
@@ -25,6 +25,6 @@ function vehicleWearEffects(){
  if(!save.effects)return;
  if(sim.temperature>=96){const at=bodyPoint(b,m.width*.70,.83);for(let n=0;n<6;n++){const phase=(clock*.6+n/6)%1,side=Math.sin(n*4+clock)*k*.08;circle(at[0]+side,at[1]-phase*k*.95,k*(.06+phase*.12),'#d4d9c1'+Math.round((1-phase)*52).toString(16).padStart(2,'0'));}}
  // Bounded tyre impressions record ground contact at world coordinates.
- if(mode==='drive'&&sim.groundCount>0){if(!sim.tyreMarks)sim.tyreMarks=[];const p=sim.car.getPosition(),last=sim.tyreMarks[sim.tyreMarks.length-1];if(!last||Math.abs(p.x-last.x)>.65){const surface=CP.surfaceAt(p.x,sim.id).type;if(['mud','snow','sand'].includes(surface)){sim.tyreMarks.push({x:p.x,y:CP.groundHeight(p.x,sim.id),surface});if(sim.tyreMarks.length>96)sim.tyreMarks.shift();}}}
+ if(mode==='drive'&&sim.groundCount>0){if(!sim.tyreMarks)sim.tyreMarks=[];const p=sim.car.getPosition(),last=sim.tyreMarks[sim.tyreMarks.length-1];if(!last||Math.abs(p.x-last.x)>.65){const surface=CP.surfaceAt(p.x,sim.roadId).type;if(['mud','snow','sand'].includes(surface)){sim.tyreMarks.push({x:p.x,y:CP.groundHeight(p.x,sim.roadId),surface});if(sim.tyreMarks.length>96)sim.tyreMarks.shift();}}}
  for(const mark of sim.tyreMarks||[]){const x=sx(mark.x);if(x<-k||x>W+k)continue;line(x,sy(mark.y)-1,x+k*.22,sy(mark.y)-1,mark.surface==='snow'?'#668b9270':'#273b2d60',Math.max(1,k*.045));}
 }

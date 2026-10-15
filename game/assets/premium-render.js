@@ -79,7 +79,7 @@ const ExpeditionArt=(()=>{
   if(save.effects){ctx.globalAlpha=.12;for(let j=0;j<4;j++)circle(x+k*.47+j*k*.04,y-k*(1.25+j*.23)-Math.sin(clock+j)*k*.04,k*(.08+j*.025),'#e9e4c9');ctx.globalAlpha=1;}
  }
  function background(){
-  const driving=sim&&['drive','pause','result','loading','unloading'].includes(mode),id=driving?sim.route.region:CP.routes[selected].region,p=palettes[id];
+  const driving=sim&&['drive','pause','fork','result','loading','unloading'].includes(mode),id=driving?sim.route.region:CP.routes[selected].region,p=palettes[id];
   const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,p.sky[0]);g.addColorStop(.55,p.sky[1]);g.addColorStop(1,p.sky[2]);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
   const sunx=W*.73-cam.x*.08,suny=H*.23;
   const glow=ctx.createRadialGradient(sunx,suny,5,sunx,suny,H*.33);glow.addColorStop(0,id===2?'#cdd8b522':'#f4d4a440');glow.addColorStop(1,'#e5d1a000');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
@@ -106,7 +106,7 @@ const ExpeditionArt=(()=>{
   const mist=ctx.createLinearGradient(0,H*.43,0,H*.86);mist.addColorStop(0,'#d4dcc300');mist.addColorStop(.5,id===2?'#a9bba009':'#d1d9b918');mist.addColorStop(1,'#cad2b100');ctx.fillStyle=mist;ctx.fillRect(0,0,W,H);
  }
  function terrain(){
-  const r=sim?sim.id:selected,id=CP.routes[r].region,p=palettes[id],from=cam.x-W*.4/scale-4,to=cam.x+W*.73/scale+4;
+  const r=sim?sim.roadId:selected,id=CP.routes[r].region,p=palettes[id],from=cam.x-W*.4/scale-4,to=cam.x+W*.73/scale+4;
   const mesh=CP.groundVertices(r),visible=mesh.slice(Math.max(0,Math.floor((from+30)*2)),Math.min(mesh.length,Math.ceil((to+30)*2)+1));if(visible.length<2)return;
   const road=visible.map(v=>[sx(v.x),sy(v.y)]),shape=[[road[0][0],H+15],...road,[road[road.length-1][0],H+15]];
   const g=ctx.createLinearGradient(0,H*.52,0,H);g.addColorStop(0,p.earth[0]);g.addColorStop(.27,p.earth[1]);g.addColorStop(1,p.earth[2]);path(shape,g);
@@ -163,7 +163,7 @@ const ExpeditionArt=(()=>{
    bpoly(body,[[.18,.61],[.30,1.05],[.95,1.10],[.56,.87]],'#cfdfbc14');
   }
   if(!preview&&save.effects){
-   const dirt=CP.surfaceAt(body.getPosition().x,sim.id).type;const dirty=sim.distance/200;
+   const dirt=CP.surfaceAt(body.getPosition().x,sim.roadId).type;const dirty=sim.distance/200;
    ctx.globalAlpha=Math.min(.45,dirty*.25);
    for(let i=0;i<14;i++)circle(...bodyPoint(body,-m.width+hash(i+7)*m.width*2,.04+hash(i+71)*.2),Math.max(.6,scale*(.025+hash(i+28)*.018)),dirt==='snow'?'#d8dfbd':'#857b50');ctx.globalAlpha=1;
   }

@@ -1,0 +1,391 @@
+{
+  "environment": "Headless Chromium, 873×393 CSS pixels, DPR 2.75, auto quality. Frozen physical scene: median of 5 batches × 20 draws; moving camera: median and p95 of 120 draws at 4.8 m/s, one pixel readback per draw forces raster completion. This is a comparative raster workload, not phone FPS.",
+  "versions": {
+    "0.20": {
+      "backing": [
+        1440,
+        648
+      ],
+      "miniMapPaintMs": 0.12416666665424904,
+      "rows": [
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 6,
+          "region": 0,
+          "medianMs": 20.025,
+          "movingMedianMs": 22.6,
+          "movingP95Ms": 30.9,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 138,
+            "drawImage": 91,
+            "stroke": 238
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 6,
+            "soilTiles": 6
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 65,
+          "region": 0,
+          "medianMs": 24.945,
+          "movingMedianMs": 18,
+          "movingP95Ms": 25.6,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 177,
+            "drawImage": 91,
+            "stroke": 198
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 12,
+            "soilTiles": 12
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 110,
+          "region": 0,
+          "medianMs": 18,
+          "movingMedianMs": 19.4,
+          "movingP95Ms": 27.2,
+          "operations": {
+            "createLinearGradient": 5,
+            "createRadialGradient": 2,
+            "fill": 123,
+            "drawImage": 92,
+            "stroke": 228
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 18,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 160,
+          "region": 0,
+          "medianMs": 19.76,
+          "movingMedianMs": 17.1,
+          "movingP95Ms": 25.8,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 118,
+            "drawImage": 95,
+            "stroke": 204
+          },
+          "buildings": {
+            "sprites": 3
+          },
+          "cache": {
+            "soilBuilds": 24,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 0,
+          "path": "detour",
+          "cameraX": 100,
+          "region": 0,
+          "medianMs": 19.49,
+          "movingMedianMs": 17.9,
+          "movingP95Ms": 23.2,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 130,
+            "drawImage": 91,
+            "stroke": 241
+          },
+          "buildings": {
+            "sprites": 3
+          },
+          "cache": {
+            "soilBuilds": 24,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 0,
+          "path": "detour",
+          "cameraX": 235,
+          "region": 0,
+          "medianMs": 17.95,
+          "movingMedianMs": 16.4,
+          "movingP95Ms": 19.9,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 108,
+            "drawImage": 95,
+            "stroke": 188
+          },
+          "buildings": {
+            "sprites": 4
+          },
+          "cache": {
+            "soilBuilds": 31,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 7,
+          "path": null,
+          "cameraX": 150,
+          "region": 2,
+          "medianMs": 22.635,
+          "movingMedianMs": 18.7,
+          "movingP95Ms": 22.8,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 187,
+            "drawImage": 93,
+            "stroke": 161
+          },
+          "buildings": {
+            "sprites": 5
+          },
+          "cache": {
+            "soilBuilds": 37,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 47,
+          "path": null,
+          "cameraX": 145,
+          "region": 1,
+          "medianMs": 18.715,
+          "movingMedianMs": 17.3,
+          "movingP95Ms": 24.9,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 118,
+            "stroke": 115,
+            "drawImage": 3
+          },
+          "buildings": {
+            "sprites": 5
+          },
+          "cache": {
+            "soilBuilds": 43,
+            "soilTiles": 16
+          }
+        }
+      ]
+    },
+    "current": {
+      "backing": [
+        1440,
+        648
+      ],
+      "miniMapPaintMs": 0.10666666670391957,
+      "rows": [
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 6,
+          "region": 0,
+          "medianMs": 17.93,
+          "movingMedianMs": 16.9,
+          "movingP95Ms": 20.7,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 129,
+            "drawImage": 91,
+            "stroke": 226
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 6,
+            "soilTiles": 6
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 65,
+          "region": 0,
+          "medianMs": 17.29,
+          "movingMedianMs": 16,
+          "movingP95Ms": 20.9,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 167,
+            "drawImage": 90,
+            "stroke": 186
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 12,
+            "soilTiles": 12
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 110,
+          "region": 0,
+          "medianMs": 21.555,
+          "movingMedianMs": 20.2,
+          "movingP95Ms": 31.9,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 119,
+            "drawImage": 92,
+            "stroke": 187
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 18,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 160,
+          "region": 0,
+          "medianMs": 17.07,
+          "movingMedianMs": 15.7,
+          "movingP95Ms": 24.7,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 112,
+            "drawImage": 94,
+            "stroke": 198
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 24,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 0,
+          "path": "detour",
+          "cameraX": 100,
+          "region": 0,
+          "medianMs": 15.465,
+          "movingMedianMs": 15,
+          "movingP95Ms": 20.8,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 126,
+            "drawImage": 91,
+            "stroke": 186
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 31,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 0,
+          "path": "detour",
+          "cameraX": 235,
+          "region": 0,
+          "medianMs": 19.785,
+          "movingMedianMs": 18.9,
+          "movingP95Ms": 25,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 106,
+            "drawImage": 95,
+            "stroke": 187
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 38,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 7,
+          "path": null,
+          "cameraX": 150,
+          "region": 2,
+          "medianMs": 21.415,
+          "movingMedianMs": 19.8,
+          "movingP95Ms": 24.8,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 187,
+            "drawImage": 93,
+            "stroke": 161
+          },
+          "buildings": {
+            "sprites": 3
+          },
+          "cache": {
+            "soilBuilds": 44,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 47,
+          "path": null,
+          "cameraX": 145,
+          "region": 1,
+          "medianMs": 15.99,
+          "movingMedianMs": 16.3,
+          "movingP95Ms": 22.5,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 118,
+            "stroke": 115,
+            "drawImage": 3
+          },
+          "buildings": {
+            "sprites": 4
+          },
+          "cache": {
+            "soilBuilds": 50,
+            "soilTiles": 16
+          }
+        }
+      ]
+    }
+  }
+}

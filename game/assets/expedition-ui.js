@@ -20,7 +20,7 @@
   instability=Math.min(1,Math.max(0,instability));el('load-stability-fill').style.width=(instability*100)+'%';el('load-stability-fill').style.background=instability>.68||broken?'#e09567':'#acbd8d';
   el('load-stability-label').textContent=broken?'БЕЗ РЕМНЯ':instability>.68?'КАЧАЕТ':'СТАБИЛЕН';
   const speed=Math.abs(sim.car.getLinearVelocity().x)*10.8;el('gauge-needle').style.transform='rotate('+Math.min(120,speed*1.8)+'deg)';
-  el('road-readout').textContent=sim.inWater?'БРОД':sim.groundCount===0?'В ВОЗДУХЕ':sim.slipTime>.3?'ПРОБУКСОВКА':CP.surfaceAt(sim.car.getPosition().x,sim.id).type==='mud'?'ГРЯЗЬ':low?'ПОНИЖЕННАЯ':'4×4';
+  el('road-readout').textContent=sim.inWater?'БРОД':sim.groundCount===0?'В ВОЗДУХЕ':sim.slipTime>.3?'ПРОБУКСОВКА':CP.surfaceAt(sim.car.getPosition().x,sim.roadId).type==='mud'?'ГРЯЗЬ':low?'ПОНИЖЕННАЯ':'4×4';
  };
  wallet=function(){originalWallet();if(!pendingRun())el('home-play-label').textContent='НАЧАТЬ РЕЙС';};
  // Miniature landscape maps show the region as well as the measured road profile.

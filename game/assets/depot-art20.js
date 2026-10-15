@@ -6,7 +6,7 @@ const DepotArt20=(()=>{
  function sprite(kind,region){
   const key=kind+':'+(region===5?'snow':region===2?'night':'day');if(sprites.has(key))return sprites.get(key);
   const c=document.createElement('canvas');c.width=720;c.height=360;const a=c.getContext('2d');
-  const snow=region===5,night=region===2,medical=kind==='clinic',shop=kind==='service',hall=kind==='warehouse'||kind==='receiver',tank=kind==='tank';
+  const snow=region===5,night=region===2||kind==='workshop-on',medical=kind==='clinic',shop=kind==='service'||kind.startsWith('workshop-'),hall=kind==='warehouse'||kind==='receiver',tank=kind==='tank';
   const poly=(p,fill,stroke='#25382e',w=2)=>{a.beginPath();p.forEach((q,n)=>n?a.lineTo(...q):a.moveTo(...q));a.closePath();if(fill){a.fillStyle=fill;a.fill();}if(stroke){a.strokeStyle=stroke;a.lineWidth=w;a.stroke();}};
   const rect=(x,y,w,h,fill)=>{a.fillStyle=fill;a.fillRect(x,y,w,h);};
   const line=(x,y,xx,yy,col,w=1)=>{a.strokeStyle=col;a.lineWidth=w;a.beginPath();a.moveTo(x,y);a.lineTo(xx,yy);a.stroke();};
@@ -35,7 +35,7 @@ const DepotArt20=(()=>{
    if(!snow){poly([[left+90,top-53],[left+165,top-53],[left+135,top-11],[left+60,top-11]],'#5d6d61',null);for(let n=0;n<7;n++)line(left+72+n*10,top-15,left+102+n*10,top-49,'#354c40',1);}
    // Main bay: a real interior silhouette and warm glazing, not a flat door.
    const doorX=shop?260:hall?289:325,doorW=hall?164:shop?143:54;
-   rect(doorX-5,top+30,doorW+10,base-top-24,'#a7b39b');rect(doorX,top+36,doorW,base-top-36,'#172c24');
+   rect(doorX-5,top+30,doorW+10,base-top-24,'#a7b39b');rect(doorX,top+36,doorW,base-top-36,kind==='workshop-on'?'#92835b':'#172c24');
    if(shop||hall){rect(doorX+3,top+39,doorW-6,25,'#718576');for(let y=top+44;y<top+63;y+=6)line(doorX+3,y,doorX+doorW-3,y,'#384f41',2);rect(doorX+10,base-36,doorW-20,29,'#2b4135');
     rect(doorX+20,base-57,43,29,'#8e8460');rect(doorX+25,base-72,43,16,'#a3976c');for(const x of [doorX+32,doorX+55])line(x,base-69,x,base-30,'#d3c597',3);
     if(shop){rect(doorX+74,base-35,43,14,'#d2a176');disk(doorX+83,base-20,10,'#111f1a');disk(doorX+110,base-20,10,'#111f1a');line(doorX+83,base-39,doorX+102,base-51,'#536c5b',4);}
@@ -52,15 +52,16 @@ const DepotArt20=(()=>{
   }
   // Human scale at the apron: worker with helmet, two legs and an arm.
   const hx=tank?550:hall?478:medical?435:121;line(hx-5,318,hx-4,300,'#293d31',5);line(hx+6,318,hx+3,300,'#293d31',5);poly([[hx-9,277],[hx+7,277],[hx+10,300],[hx-9,300]],'#c09158',null);disk(hx,268,8,'#ba9d76');rect(hx-10,260,20,6,'#dbc18e');line(hx+8,282,hx+18,288,'#b9a584',4);
+  if(kind==='workshop-on'){rect(430,162,45,8,'#f0d28c');poly([[430,170],[475,170],[513,296],[397,296]],'#f4d59419',null);line(445,193,445,271,'#c5b37c',3);disk(440,200,4,'#e3c47d');}
   sprites.set(key,c);if(sprites.size>8)sprites.delete(sprites.keys().next().value);return c;
  }
- function building(kind,x,y,region,width=9){const base=Math.max(y,CP.height(x-width*.27,sim.id),CP.height(x+width*.27,sim.id));if(base-y>.15){for(const off of [-.27,.25]){const q=x+width*off;line(sx(q),sy(base)-1,sx(q),sy(CP.height(q,sim.id))+2,'#425b44',scale*.10);}y=base;}const image=sprite(kind,region),w=scale*width;ctx.drawImage(image,sx(x)-w*.5,sy(y)-w*340/720,w,w*.5);}
- function bay(x,done,index){const k=scale,y=CP.height(x,sim.id),col=done?'#a8c195':'#e3b479';ctx.beginPath();for(let q=x-3.1;q<x+3.1;q+=.5){ctx.moveTo(sx(q),sy(CP.groundHeight(q,sim.id))-2);ctx.lineTo(sx(q+.25),sy(CP.groundHeight(q+.25,sim.id))-2);}ctx.strokeStyle=col;ctx.lineWidth=Math.max(2,k*.08);ctx.stroke();const px=sx(x),py=sy(y);line(px,py,px,py-k*2.1,'#9ca88b',k*.04);circle(px,py-k*2.1,k*.28,col);ctx.fillStyle='#233b2c';ctx.font='bold '+Math.round(k*.28)+'px sans-serif';ctx.textAlign='center';ctx.fillText(done?'✓':String(index),px,py-k*2.0);ctx.textAlign='left';}
+ function building(kind,x,y,region,width=9){const base=Math.max(y,CP.height(x-width*.27,sim.roadId),CP.height(x+width*.27,sim.roadId));if(base-y>.15){for(const off of [-.27,.25]){const q=x+width*off;line(sx(q),sy(base)-1,sx(q),sy(CP.height(q,sim.roadId))+2,'#425b44',scale*.10);}y=base;}const image=sprite(kind,region),w=scale*width;ctx.drawImage(image,sx(x)-w*.5,sy(y)-w*340/720,w,w*.5);}
+ function bay(x,done,index){const k=scale,y=CP.height(x,sim.roadId),col=done?'#a8c195':'#e3b479';ctx.beginPath();for(let q=x-3.1;q<x+3.1;q+=.5){ctx.moveTo(sx(q),sy(CP.groundHeight(q,sim.roadId))-2);ctx.lineTo(sx(q+.25),sy(CP.groundHeight(q+.25,sim.roadId))-2);}ctx.strokeStyle=col;ctx.lineWidth=Math.max(2,k*.08);ctx.stroke();const px=sx(x),py=sy(y);line(px,py,px,py-k*2.1,'#9ca88b',k*.04);circle(px,py-k*2.1,k*.28,col);ctx.fillStyle='#233b2c';ctx.font='bold '+Math.round(k*.28)+'px sans-serif';ctx.textAlign='center';ctx.fillText(done?'✓':String(index),px,py-k*2.0);ctx.textAlign='left';}
  function visible(x){return sx(x)>-scale*8&&sx(x)<W+scale*8;}
- function landmark(mark){if(!visible(mark.x))return;building(/МЕД|ПРИЮТ|ТЁПЛ/.test(mark.text)?'clinic':'post',mark.x,CP.height(mark.x,sim.id),sim.route.region,7);}
+ function landmark(mark){if(!visible(mark.x))return;building(/МЕД|ПРИЮТ|ТЁПЛ/.test(mark.text)?'clinic':'post',mark.x,CP.height(mark.x,sim.roadId),sim.route.region,7);}
  return {building,bay,visible,landmark,stats:()=>({sprites:sprites.size})};
 })();
-dispatchDepot=function(){if(!sim)return;for(const [x,kind] of [[-1,'warehouse'],[sim.route.length+12,'receiver']])if(DepotArt20.visible(x))DepotArt20.building(kind,x,CP.height(x,sim.id),sim.route.region,12);};
-deliveryDepots=function(){if(!sim||sim.fluidCapacity)return;for(const stop of sim.stops){if(!DepotArt20.visible(stop.x))continue;DepotArt20.bay(stop.x,stop.done,stop.index+1);const x=stop.x+5;DepotArt20.building(/МЕД|ПРИЮТ|ТЁПЛ/.test(stop.name)?'clinic':'post',x,CP.height(x,sim.id),sim.route.region,7);if(stop.done){const box=sim.boxes.find(b=>b.delivered&&b.stopIndex===stop.index);if(box)crate({...box,body:{getPosition:()=>({x:stop.x+4.25,y:CP.height(stop.x,sim.id)+.39}),getAngle:()=>0}});}}};
-roadsideDepots=function(){if(!sim)return;for(const site of sim.services){if(!DepotArt20.visible(site.x))continue;DepotArt20.bay(site.x,site.done,'+');DepotArt20.building('service',site.x+6,CP.height(site.x+6,sim.id),sim.route.region,9);}};
-tankerDepots=function(){if(!sim||!sim.fluidCapacity)return;for(const stop of sim.stops){if(!DepotArt20.visible(stop.x))continue;DepotArt20.bay(stop.x,stop.done,stop.index+1);const x=stop.x+5,y=CP.height(x,sim.id);DepotArt20.building('tank',x,y,sim.route.region,7);if(stop.elapsed>0&&!stop.done){const nozzle=bodyPoint(sim.car,-1.93,.55);ctx.beginPath();ctx.moveTo(...nozzle);ctx.bezierCurveTo(nozzle[0]+scale*.3,nozzle[1]+scale*.5,sx(x)-scale,sy(y),sx(x),sy(y)-scale*.4);ctx.strokeStyle='#243c31';ctx.lineWidth=scale*.065;ctx.stroke();}}};
+dispatchDepot=function(){if(!sim)return;for(const [x,kind] of [[-1,'warehouse'],[sim.route.length+12,'receiver']])if(DepotArt20.visible(x))DepotArt20.building(kind,x,CP.height(x,sim.roadId),sim.route.region,12);};
+deliveryDepots=function(){if(!sim||sim.fluidCapacity)return;for(const stop of sim.stops){if(!DepotArt20.visible(stop.x))continue;DepotArt20.bay(stop.x,stop.done,stop.index+1);const x=stop.x+5;DepotArt20.building(/МЕД|ПРИЮТ|ТЁПЛ/.test(stop.name)?'clinic':'post',x,CP.height(x,sim.roadId),sim.route.region,7);if(stop.done){const box=sim.boxes.find(b=>b.delivered&&b.stopIndex===stop.index);if(box)crate({...box,body:{getPosition:()=>({x:stop.x+4.25,y:CP.height(stop.x,sim.roadId)+.39}),getAngle:()=>0}});}}};
+roadsideDepots=function(){if(!sim)return;for(const site of sim.services){if(!DepotArt20.visible(site.x))continue;DepotArt20.bay(site.x,site.done,'+');DepotArt20.building('service',site.x+6,CP.height(site.x+6,sim.roadId),sim.route.region,9);}};
+tankerDepots=function(){if(!sim||!sim.fluidCapacity)return;for(const stop of sim.stops){if(!DepotArt20.visible(stop.x))continue;DepotArt20.bay(stop.x,stop.done,stop.index+1);const x=stop.x+5,y=CP.height(x,sim.roadId);DepotArt20.building('tank',x,y,sim.route.region,7);if(stop.elapsed>0&&!stop.done){const nozzle=bodyPoint(sim.car,-1.93,.55);ctx.beginPath();ctx.moveTo(...nozzle);ctx.bezierCurveTo(nozzle[0]+scale*.3,nozzle[1]+scale*.5,sx(x)-scale,sy(y),sx(x),sy(y)-scale*.4);ctx.strokeStyle='#243c31';ctx.lineWidth=scale*.065;ctx.stroke();}}};

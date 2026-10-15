@@ -31,10 +31,10 @@ function updateNavigator(){
 }
 function drawRoadProfile(){
  if(!sim)return;const c=$('road-profile'),g=c.getContext('2d'),w=c.width,h=c.height,x=pose(sim.car).x,from=x-5,to=x+55,points=[];let lo=Infinity,hi=-Infinity;
- for(let xx=from;xx<=to;xx+=1){const br=sim.route.liftBridge,old=CP.bridges[sim.id];const yy=br&&sim.liftBridges[0].done&&xx>br.from&&xx<br.to?br.y:old&&xx>old.from&&xx<old.to?old.y:CP.groundHeight(xx,sim.id);points.push([xx,yy]);lo=Math.min(lo,yy);hi=Math.max(hi,yy);}const range=Math.max(7,hi-lo+2),px=v=>(v-from)/(to-from)*w,py=v=>h-8-(v-lo+1)/range*(h-20);
+ for(let xx=from;xx<=to;xx+=1){const br=sim.route.liftBridge,old=CP.bridges[sim.roadId];const yy=br&&sim.liftBridges[0].done&&xx>br.from&&xx<br.to?br.y:old&&xx>old.from&&xx<old.to?old.y:CP.groundHeight(xx,sim.roadId);points.push([xx,yy]);lo=Math.min(lo,yy);hi=Math.max(hi,yy);}const range=Math.max(7,hi-lo+2),px=v=>(v-from)/(to-from)*w,py=v=>h-8-(v-lo+1)/range*(h-20);
  g.clearRect(0,0,w,h);g.strokeStyle='#b1c697';g.lineWidth=2;g.beginPath();points.forEach((p,i)=>i?g.lineTo(px(p[0]),py(p[1])):g.moveTo(px(p[0]),py(p[1])));g.stroke();
  const pins=[...(sim.liftBridges||[]).map(b=>({x:b.control,type:'bridge'})),...(sim.route.fords||[]).map(f=>({x:f.from,type:'water'})),...sim.stops.filter(o=>!o.done).map(o=>({...o,type:'stop'})),...sim.gates.filter(o=>!o.open).map(o=>({...o,type:'gate'})),...sim.services.filter(o=>!o.done).map(o=>({...o,type:'service'})),...sim.items.filter(o=>!o.got&&o.type==='fuel'),{x:sim.route.length+6,type:'base'}];
- for(const p of pins){if(p.x<from||p.x>to)continue;const xx=px(p.x),yy=py(CP.height(p.x,sim.id));g.fillStyle=p.type==='water'?'#90d7d5':p.type==='bridge'?'#d1b981':p.type==='gate'?'#dda479':p.type==='fuel'?'#e69873':p.type==='service'?'#9ccb9b':'#e8c575';g.fillRect(xx-3,yy-10,6,7);}
- g.fillStyle='#f2dfa0';g.beginPath();g.arc(px(x),py(CP.height(x,sim.id)),4,0,Math.PI*2);g.fill();
+ for(const p of pins){if(p.x<from||p.x>to)continue;const xx=px(p.x),yy=py(CP.height(p.x,sim.roadId));g.fillStyle=p.type==='water'?'#90d7d5':p.type==='bridge'?'#d1b981':p.type==='gate'?'#dda479':p.type==='fuel'?'#e69873':p.type==='service'?'#9ccb9b':'#e8c575';g.fillRect(xx-3,yy-10,6,7);}
+ g.fillStyle='#f2dfa0';g.beginPath();g.arc(px(x),py(CP.height(x,sim.roadId)),4,0,Math.PI*2);g.fill();
 }
 if(typeof module==='object')module.exports={navigationData,previewStarGoals};

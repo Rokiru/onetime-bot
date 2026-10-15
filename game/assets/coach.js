@@ -22,8 +22,8 @@ function updateCoach(dt){
  const flying=sim.groundCount===0;
  if(flying&&!wasAir&&Math.abs(sim.car.getLinearVelocity().y)>2&&sim.time>2)sayDriver('Полёт: выровняй нос педалями.','focus');
  if(!flying&&wasAir)sayDriver('Приземлились. Плавнее газ.','focus');
- if(sim.fuel<20)sayDriver(CP.fuelPlan(sim.id).length?'Бак почти пуст. Следи за канистрами.':'Канистр нет. Отпускай газ на ровной дороге.','worried');if(sim.slipTime>.8)sayDriver('Колёса буксуют. Попробуй плавнее газ или лебёдку.','focus');
- if(Math.abs(sim.car.getAngle())>1.15&&Math.abs(sim.car.getLinearVelocity().x)<.4)sayDriver('Задний ход: держи тормоз.','worried');const surface=CP.surfaceAt(sim.car.getPosition().x,sim.id).type;
+ if(sim.fuel<20)sayDriver(CP.fuelPlan(sim.roadId).length?'Бак почти пуст. Следи за канистрами.':'Канистр нет. Отпускай газ на ровной дороге.','worried');if(sim.slipTime>.8)sayDriver('Колёса буксуют. Попробуй плавнее газ или лебёдку.','focus');
+ if(Math.abs(sim.car.getAngle())>1.15&&Math.abs(sim.car.getLinearVelocity().x)<.4)sayDriver('Задний ход: держи тормоз.','worried');const surface=CP.surfaceAt(sim.car.getPosition().x,sim.roadId).type;
  if(surface==='ice')sayDriver('Лёд: тормози заранее.','focus');if(surface==='snow')sayDriver('Снег: держи ровную тягу.','focus');if(surface==='sand')sayDriver('Песок: не бросай тягу.','focus');
  if(surface==='mud')sayDriver('Грязь! Тягу держи ровно, без рывков.','focus');
  wasAir=flying;
