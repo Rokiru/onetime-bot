@@ -1,0 +1,529 @@
+{
+  "environment": "Headless Chromium, 873×393 CSS pixels, DPR 2.75, auto quality. Frozen physical scene: median of 5 batches × 20 draws; moving camera: median and p95 of 120 draws at 4.8 m/s, one pixel readback per draw forces raster completion. This is a comparative raster workload, not phone FPS.",
+  "versions": {
+    "0.22": {
+      "backing": [
+        1440,
+        648
+      ],
+      "miniMapPaintMs": 0.14833333337058624,
+      "rows": [
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 65,
+          "region": 0,
+          "medianMs": 21.26,
+          "movingMedianMs": 20.9,
+          "movingP95Ms": 28,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 167,
+            "drawImage": 90,
+            "stroke": 186
+          },
+          "buildings": {
+            "sprites": 0
+          },
+          "cache": {
+            "soilBuilds": 6,
+            "soilTiles": 6
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 160,
+          "region": 0,
+          "medianMs": 23.755,
+          "movingMedianMs": 23.2,
+          "movingP95Ms": 37.6,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 112,
+            "drawImage": 94,
+            "stroke": 198
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 12,
+            "soilTiles": 12
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 6,
+          "region": 0,
+          "medianMs": 23.85,
+          "movingMedianMs": 20.8,
+          "movingP95Ms": 42,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 131,
+            "drawImage": 91,
+            "stroke": 231
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 18,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 67,
+          "region": 0,
+          "medianMs": 20.665,
+          "movingMedianMs": 19.4,
+          "movingP95Ms": 23.9,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 3,
+            "fill": 189,
+            "drawImage": 92,
+            "stroke": 411
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 25,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 136,
+          "region": 0,
+          "medianMs": 23.815,
+          "movingMedianMs": 18.6,
+          "movingP95Ms": 23.7,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 129,
+            "drawImage": 92,
+            "stroke": 240
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 31,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 201,
+          "region": 0,
+          "medianMs": 15.19,
+          "movingMedianMs": 18.1,
+          "movingP95Ms": 23.1,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 108,
+            "drawImage": 94,
+            "stroke": 212
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 37,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 40,
+          "path": null,
+          "cameraX": 82,
+          "region": 0,
+          "medianMs": 22.335,
+          "movingMedianMs": 19.8,
+          "movingP95Ms": 26.6,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 201,
+            "drawImage": 92,
+            "stroke": 351
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 44,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 7,
+          "path": null,
+          "cameraX": 150,
+          "region": 2,
+          "medianMs": 22.93,
+          "movingMedianMs": 19.6,
+          "movingP95Ms": 26.6,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 187,
+            "drawImage": 93,
+            "stroke": 161
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 50,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 4,
+          "path": null,
+          "cameraX": 6,
+          "region": 0,
+          "medianMs": 19.56,
+          "movingMedianMs": 18.9,
+          "movingP95Ms": 28.3,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 138,
+            "drawImage": 91,
+            "stroke": 238
+          },
+          "buildings": {
+            "sprites": 3
+          },
+          "cache": {
+            "soilBuilds": 56,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 4,
+          "path": null,
+          "cameraX": 107,
+          "region": 0,
+          "medianMs": 22.555,
+          "movingMedianMs": 22,
+          "movingP95Ms": 30.3,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 124,
+            "drawImage": 93,
+            "stroke": 202
+          },
+          "buildings": {
+            "sprites": 4
+          },
+          "cache": {
+            "soilBuilds": 63,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 4,
+          "path": null,
+          "cameraX": 194,
+          "region": 0,
+          "medianMs": 19.96,
+          "movingMedianMs": 19.1,
+          "movingP95Ms": 25.1,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 135,
+            "drawImage": 93,
+            "stroke": 244
+          },
+          "buildings": {
+            "sprites": 4
+          },
+          "cache": {
+            "soilBuilds": 70,
+            "soilTiles": 16
+          }
+        }
+      ]
+    },
+    "current": {
+      "backing": [
+        1440,
+        648
+      ],
+      "miniMapPaintMs": 0.06166666665424903,
+      "rows": [
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 65,
+          "region": 0,
+          "medianMs": 15.765,
+          "movingMedianMs": 16.4,
+          "movingP95Ms": 21.7,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 167,
+            "drawImage": 90,
+            "stroke": 186
+          },
+          "buildings": {
+            "sprites": 0
+          },
+          "cache": {
+            "soilBuilds": 6,
+            "soilTiles": 6
+          }
+        },
+        {
+          "route": 0,
+          "path": "ridge",
+          "cameraX": 160,
+          "region": 0,
+          "medianMs": 19.71,
+          "movingMedianMs": 18,
+          "movingP95Ms": 21.6,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 112,
+            "drawImage": 94,
+            "stroke": 198
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 12,
+            "soilTiles": 12
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 6,
+          "region": 0,
+          "medianMs": 20.08,
+          "movingMedianMs": 17.6,
+          "movingP95Ms": 23.3,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 131,
+            "drawImage": 91,
+            "stroke": 231
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 18,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 67,
+          "region": 0,
+          "medianMs": 19.925,
+          "movingMedianMs": 19.1,
+          "movingP95Ms": 31.5,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 3,
+            "fill": 189,
+            "drawImage": 92,
+            "stroke": 411
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 25,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 136,
+          "region": 0,
+          "medianMs": 18.81,
+          "movingMedianMs": 18.7,
+          "movingP95Ms": 25.9,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 129,
+            "drawImage": 92,
+            "stroke": 240
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 31,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 3,
+          "path": null,
+          "cameraX": 201,
+          "region": 0,
+          "medianMs": 19.13,
+          "movingMedianMs": 19.4,
+          "movingP95Ms": 26.5,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 108,
+            "drawImage": 94,
+            "stroke": 212
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 37,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 40,
+          "path": null,
+          "cameraX": 82,
+          "region": 0,
+          "medianMs": 20.21,
+          "movingMedianMs": 19.5,
+          "movingP95Ms": 24.7,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 201,
+            "drawImage": 92,
+            "stroke": 351
+          },
+          "buildings": {
+            "sprites": 1
+          },
+          "cache": {
+            "soilBuilds": 44,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 7,
+          "path": null,
+          "cameraX": 150,
+          "region": 2,
+          "medianMs": 21.415,
+          "movingMedianMs": 19.9,
+          "movingP95Ms": 25.7,
+          "operations": {
+            "createLinearGradient": 6,
+            "createRadialGradient": 2,
+            "fill": 187,
+            "drawImage": 93,
+            "stroke": 161
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 50,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 4,
+          "path": null,
+          "cameraX": 6,
+          "region": 0,
+          "medianMs": 18.245,
+          "movingMedianMs": 17,
+          "movingP95Ms": 20.4,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 134,
+            "drawImage": 92,
+            "stroke": 259
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 58,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 4,
+          "path": null,
+          "cameraX": 107,
+          "region": 0,
+          "medianMs": 19.04,
+          "movingMedianMs": 20.1,
+          "movingP95Ms": 31.7,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 2,
+            "fill": 134,
+            "drawImage": 92,
+            "stroke": 227
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 65,
+            "soilTiles": 16
+          }
+        },
+        {
+          "route": 4,
+          "path": null,
+          "cameraX": 194,
+          "region": 0,
+          "medianMs": 20.025,
+          "movingMedianMs": 20.5,
+          "movingP95Ms": 25.3,
+          "operations": {
+            "createLinearGradient": 4,
+            "createRadialGradient": 1,
+            "fill": 114,
+            "drawImage": 96,
+            "stroke": 257
+          },
+          "buildings": {
+            "sprites": 2
+          },
+          "cache": {
+            "soilBuilds": 72,
+            "soilTiles": 16
+          }
+        }
+      ]
+    }
+  }
+}
