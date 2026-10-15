@@ -23,6 +23,7 @@
   if(s.edition===21)data.expedition={edition:21,path:s.path,waiting:s.forkWaiting,powered:s.workshopPowered,machine:{...s.machine}};
   if(s.edition===22)data.waterRun={edition:22,support:s.workshopSupport,pump:{...s.pump}};
   if(s.edition===23)data.recoveryRun={edition:23,tow:{...s.tow}};
+  if(s.course26)data.course26={edition:26};
   if(s.edition===25)data.ridge25={edition:25,...s.ridge};
   if(s.dispatchTerms)data.dispatchTerms={...s.dispatchTerms};
   data.solver=solverCapture(s);data.motors=[...s.joints,...s.gates.map(g=>g.joint),...s.liftBridges.map(b=>b.joint)].map(j=>[j.isMotorEnabled(),j.getMotorSpeed(),j.getMaxMotorTorque()]);
@@ -34,11 +35,12 @@
    if(!d||d.schema!==1||d.engine!=='river17'||typeof d.attempt!=='string'||! /^[a-z0-9-]{4,60}$/.test(d.attempt)||!Number.isInteger(d.id)||!CP.routes[d.id]||!CP.vehicles.some(m=>m.id===d.car)||!CP.SETUPS[d.setup]||!Array.isArray(d.levels)||d.levels.length!==3||d.levels.some(x=>!Number.isInteger(x)||x<0||x>5))return null;
    if(d.signature!==fingerprint(CP,d.id,d.car,d.levels,d.setup)||!d.state||!d.groups||!Array.isArray(d.bodies)||d.bodies.length>100||!Array.isArray(d.trace)||d.trace.length>800)return null;
    for(const k of fields)if(typeof d.state[k]!=='boolean'&&!finite(d.state[k]))return null;
-   if(d.journey){const j=d.journey;if(j.edition!==20||!Array.isArray(j.sectors)||j.sectors.length!==CP.contractRoute(d.id,20).sectors.length)return null;for(const o of j.sectors)if(!o||['entered','done','passed'].some(k=>typeof o[k]!=='boolean')||!finite(o.maxSpeed,500)||o.maxSpeed<0||!finite(o.initialCargo,5000)||o.initialCargo<0||!Number.isInteger(o.initialHits)||o.initialHits<0||o.initialHits>10000||o.passed&&(!o.done||!o.entered))return null;}
+   if(d.journey){const j=d.journey;if(j.edition!==20||!Array.isArray(j.sectors)||j.sectors.length!==(d.course26?CP.courses26.preview(d.id):CP.contractRoute(d.id,20)).sectors.length)return null;for(const o of j.sectors)if(!o||['entered','done','passed'].some(k=>typeof o[k]!=='boolean')||!finite(o.maxSpeed,500)||o.maxSpeed<0||!finite(o.initialCargo,5000)||o.initialCargo<0||!Number.isInteger(o.initialHits)||o.initialHits<0||o.initialHits>10000||o.passed&&(!o.done||!o.entered))return null;}
    if(d.expedition){const e=d.expedition,m=e.machine;if(d.journey||d.id!==0||e.edition!==21||!['pending','ridge','detour'].includes(e.path)||typeof e.waiting!=='boolean'||typeof e.powered!=='boolean'||e.waiting&&e.path!=='pending'||!m||!finite(m.integrity,100)||m.integrity<0||!finite(m.previousVy,500)||!finite(m.cooldown,1)||m.cooldown<0)return null;}
    if(d.waterRun){const w=d.waterRun,m=w.pump;if(d.journey||d.expedition||d.id!==3||w.edition!==22||typeof w.support!=='boolean'||!m||!finite(m.integrity,100)||m.integrity<0||!finite(m.previousVy,500)||!finite(m.cooldown,1)||m.cooldown<0)return null;}
    if(d.recoveryRun){const r=d.recoveryRun,t=r.tow;if(d.journey||d.expedition||d.waterRun||d.id!==4||r.edition!==23||!t||typeof t.attached!=='boolean'||typeof t.support!=='boolean'||t.delivered!==false||!finite(t.condition,100)||t.condition<0||!Number.isInteger(t.breaks)||t.breaks<0||t.breaks>10000||!finite(t.strain,100000)||t.strain<0||!finite(t.overload,2)||t.overload<0||!finite(t.cooldown,1)||t.cooldown<0||!finite(t.previousVx,500)||!finite(t.previousVy,500))return null;}
    if(d.ridge25&&!CP.ridge25.valid(d))return null;
+   if(d.course26&&!CP.courses26.valid(d))return null;
    if(d.dispatchTerms&&(!d.journey||d.journey.edition!==20||!(typeof module==='object'?require('./dispatch-terms24.js'):root.DispatchTerms24).valid(d.dispatchTerms,d.id,20)))return null;
    if(d.drivetrain&&(typeof d.drivetrain.lowGear!=='boolean'||!finite(d.drivetrain.shiftCooldown)||d.drivetrain.shiftCooldown<0||d.drivetrain.shiftCooldown>1||!Number.isInteger(d.drivetrain.gearShifts)||d.drivetrain.gearShifts<0))return null;
    if(d.state.time<0||d.state.time>7200||d.state.fuel<0||d.state.fuel>100||d.state.condition<0||d.state.condition>100||d.state.winchCharges<0||d.state.winchCharges>3||d.state.coins<0||d.state.coins>10000)return null;
@@ -58,7 +60,7 @@
  function restore(data,CP){
   const d=validate(data,CP);if(!d)return null;
   try{
-   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,q?{load:q.load}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),list=bodies(s);if(list.length!==d.bodies.length)return null;
+   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
    for(const name of Object.keys(groups)){if(s[name].length!==d.groups[name].length)return null;for(let i=0;i<s[name].length;i++){const o=s[name][i],saved=d.groups[name][i];for(const k of groups[name]){if(saved[k]!==undefined){if(o[k]!==undefined&&typeof o[k]!==typeof saved[k])return null;o[k]=saved[k];}}if(name==='boxes')for(const k of ['strap','strap2']){if(!saved[k]&&o[k]){s.world.destroyJoint(o[k]);o[k]=null;}}}}
    if(q){const {edition,...state}=q;Object.assign(s.ridge,state);}
    if(d.dispatchTerms)s.dispatchTerms={...d.dispatchTerms};

@@ -1,0 +1,5695 @@
+{
+  "source": "Dustrivo 0.25, commit 231e05f, real solver states after 500 steps",
+  "rows": [
+    {
+      "name": "ridge-light",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcw1g-zb8drgxqlf",
+        "id": 0,
+        "car": "rover",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 1373074019,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 91.44116991968974,
+          "fuelUsed": 8.558830080310347,
+          "lastFuelX": 46.39981778179251,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 0,
+          "distance": 121.19945334537752,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 1,
+          "throttle": 0.65,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 35.57381479465705,
+          "overheated": false,
+          "peakTemperature": 35.92961871586191,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.013858226214733956,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            99,
+            18
+          ],
+          [
+            31,
+            699,
+            100,
+            81
+          ],
+          [
+            61,
+            956,
+            101,
+            -6
+          ],
+          [
+            91,
+            1226,
+            101,
+            9
+          ],
+          [
+            121,
+            1493,
+            101,
+            10
+          ],
+          [
+            151,
+            1767,
+            132,
+            288
+          ],
+          [
+            181,
+            2038,
+            223,
+            426
+          ],
+          [
+            211,
+            2299,
+            308,
+            275
+          ],
+          [
+            241,
+            2558,
+            340,
+            26
+          ],
+          [
+            271,
+            2814,
+            336,
+            -129
+          ],
+          [
+            301,
+            2976,
+            312,
+            -212
+          ],
+          [
+            331,
+            3132,
+            271,
+            -369
+          ],
+          [
+            361,
+            3292,
+            214,
+            -414
+          ],
+          [
+            391,
+            3455,
+            156,
+            -331
+          ],
+          [
+            421,
+            3725,
+            116,
+            78
+          ],
+          [
+            451,
+            4032,
+            210,
+            478
+          ],
+          [
+            481,
+            4393,
+            311,
+            268
+          ]
+        ],
+        "groups": {
+          "items": [],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 45.571421946620724,
+            "y": 4.063442959409603,
+            "a": 0.3045633812179977,
+            "vx": 8.684890966543731,
+            "vy": 1.9802264830435496,
+            "w": -1.206267286229402,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 3,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 47.71546550979465,
+            "y": 3.554218470033085,
+            "a": -78.32039357333825,
+            "vx": 8.229590971543752,
+            "vy": 1.254505275882686,
+            "w": -14.014537419051466,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 45.33174817842678,
+            "y": 3.006552698728246,
+            "a": -68.13042240657384,
+            "vx": 8.052697516440526,
+            "vy": 2.013174379110107,
+            "w": -13.892160381810212,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 46.39981778179251,
+            "y": 3.687999044400508,
+            "a": 0.2948392897225354,
+            "vx": 8.299664594320125,
+            "vy": 1.848640557360309,
+            "w": -0.3157864387075369,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 1.3860000000000001,
+                "sensor": false
+              },
+              {
+                "density": 2.1,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "ridge25": {
+          "edition": 25,
+          "load": 1,
+          "stage": 0,
+          "waiting": false,
+          "landings": 0,
+          "awardX": 0,
+          "airTime": 0,
+          "peakFall": 0,
+          "roofTime": 0,
+          "stallTime": 0
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.06227260748301813
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.020131939970715183
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.06639157798644134,
+                "m_motorImpulse": -0.007946003678651113,
+                "m_springImpulse": 0.0753436507005393
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.315618168736963,
+                "m_motorImpulse": -0.22649999999999995,
+                "m_springImpulse": -0.34641740758407275
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "3.3:0>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.31999999999999806,
+                      "y": -0.3200000000000006
+                    },
+                    "normalImpulse": 0.021691952827985587,
+                    "tangentImpulse": -0.011639795505889882,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "4.0:150>2.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.24253562503633297,
+                  "y": 0.9701425001453319
+                },
+                "localPoint": {
+                  "x": 45,
+                  "y": 2.3
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.5270805707356344,
+                    "tangentImpulse": 0.3653677346742673,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            true,
+            -13.69875,
+            27.179999999999996
+          ],
+          [
+            true,
+            -13.69875,
+            27.179999999999996
+          ]
+        ]
+      }
+    },
+    {
+      "name": "ridge-heavy",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcw74-1dny0vud1k",
+        "id": 0,
+        "car": "rover",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 1373074019,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 89.74968708743093,
+          "fuelUsed": 10.250312912569234,
+          "lastFuelX": 47.646439801745814,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 0,
+          "distance": 124.93931940523744,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 1,
+          "throttle": 1,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 36.27776892306398,
+          "overheated": false,
+          "peakTemperature": 36.74215614234027,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.04505794662077609,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            601,
+            96,
+            38
+          ],
+          [
+            31,
+            657,
+            100,
+            75
+          ],
+          [
+            61,
+            834,
+            100,
+            77
+          ],
+          [
+            91,
+            1123,
+            97,
+            48
+          ],
+          [
+            121,
+            1439,
+            97,
+            35
+          ],
+          [
+            151,
+            1761,
+            128,
+            274
+          ],
+          [
+            181,
+            2072,
+            236,
+            433
+          ],
+          [
+            211,
+            2375,
+            321,
+            220
+          ],
+          [
+            241,
+            2685,
+            339,
+            9
+          ],
+          [
+            271,
+            2925,
+            322,
+            -262
+          ],
+          [
+            301,
+            3082,
+            280,
+            -300
+          ],
+          [
+            331,
+            3240,
+            230,
+            -403
+          ],
+          [
+            361,
+            3401,
+            170,
+            -387
+          ],
+          [
+            391,
+            3635,
+            115,
+            -68
+          ],
+          [
+            421,
+            3950,
+            178,
+            458
+          ],
+          [
+            451,
+            4231,
+            269,
+            259
+          ],
+          [
+            481,
+            4552,
+            346,
+            300
+          ]
+        ],
+        "groups": {
+          "items": [],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 46.74034874707277,
+            "y": 4.936457738812443,
+            "a": 0.15231895870486195,
+            "vx": 7.8766555044014215,
+            "vy": 1.3165608123597725,
+            "w": -0.999774318187223,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 3,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 47.306762106289156,
+            "y": 4.35387112644516,
+            "a": 0.1462242515927701,
+            "vx": 7.307926355606415,
+            "vy": 0.7397881301401441,
+            "w": -1.0052401653300707,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 3,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 46.65377331368184,
+            "y": 4.257776282277867,
+            "a": 0.14624909323988192,
+            "vx": 7.203243464826873,
+            "vy": 1.3993791805277112,
+            "w": -0.9992910140748723,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 3,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 48.92948865121423,
+            "y": 3.457600399254593,
+            "a": -92.75407292960489,
+            "vx": 6.421231442944661,
+            "vy": -0.924451906135088,
+            "w": -20.51039097352385,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 46.487095901912035,
+            "y": 3.2953849776106288,
+            "a": -69.46385133359901,
+            "vx": 6.2326885338737235,
+            "vy": 1.5582285341287634,
+            "w": -10.75221523402269,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 47.646439801745814,
+            "y": 3.79737283004587,
+            "a": 0.14587906306610562,
+            "vx": 7.042800350098571,
+            "vy": 0.19062905635434496,
+            "w": -1.0102477683174118,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 1.3860000000000001,
+                "sensor": false
+              },
+              {
+                "density": 2.1,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "ridge25": {
+          "edition": 25,
+          "load": 3,
+          "stage": 0,
+          "waiting": false,
+          "landings": 0,
+          "awardX": 0,
+          "airTime": 0,
+          "peakFall": 0,
+          "roofTime": 0,
+          "stallTime": 0
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.01898935639923541
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.09884177642977876
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.023011210841768222
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.10541513012202948
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.01332276985014885
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.11025412761579433
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.01576257503127896,
+                "m_motorImpulse": -0.0091765655462421,
+                "m_springImpulse": 0.07149442031487259
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.09038410015451398,
+                "m_motorImpulse": -0.3,
+                "m_springImpulse": -0.4132688383831576
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "1.0:0>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": -1
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": -0.32
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.32000000000000073,
+                      "y": 0.32000000000000006
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0.0005070124448221593,
+                    "id": {
+                      "key": 78,
+                      "indexA": 2,
+                      "indexB": 3,
+                      "typeA": 0,
+                      "typeB": 1
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 2
+              }
+            },
+            {
+              "key": "2.0:0>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.32
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3199999999999988,
+                      "y": -0.31999999999999995
+                    },
+                    "normalImpulse": 0.15483424168390328,
+                    "tangentImpulse": 0.11930179111211528,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.15346368017157214,
+                      "y": -0.3200000000000005
+                    },
+                    "normalImpulse": 0.0437883454629574,
+                    "tangentImpulse": 0.008241092050914492,
+                    "id": {
+                      "key": 77,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 0,
+                      "typeB": 1
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "2.0:0>1.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 1,
+                  "y": 0
+                },
+                "localPoint": {
+                  "x": 0.32,
+                  "y": 0
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.32000000000000073,
+                      "y": 0.32000000000000006
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": 24,
+                      "indexA": 0,
+                      "indexB": 2,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": -0.3199999999999973,
+                      "y": -0.32000000000000023
+                    },
+                    "normalImpulse": 0.027628892095549643,
+                    "tangentImpulse": -0.02221762009277247,
+                    "id": {
+                      "key": 28,
+                      "indexA": 0,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "2.0:0>4.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": -1
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": -0.32
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.14729667284882725,
+                    "tangentImpulse": 0.16217653484903197,
+                    "id": {
+                      "key": 0,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 0,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "5.3:0>1.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3199999999999973,
+                      "y": -0.32000000000000023
+                    },
+                    "normalImpulse": 0.11150699622014573,
+                    "tangentImpulse": 0.07991438584465282,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "5.3:0>2.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3200000000000026,
+                      "y": -0.3199999999999996
+                    },
+                    "normalImpulse": 0.2505774328488908,
+                    "tangentImpulse": 0.10863767611744414,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.3200000000000014,
+                      "y": -0.3200000000000002
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0.0000015968193072703187,
+                    "id": {
+                      "key": 17,
+                      "indexA": 1,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.0:153>4.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.24253562503633297,
+                  "y": 0.9701425001453319
+                },
+                "localPoint": {
+                  "x": 46.5,
+                  "y": 2.675
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.7028673566833304,
+                    "tangentImpulse": 0.3398209813687934,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            true,
+            -19.5,
+            36
+          ],
+          [
+            true,
+            -19.5,
+            36
+          ]
+        ]
+      }
+    },
+    {
+      "name": "generator",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcwbh-z0wz4j69sf",
+        "id": 0,
+        "car": "rover",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 1373074019,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 96.84682256929146,
+          "fuelUsed": 3.153177430708321,
+          "lastFuelX": 19.53971089392574,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 0,
+          "distance": 40.61913268177722,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 2,
+          "throttle": 0.13000000000000003,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 35,
+          "overheated": false,
+          "peakTemperature": 35.332629099745674,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.013188808237330962,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            96,
+            27
+          ],
+          [
+            31,
+            623,
+            100,
+            54
+          ],
+          [
+            61,
+            705,
+            97,
+            28
+          ],
+          [
+            91,
+            794,
+            97,
+            31
+          ],
+          [
+            121,
+            881,
+            97,
+            31
+          ],
+          [
+            151,
+            966,
+            97,
+            32
+          ],
+          [
+            181,
+            1051,
+            97,
+            32
+          ],
+          [
+            211,
+            1136,
+            97,
+            32
+          ],
+          [
+            241,
+            1221,
+            97,
+            32
+          ],
+          [
+            271,
+            1307,
+            97,
+            32
+          ],
+          [
+            301,
+            1392,
+            97,
+            32
+          ],
+          [
+            331,
+            1477,
+            97,
+            32
+          ],
+          [
+            361,
+            1562,
+            97,
+            31
+          ],
+          [
+            391,
+            1647,
+            97,
+            32
+          ],
+          [
+            421,
+            1732,
+            98,
+            40
+          ],
+          [
+            451,
+            1816,
+            99,
+            49
+          ],
+          [
+            481,
+            1901,
+            101,
+            60
+          ]
+        ],
+        "groups": {
+          "items": [
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            }
+          ],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 73.25042863217536,
+            "y": 1.177952741097345,
+            "a": 0.04270586664673042,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 71.75092848564483,
+            "y": 1.1564053795836293,
+            "a": -0.013956183129219755,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 70.25075346618766,
+            "y": 1.1630347168863835,
+            "a": 0.005114790665353591,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 68.7505070692685,
+            "y": 1.1610400151671243,
+            "a": -0.002454003568435751,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 67.25025164132178,
+            "y": 1.1616012290647486,
+            "a": 0.001704428855846062,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 65.74999481615093,
+            "y": 1.1614674615544585,
+            "a": -0.0015245536561947783,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 64.24973806628404,
+            "y": 1.161466073391133,
+            "a": 0.0015244697527721468,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 62.74948213059106,
+            "y": 1.1616034550919083,
+            "a": -0.0017046364170676769,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 61.249228475326795,
+            "y": 1.1610361663152642,
+            "a": 0.00245523746449124,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 59.74898470585801,
+            "y": 1.1630410691955644,
+            "a": -0.005116585248459247,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 58.248812966839225,
+            "y": 1.156396803256383,
+            "a": 0.013955868434026873,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 56.74931558976149,
+            "y": 1.1779664692257805,
+            "a": -0.04272437115123359,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 5,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 18.768916665606653,
+            "y": 1.699533701213519,
+            "a": 0.06613671631553054,
+            "vx": 1.6858670650753906,
+            "vy": 0.05453937170083905,
+            "w": 0.036180446422246465,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 3.1,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 20.784310891334783,
+            "y": 0.6999954764941794,
+            "a": -22.706226278680976,
+            "vx": 1.7522013648665526,
+            "vy": 0.07523920212563519,
+            "w": -2.9352589485328267,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 18.344121535438664,
+            "y": 0.6194045496007853,
+            "a": -22.69897931675956,
+            "vx": 1.6695897527818324,
+            "vy": 0.031111568309940933,
+            "w": -2.7947773711517945,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 19.53971089392574,
+            "y": 1.029034009717952,
+            "a": 0.06599323267477679,
+            "vx": 1.6992660711530536,
+            "vy": 0.09065725435272762,
+            "w": 0.03618044642224646,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 1.7160000000000002,
+                "sensor": false
+              },
+              {
+                "density": 2.6,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "expedition": {
+          "edition": 21,
+          "path": "ridge",
+          "waiting": false,
+          "powered": false,
+          "machine": {
+            "integrity": 100,
+            "previousVy": 0.05453937170083905,
+            "cooldown": 0
+          }
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3130221057262499,
+                  "y": -0.03882532033069908,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.09893365768245878
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.31300994288034484,
+                  "y": 0.012164619100480016,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.16518976651283626
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3129819896359203,
+                  "y": -0.0037270834356167965,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.1451420683099098
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3129706994157218,
+                  "y": 0.001051451526360689,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.15068560646930498
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3129651202724488,
+                  "y": -0.0002348541105461302,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.1495069361730768
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.31296198046302076,
+                  "y": 0.000024717713773658902,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.1496012015740141
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.31295926041525196,
+                  "y": 0.0000024087374397873886,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.14960997201008686
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.31295648383301045,
+                  "y": -0.00002985512930290609,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.14949634743856222
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3129541473461863,
+                  "y": 0.00024112024814993349,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.15070001400163194
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3129543878231185,
+                  "y": -0.001059815733972809,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.14512258260287408
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.3129600697396704,
+                  "y": 0.003737843009444174,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.16521268640516626
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.31298373498399673,
+                  "y": -0.012175819778819498,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.09889903989334611
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": -0.312987556300753,
+                  "y": 0.03884579256598841,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.1514920886739689
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.09140221008578976
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.15208433997842974,
+                "m_motorImpulse": -0.08471666666666666,
+                "m_springImpulse": -0.34206055246494094
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.4056187953258111,
+                "m_motorImpulse": -0.08471666666666666,
+                "m_springImpulse": -0.549266264479282
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "12.0:0>14.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": -1
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": -0.44
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.4240569578371982,
+                    "tangentImpulse": 0.42020952640296844,
+                    "id": {
+                      "key": 0,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 0,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "15.0:0>12.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -1,
+                  "y": 0
+                },
+                "localPoint": {
+                  "x": 0.08500000000000002,
+                  "y": 0.5
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0.7899999999999989,
+                      "y": -0.43999999999999995
+                    },
+                    "normalImpulse": 0.1300269940925396,
+                    "tangentImpulse": -0.035245188012687015,
+                    "id": {
+                      "key": 18,
+                      "indexA": 2,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.7899999999999987,
+                      "y": 0.10000897769596012
+                    },
+                    "normalImpulse": 0.26150514345756914,
+                    "tangentImpulse": -0.04999100556844447,
+                    "id": {
+                      "key": 66,
+                      "indexA": 2,
+                      "indexB": 0,
+                      "typeA": 0,
+                      "typeB": 1
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "15.3:0>12.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.7899999999999985,
+                      "y": -0.44000000000000017
+                    },
+                    "normalImpulse": 0.06195215820808252,
+                    "tangentImpulse": 0.029671337238548295,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.7899999999999989,
+                      "y": -0.43999999999999995
+                    },
+                    "normalImpulse": 0.07477510468253647,
+                    "tangentImpulse": 0.02614386675935055,
+                    "id": {
+                      "key": 17,
+                      "indexA": 1,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "16.0:101>13.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.042900282664362674,
+                  "y": 0.9990793590838105
+                },
+                "localPoint": {
+                  "x": 20.5,
+                  "y": 0.0822337962962963
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.5488292629684643,
+                    "tangentImpulse": 0.14553578818230037,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "16.0:96>14.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.018631024862292022,
+                  "y": 0.9998264273925653
+                },
+                "localPoint": {
+                  "x": 18,
+                  "y": 0.00787037037037037
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 1.1765121086457822,
+                    "tangentImpulse": -0.19540685140497202,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            true,
+            -3.6470000000000002,
+            10.166
+          ],
+          [
+            true,
+            -3.6470000000000002,
+            10.166
+          ]
+        ]
+      }
+    },
+    {
+      "name": "water",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcwe5-zj31vu1ed2",
+        "id": 3,
+        "car": "rover",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 444805916,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 94.7818193070841,
+          "fuelUsed": 5.218180692915987,
+          "lastFuelX": 28.761520443705635,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 10,
+          "distance": 68.2845613311169,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 2,
+          "throttle": 0.1433333333333355,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 35,
+          "overheated": false,
+          "peakTemperature": 35.40708665672654,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.010440601140660975,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            98,
+            29
+          ],
+          [
+            31,
+            640,
+            100,
+            65
+          ],
+          [
+            61,
+            774,
+            99,
+            19
+          ],
+          [
+            91,
+            923,
+            100,
+            25
+          ],
+          [
+            121,
+            1070,
+            100,
+            23
+          ],
+          [
+            151,
+            1217,
+            100,
+            23
+          ],
+          [
+            181,
+            1361,
+            100,
+            18
+          ],
+          [
+            211,
+            1504,
+            100,
+            25
+          ],
+          [
+            241,
+            1647,
+            100,
+            19
+          ],
+          [
+            271,
+            1791,
+            100,
+            27
+          ],
+          [
+            301,
+            1934,
+            100,
+            26
+          ],
+          [
+            331,
+            2078,
+            102,
+            43
+          ],
+          [
+            361,
+            2223,
+            105,
+            68
+          ],
+          [
+            391,
+            2367,
+            113,
+            90
+          ],
+          [
+            421,
+            2512,
+            122,
+            107
+          ],
+          [
+            451,
+            2656,
+            134,
+            117
+          ],
+          [
+            481,
+            2795,
+            146,
+            116
+          ]
+        ],
+        "groups": {
+          "items": [
+            {
+              "got": true
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            }
+          ],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [
+            {
+              "done": false,
+              "elapsed": 0,
+              "boxIndex": -1,
+              "warned": false
+            }
+          ],
+          "services": [
+            {
+              "done": false,
+              "elapsed": 0
+            }
+          ],
+          "checkpoints": [],
+          "gates": [
+            {
+              "elapsed": 0,
+              "requested": false,
+              "open": false
+            }
+          ],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 28.45163574629535,
+            "y": 2.081580679653056,
+            "a": 0.26653906229150187,
+            "vx": 2.469275019755293,
+            "vy": 0.22024828475629066,
+            "w": -0.12499374760722134,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 27.587643085556426,
+            "y": 2.070943268160981,
+            "a": 0.11784147125360643,
+            "vx": 2.4557504620167117,
+            "vy": 0.3032188568219405,
+            "w": -0.08798361415105761,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 2.7,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 30.02385665704142,
+            "y": 1.2508947548376788,
+            "a": -38.20665634741136,
+            "vx": 2.3685770115405167,
+            "vy": 0.21287545277759487,
+            "w": -3.980048389584471,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 27.592877533010416,
+            "y": 1.0295579928007517,
+            "a": -38.20631641662767,
+            "vx": 2.3749462386393496,
+            "vy": 0.21344788597097733,
+            "w": -3.990830628284341,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 44.4,
+            "y": 3.22,
+            "a": 3.196024391469874e-95,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 1,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 28.761520443705635,
+            "y": 1.5290229807306142,
+            "a": 0.11991340471001785,
+            "vx": 2.4329198600916997,
+            "vy": 0.1810305491859732,
+            "w": -0.08798361415105764,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 1.7160000000000002,
+                "sensor": false
+              },
+              {
+                "density": 2.6,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "waterRun": {
+          "edition": 22,
+          "support": true,
+          "pump": {
+            "integrity": 100,
+            "previousVy": 0.3032188568219405,
+            "cooldown": 0
+          }
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.0024039288992845497
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.01872767642100947
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.06592436505450366
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.049321171463717825
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.02782341184771471,
+                "m_motorImpulse": 0.08673888888888921,
+                "m_springImpulse": -0.32773524787313246
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.029731915754907256,
+                "m_motorImpulse": 0.08673888888888921,
+                "m_springImpulse": -0.44148235027383687
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": 0,
+                  "y": 0.060800000000000014,
+                  "z": -0.09728000000000009
+                },
+                "m_motorImpulse": -1.3877787807814463e-17
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "5.3:0>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.27000000000000074,
+                      "y": -0.26999999999999996
+                    },
+                    "normalImpulse": 0.0027105855820641943,
+                    "tangentImpulse": -0.0011730317003090724,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "5.3:0>1.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.520000000000001,
+                      "y": -0.39999999999999986
+                    },
+                    "normalImpulse": 0.09666892494409368,
+                    "tangentImpulse": -0.015632854501226746,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.5200000000000007,
+                      "y": -0.4000000000000001
+                    },
+                    "normalImpulse": 0.07079279342468142,
+                    "tangentImpulse": 0.013321614601470952,
+                    "id": {
+                      "key": 17,
+                      "indexA": 1,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.0:115>3.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.089514031535212,
+                  "y": 0.9959855612197965
+                },
+                "localPoint": {
+                  "x": 27.5,
+                  "y": 0.41377314814814814
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.6431061076209064,
+                    "tangentImpulse": -0.10495113412968979,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.0:120>2.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.089514031535212,
+                  "y": 0.9959855612197965
+                },
+                "localPoint": {
+                  "x": 30,
+                  "y": 0.641289437585734
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.5294728792475114,
+                    "tangentImpulse": -0.10312910568766927,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            true,
+            -3.805666666666692,
+            10.408666666666706
+          ],
+          [
+            true,
+            -3.805666666666692,
+            10.408666666666706
+          ],
+          [
+            true,
+            0,
+            600
+          ]
+        ]
+      }
+    },
+    {
+      "name": "tow",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcwgq-jldpdx3xgc",
+        "id": 4,
+        "car": "rover",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 385953145,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 95.8706175448685,
+          "fuelUsed": 4.129382455131577,
+          "lastFuelX": 24.375908392452743,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 10,
+          "distance": 55.12772517735823,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 2,
+          "throttle": 0,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 35,
+          "overheated": false,
+          "peakTemperature": 35.1616079309657,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.002849374028047879,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": true,
+          "shiftCooldown": 0.30000000000000004,
+          "gearShifts": 1
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            103,
+            0
+          ],
+          [
+            31,
+            651,
+            102,
+            49
+          ],
+          [
+            61,
+            762,
+            103,
+            -8
+          ],
+          [
+            91,
+            879,
+            103,
+            0
+          ],
+          [
+            121,
+            995,
+            103,
+            -1
+          ],
+          [
+            151,
+            1109,
+            103,
+            3
+          ],
+          [
+            181,
+            1224,
+            103,
+            -2
+          ],
+          [
+            211,
+            1337,
+            103,
+            -6
+          ],
+          [
+            241,
+            1452,
+            103,
+            1
+          ],
+          [
+            271,
+            1566,
+            103,
+            -7
+          ],
+          [
+            301,
+            1680,
+            103,
+            7
+          ],
+          [
+            331,
+            1794,
+            103,
+            2
+          ],
+          [
+            361,
+            1907,
+            103,
+            -4
+          ],
+          [
+            391,
+            2022,
+            103,
+            4
+          ],
+          [
+            421,
+            2136,
+            103,
+            1
+          ],
+          [
+            451,
+            2250,
+            103,
+            3
+          ],
+          [
+            481,
+            2365,
+            103,
+            0
+          ]
+        ],
+        "groups": {
+          "items": [
+            {
+              "got": true
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            }
+          ],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 16.841638373316997,
+            "y": 0.4450000099570281,
+            "a": -40.72599329043541,
+            "vx": 2.284796190443006,
+            "vy": -6.063188188284849e-18,
+            "w": -5.222391233012039,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.2,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 14.801624124245706,
+            "y": 0.44499999988710526,
+            "a": -40.725195758958236,
+            "vx": 2.2847962207979866,
+            "vy": -5.971694322341727e-18,
+            "w": -5.222391362667043,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.2,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 15.823106024770995,
+            "y": 0.8395776540295721,
+            "a": -0.0037375890884371967,
+            "vx": 2.284795033290936,
+            "vy": 0.00025876731438473,
+            "w": 0.00000274458734613673,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              },
+              {
+                "density": 0.5,
+                "sensor": false
+              },
+              {
+                "density": 1.6,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 23.074260325957137,
+            "y": 1.6314941756866326,
+            "a": 0.00040931750199881667,
+            "vx": 2.301410140099529,
+            "vy": 0.00325828394259363,
+            "w": -0.0024121900903658,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 25.595531385437557,
+            "y": 0.605000242244631,
+            "a": -30.761492409374775,
+            "vx": 2.298941740123316,
+            "vy": 2.5304685782748595e-17,
+            "w": -3.847600458736478,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 23.155530428043175,
+            "y": 0.6050007404058667,
+            "a": -30.7552348480718,
+            "vx": 2.298936705925252,
+            "vy": 5.2371980954284386e-18,
+            "w": -3.8475904293516177,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 24.375908392452743,
+            "y": 1.0309044537996028,
+            "a": -0.0008863156386752959,
+            "vx": 2.300579113598574,
+            "vy": -0.00047747224562263887,
+            "w": -0.0024121900903658253,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 1.7160000000000002,
+                "sensor": false
+              },
+              {
+                "density": 2.6,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "recoveryRun": {
+          "edition": 23,
+          "tow": {
+            "attached": true,
+            "support": true,
+            "condition": 68,
+            "breaks": 0,
+            "strain": 3.5854529608365054e-8,
+            "overload": 0,
+            "cooldown": 0,
+            "previousVx": 2.284795033290936,
+            "previousVy": 0.00025876731438473,
+            "delivered": false
+          }
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "rope-joint",
+              "impulses": {
+                "m_impulse": 0
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.00013747645956061906,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.15361586599167257
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.00020432686144315396,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.13572181511131054
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.0010828458246335683
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.012106455306986823
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.00013027708536981052,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.30335553452918135
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.00019037970109706787,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.23332023337410762
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "6.3:0>3.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3200000000000013,
+                      "y": -0.3199999999999999
+                    },
+                    "normalImpulse": 0.01102093897689677,
+                    "tangentImpulse": 0.000744899554095393,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.3199999999999988,
+                      "y": -0.31999999999999995
+                    },
+                    "normalImpulse": 0.008434376006540789,
+                    "tangentImpulse": 0.0009323145220224605,
+                    "id": {
+                      "key": 17,
+                      "indexA": 1,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:106>5.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 23,
+                  "y": 0
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.43689518488375795,
+                    "tangentImpulse": 0.00013155757531128334,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:111>4.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 25.5,
+                  "y": 0
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.5069305118258757,
+                    "tangentImpulse": 0.00013174638045480053,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:89>1.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 14.5,
+                  "y": 0
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.20870558394842345,
+                    "tangentImpulse": 0.0002390054365736963,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:93>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 16.5,
+                  "y": 0
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.22659975970156332,
+                    "tangentImpulse": 0.00023901579782300552,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            false,
+            -0.9029999999999999,
+            12.090000000000002
+          ],
+          [
+            false,
+            -0.9029999999999999,
+            12.090000000000002
+          ]
+        ]
+      }
+    },
+    {
+      "name": "urgent",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcwkb-71r5dh0jvm",
+        "id": 1,
+        "car": "rover",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 1401709047,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 91.7895881190458,
+          "fuelUsed": 8.210411880954203,
+          "lastFuelX": 34.099737835254444,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 20,
+          "distance": 84.29921350576333,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 2,
+          "throttle": 0.10000000000000003,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 38.148629777073396,
+          "overheated": false,
+          "peakTemperature": 39.44965023518234,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.02787951747314011,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            101,
+            12
+          ],
+          [
+            31,
+            648,
+            101,
+            67
+          ],
+          [
+            61,
+            837,
+            101,
+            63
+          ],
+          [
+            91,
+            1063,
+            101,
+            24
+          ],
+          [
+            121,
+            1300,
+            102,
+            4
+          ],
+          [
+            151,
+            1541,
+            110,
+            87
+          ],
+          [
+            181,
+            1782,
+            136,
+            160
+          ],
+          [
+            211,
+            2020,
+            169,
+            160
+          ],
+          [
+            241,
+            2257,
+            194,
+            83
+          ],
+          [
+            271,
+            2467,
+            229,
+            168
+          ],
+          [
+            301,
+            2612,
+            278,
+            566
+          ],
+          [
+            331,
+            2772,
+            372,
+            646
+          ],
+          [
+            361,
+            2933,
+            471,
+            601
+          ],
+          [
+            391,
+            3066,
+            538,
+            387
+          ],
+          [
+            421,
+            3159,
+            567,
+            319
+          ],
+          [
+            451,
+            3252,
+            586,
+            150
+          ],
+          [
+            481,
+            3348,
+            599,
+            40
+          ]
+        ],
+        "groups": {
+          "items": [
+            {
+              "got": true
+            },
+            {
+              "got": true
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            }
+          ],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 33.842732934846865,
+            "y": 7.274541180388809,
+            "a": 0.00547812230448828,
+            "vx": 2.0282925520977204,
+            "vy": 0.05332125186494846,
+            "w": -0.07318555516790137,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 33.10882379315947,
+            "y": 7.2695339496195865,
+            "a": 0.009418313092780684,
+            "vx": 2.024540207915315,
+            "vy": 0.09820235050531889,
+            "w": -0.07055768021297945,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 33.74281659747586,
+            "y": 6.615379001923549,
+            "a": 0.010327454345525422,
+            "vx": 1.9784862944890216,
+            "vy": 0.06079147096476212,
+            "w": -0.06023617379124064,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 33.06393649841404,
+            "y": 6.611637340034927,
+            "a": 0.007415333782497239,
+            "vx": 1.9781823593272663,
+            "vy": 0.10134274584862517,
+            "w": -0.07055768021297947,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 35.32267122642733,
+            "y": 5.608600381021104,
+            "a": -60.16718212820125,
+            "vx": 1.910610122117589,
+            "vy": 9.110686380667254e-18,
+            "w": -3.1880686272484846,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 32.88264922713696,
+            "y": 5.60304705578961,
+            "a": -48.60271889827933,
+            "vx": 1.910242968156285,
+            "vy": 0.1362587576736896,
+            "w": -3.192178025844528,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.8,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 34.099737835254444,
+            "y": 6.0192764198222015,
+            "a": 0.007067774240724889,
+            "vx": 1.9511156957597533,
+            "vy": 0.024467180032958637,
+            "w": -0.06023617379124065,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 1.7160000000000002,
+                "sensor": false
+              },
+              {
+                "density": 2.6,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "journey": {
+          "edition": 20,
+          "sectors": [
+            {
+              "entered": false,
+              "done": false,
+              "passed": false,
+              "maxSpeed": 0,
+              "initialCargo": 0,
+              "initialHits": 0
+            },
+            {
+              "entered": false,
+              "done": false,
+              "passed": false,
+              "maxSpeed": 0,
+              "initialCargo": 0,
+              "initialHits": 0
+            }
+          ]
+        },
+        "dispatchTerms": {
+          "edition": 24,
+          "kind": "urgent",
+          "deadline": 110,
+          "bonus": 180,
+          "lateFee": 80
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.01235659898607252
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.017172463115550072
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.013456384912483634
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.007704628455468102
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.02025548232317849
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.02282430258534957
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.01909040349107389
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": -0.025888964227764395
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.041703991910509774,
+                "m_motorImpulse": -0.08016666666666666,
+                "m_springImpulse": -0.33420635983877883
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": 0.008721570536970995,
+                "m_motorImpulse": -0.08016666666666666,
+                "m_springImpulse": -0.3013266930145342
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "2.0:0>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.32
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.32,
+                      "y": -0.3199999999999999
+                    },
+                    "normalImpulse": 0.014981396223515785,
+                    "tangentImpulse": -0.004620073946458631,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.23488555810036862,
+                      "y": -0.3200000000000003
+                    },
+                    "normalImpulse": 0.01934155601335642,
+                    "tangentImpulse": 0.00032935283690198693,
+                    "id": {
+                      "key": 77,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 0,
+                      "typeB": 1
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "3.0:0>1.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.32
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3199999999999971,
+                      "y": -0.3199999999999999
+                    },
+                    "normalImpulse": 0.008092516581887893,
+                    "tangentImpulse": -0.005052344463906237,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.2895945671517308,
+                      "y": -0.31999999999999984
+                    },
+                    "normalImpulse": 0.009116004016589829,
+                    "tangentImpulse": -0.0013563222293797661,
+                    "id": {
+                      "key": 77,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 0,
+                      "typeB": 1
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.3:0>2.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3200000000000021,
+                      "y": -0.3200000000000004
+                    },
+                    "normalImpulse": 0.032136927711032305,
+                    "tangentImpulse": 0.0044609512236389315,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.32000000000000306,
+                      "y": -0.32000000000000034
+                    },
+                    "normalImpulse": 0.031268203124050375,
+                    "tangentImpulse": -0.00012779628065391776,
+                    "id": {
+                      "key": 17,
+                      "indexA": 1,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.3:0>3.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 0.9999999999999999
+                },
+                "localPoint": {
+                  "x": 0,
+                  "y": 0.26
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": -0.3199999999999993,
+                      "y": -0.3200000000000004
+                    },
+                    "normalImpulse": 0.024017621772204987,
+                    "tangentImpulse": 0.003920863612148386,
+                    "id": {
+                      "key": 29,
+                      "indexA": 1,
+                      "indexB": 3,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0.3200000000000021,
+                      "y": -0.32000000000000023
+                    },
+                    "normalImpulse": 0.019557544136371497,
+                    "tangentImpulse": -0.00001357065486564851,
+                    "id": {
+                      "key": 17,
+                      "indexA": 1,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  }
+                ],
+                "pointCount": 2,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:125>5.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.07114981249835502,
+                  "y": 0.9974656406019452
+                },
+                "localPoint": {
+                  "x": 32.5,
+                  "y": 4.964334705075446
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.5032213154542153,
+                    "tangentImpulse": 0.1031967482916573,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:130>4.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 35,
+                  "y": 5
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.5380876911495089,
+                    "tangentImpulse": 0.10218664158493275,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            true,
+            -3.29,
+            9.62
+          ],
+          [
+            true,
+            -3.29,
+            9.62
+          ]
+        ]
+      }
+    },
+    {
+      "name": "liquid",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcwmr-1xhmbdm25r",
+        "id": 28,
+        "car": "tanker",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 2731617546,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 96.12002868447472,
+          "fuelUsed": 3.8799713155252937,
+          "lastFuelX": 22.347182824124943,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 10,
+          "distance": 49.04154847237483,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 3,
+          "throttle": 0.07000000000000013,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 35,
+          "overheated": false,
+          "peakTemperature": 35.0897796624264,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.03759479979710551,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 900,
+          "fluidDelivered": 0,
+          "fluidSlosh": -0.14890107404637812,
+          "peakSlosh": 0.3223407086503048,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            105,
+            -3
+          ],
+          [
+            31,
+            658,
+            106,
+            37
+          ],
+          [
+            61,
+            760,
+            105,
+            -2
+          ],
+          [
+            91,
+            861,
+            105,
+            -4
+          ],
+          [
+            121,
+            965,
+            105,
+            -5
+          ],
+          [
+            151,
+            1070,
+            105,
+            -4
+          ],
+          [
+            181,
+            1173,
+            105,
+            -3
+          ],
+          [
+            211,
+            1275,
+            105,
+            -3
+          ],
+          [
+            241,
+            1376,
+            105,
+            -3
+          ],
+          [
+            271,
+            1476,
+            105,
+            -5
+          ],
+          [
+            301,
+            1574,
+            105,
+            -3
+          ],
+          [
+            331,
+            1674,
+            105,
+            -4
+          ],
+          [
+            361,
+            1773,
+            105,
+            -5
+          ],
+          [
+            391,
+            1872,
+            105,
+            -1
+          ],
+          [
+            421,
+            1971,
+            107,
+            11
+          ],
+          [
+            451,
+            2070,
+            110,
+            36
+          ],
+          [
+            481,
+            2171,
+            115,
+            70
+          ]
+        ],
+        "groups": {
+          "items": [
+            {
+              "got": true
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            }
+          ],
+          "boxes": [
+            {
+              "lost": false,
+              "delivered": false,
+              "out": 0,
+              "strap": false,
+              "strap2": false
+            },
+            {
+              "lost": false,
+              "delivered": false,
+              "out": 0,
+              "strap": false,
+              "strap2": false
+            },
+            {
+              "lost": false,
+              "delivered": false,
+              "out": 0,
+              "strap": false,
+              "strap2": false
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [
+            {
+              "elapsed": 0,
+              "requested": false,
+              "open": false
+            }
+          ],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 22.09435130538419,
+            "y": 2.1787198307289515,
+            "a": 0.09413337431018387,
+            "vx": 1.7425222634799105,
+            "vy": 0.13743007630261458,
+            "w": 0.05147190327690242,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 20,
+                "sensor": true
+              }
+            ]
+          },
+          {
+            "x": 21.277002806381688,
+            "y": 2.1015520814233897,
+            "a": 0.09413334597076324,
+            "vx": 1.7458326908598996,
+            "vy": 0.09529539124437122,
+            "w": 0.0514726478538448,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 20,
+                "sensor": true
+              }
+            ]
+          },
+          {
+            "x": 20.459656116680627,
+            "y": 2.0243848410039815,
+            "a": 0.0941332227525167,
+            "vx": 1.749143853888459,
+            "vy": 0.05316387695439119,
+            "w": 0.05147224585410163,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 20,
+                "sensor": true
+              }
+            ]
+          },
+          {
+            "x": 24.159232962851537,
+            "y": 0.9425104198401897,
+            "a": -26.74533270067949,
+            "vx": 1.997712510506661,
+            "vy": 0.2825399595693092,
+            "w": -3.267395067832323,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.9,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 21.792527778846438,
+            "y": 0.6895936069623092,
+            "a": -26.55034077260488,
+            "vx": 2.0132878009974315,
+            "vy": 0.13284026026471113,
+            "w": -3.2674924737440345,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.9,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 20.592540179621025,
+            "y": 0.6329433820604323,
+            "a": -26.54874738108884,
+            "vx": 2.0172389760793603,
+            "vy": 0.05968653171599838,
+            "w": -3.2685380722582815,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.9,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 70.4,
+            "y": 2.92,
+            "a": 3.814497938772994e-21,
+            "vx": 0,
+            "vy": 0,
+            "w": 0,
+            "active": true,
+            "awake": false,
+            "fixtures": [
+              {
+                "density": 1,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 22.347182824124943,
+            "y": 1.1981434938064117,
+            "a": 0.09413334371520343,
+            "vx": 1.960967355878871,
+            "vy": 0.18539215180590618,
+            "w": 0.05147264242262311,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.25,
+                "sensor": false
+              },
+              {
+                "density": 0.35,
+                "sensor": false
+              },
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 2.112,
+                "sensor": false
+              },
+              {
+                "density": 3.2,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "journey": {
+          "edition": 20,
+          "sectors": [
+            {
+              "entered": false,
+              "done": false,
+              "passed": false,
+              "maxSpeed": 0,
+              "initialCargo": 0,
+              "initialHits": 0
+            },
+            {
+              "entered": false,
+              "done": false,
+              "passed": false,
+              "maxSpeed": 0,
+              "initialCargo": 0,
+              "initialHits": 0
+            }
+          ]
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "prismatic-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": 0.20786233487826483,
+                  "y": -0.0006502001109040837,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "prismatic-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": 0.2406041985224004,
+                  "y": -0.000649110275576882,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "prismatic-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": 0.2732017234356004,
+                  "y": -0.0006476340431456433,
+                  "z": 0
+                },
+                "m_motorImpulse": 0
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.10378495880483721,
+                "m_motorImpulse": 0.12505833333333335,
+                "m_springImpulse": -0.6417981071608052
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.0442639712577343,
+                "m_motorImpulse": 0.12505833333333335,
+                "m_springImpulse": -0.40624701930467394
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.007103354123033016,
+                "m_motorImpulse": 0.12505833333333335,
+                "m_springImpulse": -0.7224881070262127
+              }
+            },
+            {
+              "type": "revolute-joint",
+              "impulses": {
+                "m_impulse": {
+                  "x": 8.987828301140681e-129,
+                  "y": 0.060800000000000014,
+                  "z": 0
+                },
+                "m_motorImpulse": -0.09727999999999967
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "8.0:101>5.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.02957528725114983,
+                  "y": 0.9995625555131664
+                },
+                "localPoint": {
+                  "x": 20.5,
+                  "y": 0.005029999178104709
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.9498969823783313,
+                    "tangentImpulse": -0.15023572810523,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "8.0:103>4.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.06583859239238848,
+                  "y": 0.9978302860465746
+                },
+                "localPoint": {
+                  "x": 21.5,
+                  "y": 0.0439385222322676
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.6338101786303686,
+                    "tangentImpulse": -0.14820247294413033,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "8.0:108>3.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -0.14003808979034923,
+                  "y": 0.990146117200825
+                },
+                "localPoint": {
+                  "x": 24,
+                  "y": 0.28878112928412925
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.8731388108140715,
+                    "tangentImpulse": -0.14856133475738462,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            true,
+            -2.7654000000000014,
+            15.007000000000003
+          ],
+          [
+            true,
+            -2.7654000000000014,
+            15.007000000000003
+          ],
+          [
+            true,
+            -2.7654000000000014,
+            15.007000000000003
+          ],
+          [
+            true,
+            0,
+            600
+          ]
+        ]
+      }
+    },
+    {
+      "name": "logs",
+      "checkpoint": {
+        "schema": 1,
+        "engine": "river17",
+        "attempt": "mv9wcwte-lnhoj8hoxm",
+        "id": 18,
+        "car": "timber",
+        "levels": [
+          0,
+          0,
+          0
+        ],
+        "setup": "standard",
+        "signature": 3563134199,
+        "state": {
+          "time": 8.333333333333327,
+          "fuel": 89.9781742581295,
+          "fuelUsed": 10.021825741870584,
+          "lastFuelX": 39.88590973936176,
+          "winchCharges": 2,
+          "winchTime": 0,
+          "coins": 20,
+          "distance": 101.65772921808528,
+          "flip": 0,
+          "stuckTime": 0,
+          "groundCount": 3,
+          "throttle": 0,
+          "hardLandings": 0,
+          "condition": 100,
+          "temperature": 35,
+          "overheated": false,
+          "peakTemperature": 35.49132365299309,
+          "serviceHold": false,
+          "airDrop": 0,
+          "airTicks": 0,
+          "wasAir": false,
+          "brakeHeld": 0,
+          "slip": 0.0019496899485195946,
+          "slipTime": 0,
+          "traceOverflow": false,
+          "traceAt": 8.516666666666644,
+          "lastImpact": 0,
+          "fluidLitres": 0,
+          "fluidDelivered": 0,
+          "fluidSlosh": 0,
+          "peakSlosh": 0,
+          "fluidLeak": 0,
+          "parkingHold": false,
+          "waterDepth": 0,
+          "intakeWet": 0,
+          "inWater": false,
+          "peakWaterDepth": 0
+        },
+        "drivetrain": {
+          "lowGear": false,
+          "shiftCooldown": 0,
+          "gearShifts": 0
+        },
+        "anchor": null,
+        "trace": [
+          [
+            1,
+            600,
+            100,
+            -9
+          ],
+          [
+            31,
+            666,
+            102,
+            28
+          ],
+          [
+            61,
+            884,
+            100,
+            -18
+          ],
+          [
+            91,
+            1121,
+            101,
+            -7
+          ],
+          [
+            121,
+            1359,
+            101,
+            -7
+          ],
+          [
+            151,
+            1596,
+            101,
+            -9
+          ],
+          [
+            181,
+            1833,
+            105,
+            24
+          ],
+          [
+            211,
+            2074,
+            121,
+            110
+          ],
+          [
+            241,
+            2315,
+            154,
+            171
+          ],
+          [
+            271,
+            2554,
+            199,
+            204
+          ],
+          [
+            301,
+            2793,
+            247,
+            204
+          ],
+          [
+            331,
+            3029,
+            292,
+            173
+          ],
+          [
+            361,
+            3264,
+            326,
+            117
+          ],
+          [
+            391,
+            3499,
+            345,
+            38
+          ],
+          [
+            421,
+            3693,
+            351,
+            -53
+          ],
+          [
+            451,
+            3807,
+            352,
+            -8
+          ],
+          [
+            481,
+            3918,
+            352,
+            -8
+          ]
+        ],
+        "groups": {
+          "items": [
+            {
+              "got": true
+            },
+            {
+              "got": true
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            },
+            {
+              "got": false
+            }
+          ],
+          "boxes": [
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            },
+            {
+              "lost": false,
+              "out": 0,
+              "strap": true,
+              "strap2": true
+            }
+          ],
+          "stops": [],
+          "services": [],
+          "checkpoints": [],
+          "gates": [],
+          "liftBridges": []
+        },
+        "bodies": [
+          {
+            "x": 38.94381882992575,
+            "y": 4.721260025580754,
+            "a": -0.0070804220955319455,
+            "vx": 2.208428842717461,
+            "vy": -0.000530837738409656,
+            "w": 0.00044781561183572136,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.2,
+                "sensor": false
+              },
+              {
+                "density": 1.2,
+                "sensor": false
+              },
+              {
+                "density": 1.2,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 38.9380745885701,
+            "y": 4.3616884389129815,
+            "a": -0.004358990390986418,
+            "vx": 2.2085154034693772,
+            "vy": -0.0005346407140034296,
+            "w": 0.0004493799239538257,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.2,
+                "sensor": false
+              },
+              {
+                "density": 1.2,
+                "sensor": false
+              },
+              {
+                "density": 1.2,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 38.93617570397385,
+            "y": 3.9988484915835096,
+            "a": 0.0019448008596080234,
+            "vx": 2.2086037005396406,
+            "vy": -0.0005547785500648984,
+            "w": 0.0004638377653145806,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.2,
+                "sensor": false
+              },
+              {
+                "density": 1.2,
+                "sensor": false
+              },
+              {
+                "density": 1.2,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 41.78237969395584,
+            "y": 3.0888128363033758,
+            "a": -58.92544815451922,
+            "vx": 2.208817133617451,
+            "vy": -4.116707509470233e-18,
+            "w": -3.812206880037138,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.9,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 39.22228915680712,
+            "y": 3.088895829354038,
+            "a": -58.35628499067978,
+            "vx": 2.208822299623178,
+            "vy": 8.071832317313438e-18,
+            "w": -3.8119427884308306,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.9,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 37.98222318219369,
+            "y": 3.086315964162784,
+            "a": -57.59604740553563,
+            "vx": 2.208825411600186,
+            "vy": -8.80089896946002e-18,
+            "w": -3.820453025051739,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 1.9,
+                "sensor": false
+              }
+            ]
+          },
+          {
+            "x": 39.88590973936176,
+            "y": 3.5149465322372615,
+            "a": -0.008442598025329005,
+            "vx": 2.2086314735878565,
+            "vy": 0.00011047494951477056,
+            "w": 0.00023884002663832675,
+            "active": true,
+            "awake": true,
+            "fixtures": [
+              {
+                "density": 0.6,
+                "sensor": false
+              },
+              {
+                "density": 0.7,
+                "sensor": false
+              },
+              {
+                "density": 2.079,
+                "sensor": false
+              },
+              {
+                "density": 3.15,
+                "sensor": false
+              }
+            ]
+          }
+        ],
+        "journey": {
+          "edition": 20,
+          "sectors": [
+            {
+              "entered": false,
+              "done": false,
+              "passed": false,
+              "maxSpeed": 0,
+              "initialCargo": 0,
+              "initialHits": 0
+            },
+            {
+              "entered": false,
+              "done": false,
+              "passed": false,
+              "maxSpeed": 0,
+              "initialCargo": 0,
+              "initialHits": 0
+            }
+          ]
+        },
+        "solver": {
+          "joints": [
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.05480286710635616
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.05222105086506217
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.04919365767961989
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.05310479080288306
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.039093900918577694
+              }
+            },
+            {
+              "type": "distance-joint",
+              "impulses": {
+                "m_impulse": 0.057086898382371444
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.004015580555644264,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.5872693908623079
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.002925185691787211,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.4578144767058047
+              }
+            },
+            {
+              "type": "wheel-joint",
+              "impulses": {
+                "m_impulse": -0.001505098271536586,
+                "m_motorImpulse": 0,
+                "m_springImpulse": -0.28961910066174196
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "key": "6.0:0>0.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -1,
+                  "y": 0
+                },
+                "localPoint": {
+                  "x": 0.425,
+                  "y": 0.96
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 1.22,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.011227699392968004,
+                    "tangentImpulse": -0.0017703881675029095,
+                    "id": {
+                      "key": 0,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 0,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.0:0>1.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -1,
+                  "y": 0
+                },
+                "localPoint": {
+                  "x": 0.425,
+                  "y": 0.96
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 1.22,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.015354876883177543,
+                    "tangentImpulse": 0.003471754084549321,
+                    "id": {
+                      "key": 0,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 0,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "6.0:0>2.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": -1,
+                  "y": 0
+                },
+                "localPoint": {
+                  "x": 0.425,
+                  "y": 0.96
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 1.22,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.030115184112016902,
+                    "tangentImpulse": 0.013185454032893939,
+                    "id": {
+                      "key": 0,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 0,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:135>5.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 37.5,
+                  "y": 2.5
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.49041952002988776,
+                    "tangentImpulse": 0.0003148780453736974,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:138>4.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 39,
+                  "y": 2.5
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.6586208909244273,
+                    "tangentImpulse": 0.0003140408658277743,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            },
+            {
+              "key": "7.0:143>3.0:0",
+              "manifold": {
+                "localNormal": {
+                  "x": 0,
+                  "y": 1
+                },
+                "localPoint": {
+                  "x": 41.5,
+                  "y": 2.5
+                },
+                "points": [
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0.7880803971503088,
+                    "tangentImpulse": 0.00031501361282558336,
+                    "id": {
+                      "key": 16,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": 1,
+                      "typeB": 0
+                    }
+                  },
+                  {
+                    "localPoint": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "normalImpulse": 0,
+                    "tangentImpulse": 0,
+                    "id": {
+                      "key": -1,
+                      "indexA": 0,
+                      "indexB": 0,
+                      "typeA": -1,
+                      "typeB": -1
+                    }
+                  }
+                ],
+                "pointCount": 1,
+                "type": 1
+              }
+            }
+          ]
+        },
+        "motors": [
+          [
+            false,
+            -2.01,
+            18.45
+          ],
+          [
+            false,
+            -2.01,
+            18.45
+          ],
+          [
+            false,
+            -2.01,
+            18.45
+          ]
+        ]
+      }
+    }
+  ]
+}

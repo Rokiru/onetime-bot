@@ -1,0 +1,14 @@
+'use strict';
+(function(){
+ const oldContract=CP.contractRoute;CP.contractRoute=function(id,edition){return edition===undefined?CP.courses26.preview(id):oldContract(id,edition);};
+ const oldArt=routeArt;routeArt=function(id,detail=false){return id===0?oldArt(id,detail):JourneyMaps20.map(id,detail);};
+ const oldDescription=orderDescription;orderDescription=function(r,id){return oldDescription(r,id)+(r.hazards?.length?' Рельеф: '+r.hazards.map(h=>h.name.toLowerCase()).join(' → ')+'.':'');};
+ const oldCue=updateJourneyCue;updateJourneyCue=function(next){oldCue(next);if(mode!=='drive'||!sim?.course26||sim.tow&&(!sim.tow.attached||sim.tow.strain>.7)||sim.pump?.integrity<70||sim.machine?.integrity<60||lesson.active||next.missed||next.near&&['stop','gate','service','bridge','water'].includes(next.type))return;const x=sim.car.getPosition().x,h=sim.route.hazards.find(h=>x>=h.from-13&&x<=h.to);if(!h)return;visibility('journey-cue',true);journeyCue.dataset.failed='false';const sector=sim.sectors.find(s=>s.from===h.peak),reminder=sector&&!sector.done&&x>=sector.from?(sector.maxSpeed>sector.limit?'Премия упущена. ':'Для премии — до 36 км/ч. '):'';const stalled=gas&&Math.abs(sim.car.getLinearVelocity().x)<.2&&sim.groundCount>0;const ahead=x<h.from,metres=Math.max(0,Math.round((h.from-x)*3));journeyCue.innerHTML='<b>'+h.name+(ahead?' · '+metres+' М':'')+'</b><span>'+(stalled?'Колёса стоят: включи 4L или отпусти газ и используй лебёдку.':reminder+h.tip)+'</span>';};
+ const oldGoals=previewStarGoals;previewStarGoals=function(r){const goals=oldGoals(r);if(r.hazards&&r.sectors.length)goals[2]={...goals[2],title:'Чистый маршрут',detail:goals[2].detail+' · все спуски с премией'};return goals;};
+ const oldSettle=settle;settle=function(){const fresh=sim?.course26&&!sim.paid&&(!sim.attemptId||!save.settledRuns.includes(sim.attemptId));oldSettle();if(fresh&&sim.state==='win'){const stats=save.stats[sim.id],old=stats.course26;stats.course26={wins:(old?.wins||0)+1,stars:Math.max(old?.stars||0,sim.rating()),time:Math.min(old?.time||Infinity,sim.time)};persist();}};
+ const oldResult=showResult;showResult=function(){oldResult();if(!sim?.course26||sim.state==='win')return;const x=sim.car.getPosition().x,h=sim.route.hazards.find(h=>x>=h.from-5&&x<=h.to+12);if(h&&['damage','flipped','cargo','fragile','machine','pump','towDamage'].includes(sim.reason))$('result-text').textContent+=' '+h.tip;};
+ // Reuse the existing sign/terrain renderer. These edge marks are a few short
+ // paths per visible feature, with no extra canvas, blur or full-screen filter.
+ const oldObjects=roadObjects;roadObjects=function(){oldObjects();if(!sim?.course26)return;for(const h of sim.route.hazards){const p=sx(h.peak);if(p<-scale*3||p>W+scale*3)continue;for(let n=0;n<3;n++){const x=h.peak-1.8+n*.6,y=CP.height(x,sim.roadId);line(sx(x),sy(y)+2,sx(x+.30),sy(CP.height(x+.30,sim.roadId))+2,'#e5c89b',Math.max(2,scale*.08));}}};
+ wallet();
+})();
