@@ -25,6 +25,7 @@
   if(s.edition===23)data.recoveryRun={edition:23,tow:{...s.tow}};
   if(s.course26)data.course26={edition:26};
   if(s.driving27)data.driving27=JSON.parse(JSON.stringify(s.driving27));
+  if(s.pace30)data.pace30={...s.pace30};
   if(s.logistics29)data.logistics29=JSON.parse(JSON.stringify(s.logistics29));
   if(s.ridge28)data.ridge28={...s.ridge28};
   if(s.edition===25)data.ridge25={edition:25,...s.ridge};
@@ -44,7 +45,7 @@
    if(d.recoveryRun){const r=d.recoveryRun,t=r.tow;if(d.journey||d.expedition||d.waterRun||d.id!==4||r.edition!==23||!t||typeof t.attached!=='boolean'||typeof t.support!=='boolean'||t.delivered!==false||!finite(t.condition,100)||t.condition<0||!Number.isInteger(t.breaks)||t.breaks<0||t.breaks>10000||!finite(t.strain,100000)||t.strain<0||!finite(t.overload,2)||t.overload<0||!finite(t.cooldown,1)||t.cooldown<0||!finite(t.previousVx,500)||!finite(t.previousVy,500))return null;}
    if(d.ridge25&&!CP.ridge25.valid(d))return null;
    if(d.ridge28&&!CP.ridge28.valid(d))return null;
-   if(d.logistics29&&!CP.logistics29.valid(d))return null;
+   if(d.logistics29&&!CP.logistics29.valid(d))return null;if(d.pace30&&!CP.pace30.valid(d))return null;
    if(d.course26&&!CP.courses26.valid(d))return null;
    if(d.driving27&&!CP.driving27.valid(d))return null;
    if(d.dispatchTerms&&(!d.journey||d.journey.edition!==20||!(typeof module==='object'?require('./dispatch-terms24.js'):root.DispatchTerms24).valid(d.dispatchTerms,d.id,20)))return null;
@@ -66,7 +67,7 @@
  function restore(data,CP){
   const d=validate(data,CP);if(!d)return null;
   try{
-   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load,...(d.ridge28?{trail:28}:{})}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{}),...(d.driving27?{skill:27}:{}),...(d.logistics29?{logistics:29}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
+   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load,...(d.ridge28?{trail:28}:{})}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{}),...(d.driving27?{skill:27}:{}),...(d.logistics29?{logistics:29}:{}),...(d.pace30?{pace:30}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
    for(const name of Object.keys(groups)){if(s[name].length!==d.groups[name].length)return null;for(let i=0;i<s[name].length;i++){const o=s[name][i],saved=d.groups[name][i];for(const k of groups[name]){if(saved[k]!==undefined){if(o[k]!==undefined&&typeof o[k]!==typeof saved[k])return null;o[k]=saved[k];}}if(name==='boxes')for(const k of ['strap','strap2']){if(!saved[k]&&o[k]){s.world.destroyJoint(o[k]);o[k]=null;}}}}
    if(d.driving27)s.driving27=JSON.parse(JSON.stringify(d.driving27));
    if(q){const {edition,...state}=q;Object.assign(s.ridge,state);}

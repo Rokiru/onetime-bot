@@ -261,3 +261,5 @@ body[data-driving29=true] #navigation-panel{top:66px!important;right:auto!import
 .contract-row i svg{width:15px;height:15px}.contract-row[aria-selected=true] i svg{transform:rotate(-35deg)}
 /* Menu scrolling must be native on Android; only driving surfaces capture gestures. */
 html,body{touch-action:manipulation}#world,#hud,.pedal{touch-action:none}#dispatch-hub,#hub-briefing,#hub-contracts,#career29,#garage{touch-action:pan-y}
+/* The filled terrain has no outline: its closing edge is not a road segment. */
+.map-fill{stroke:none}

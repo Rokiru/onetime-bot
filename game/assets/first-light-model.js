@@ -15,7 +15,7 @@
   const methods={
    choosePath(path){
     if(this.edition!==21||this.state!=='drive'||!this.forkWaiting||this.path!=='pending'||!paths[path])return false;
-    this.path=path;this.roadId='light:'+path;this.route=route(path,this.workshopPowered);if(this.course26)this.course26Model.apply(this);if(this.logistics29)this.logistics29Model.applyRoute(this);
+    this.path=path;this.roadId='light:'+path;this.route=route(path,this.workshopPowered);if(this.course26)this.course26Model.apply(this);if(this.logistics29)this.logistics29Model.applyRoute(this);if(this.pace30)this.pace30Model.apply(this);
     this.groundBody.destroyFixture(this.groundBody.getFixtureList());const points=groundVertices(this.roadId).map(p=>V(p.x,p.y));this.groundVertices=points;this.groundBody.createFixture(P.Chain(points),{friction:1});
     this.createRoadBridge(this.groundBody);this.services=this.route.services.map(s=>({...s,done:false,elapsed:0}));
     const picked=new Set(this.items.filter(i=>i.got).map(i=>i.type+':'+i.x));this.items=[];for(let x=22;x<this.route.length-9;x+=12)this.items.push({x,y:height(x,this.roadId)+1.05,type:'coin',got:picked.has('coin:'+x)});
