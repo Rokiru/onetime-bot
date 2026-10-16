@@ -1,0 +1,935 @@
+{
+  "controlled": [
+    {
+      "id": 0,
+      "time": 99.95,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": []
+    },
+    {
+      "id": 1,
+      "time": 122.17,
+      "condition": 100,
+      "stars": 1,
+      "landings": 1,
+      "landingBonus": 15,
+      "sectors": [
+        {
+          "jolt": 1.6418962493770701,
+          "sway": 0.6867825238325028,
+          "reason": ""
+        },
+        {
+          "jolt": 2.035852161045793,
+          "sway": 0.46328087798850215,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "time": 153.43,
+      "condition": 100,
+      "stars": 3,
+      "landings": 1,
+      "landingBonus": 20,
+      "sectors": [
+        {
+          "jolt": 1.5804143589502149,
+          "sway": 0.4316943896070036,
+          "reason": ""
+        },
+        {
+          "jolt": 1.7438141565093728,
+          "sway": 0.4569460652905424,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "time": 107.82,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": []
+    },
+    {
+      "id": 4,
+      "time": 109.6,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": []
+    },
+    {
+      "id": 5,
+      "time": 151.98,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 2.0275903687276666,
+          "sway": 0.4402382219646976,
+          "reason": ""
+        },
+        {
+          "jolt": 2.936753989310545,
+          "sway": 0.695488688419164,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "time": 122.77,
+      "condition": 100,
+      "stars": 2,
+      "landings": 1,
+      "landingBonus": 15,
+      "sectors": [
+        {
+          "jolt": 1.3750629609049076,
+          "sway": 0.4496847177579981,
+          "reason": ""
+        },
+        {
+          "jolt": 1.4786229832657312,
+          "sway": 0.47867935524425176,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "time": 160.5,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.5547936959920303,
+          "sway": 0.46244391465543433,
+          "reason": ""
+        },
+        {
+          "jolt": 0.6567679508265427,
+          "sway": 0.501633184041226,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "time": 171.4,
+      "condition": 100,
+      "stars": 2,
+      "landings": 1,
+      "landingBonus": 15,
+      "sectors": [
+        {
+          "jolt": 1.6635868522792903,
+          "sway": 0.4708369670801369,
+          "reason": ""
+        },
+        {
+          "jolt": 1.4687236444503022,
+          "sway": 0.45116228068727054,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "time": 103.03,
+      "condition": 100,
+      "stars": 3,
+      "landings": 1,
+      "landingBonus": 10,
+      "sectors": [
+        {
+          "jolt": 1.6510566109204334,
+          "sway": 0.4889183469505623,
+          "reason": ""
+        },
+        {
+          "jolt": 1.3923426740923315,
+          "sway": 0.2601496680590951,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "time": 112.38,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.1969993796733913,
+          "sway": 0.4118571724335292,
+          "reason": ""
+        },
+        {
+          "jolt": 1.8313946613901146,
+          "sway": 0.4474801123087539,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "time": 105.33,
+      "condition": 100,
+      "stars": 3,
+      "landings": 1,
+      "landingBonus": 15,
+      "sectors": [
+        {
+          "jolt": 0.8719465798471013,
+          "sway": 0.4422385477068257,
+          "reason": ""
+        },
+        {
+          "jolt": 1.6067556321773906,
+          "sway": 0.5866914887268212,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "time": 128.92,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.3616527440186847,
+          "sway": 0.4797240495106645,
+          "reason": ""
+        },
+        {
+          "jolt": 0.5384982293485197,
+          "sway": 0.25093396739363555,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "time": 138.75,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.066749174816021,
+          "sway": 0.46516732760794643,
+          "reason": ""
+        },
+        {
+          "jolt": 1.2281145382260186,
+          "sway": 0.3999134190158526,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "time": 139.72,
+      "condition": 100,
+      "stars": 2,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.5362503117164041,
+          "sway": 0.51534987341985,
+          "reason": ""
+        },
+        {
+          "jolt": 1.6962922032344139,
+          "sway": 0.496551884021121,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "time": 127.8,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.7661111900510353,
+          "sway": 0.4189343835555398,
+          "reason": ""
+        },
+        {
+          "jolt": 1.5745267339389208,
+          "sway": 0.42693325510255653,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "time": 146.3,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.6042141055175434,
+          "sway": 0.4496846852983152,
+          "reason": ""
+        },
+        {
+          "jolt": 0.49656510620618255,
+          "sway": 0.2512971491064339,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "time": 144.27,
+      "condition": 100,
+      "stars": 3,
+      "landings": 1,
+      "landingBonus": 15,
+      "sectors": [
+        {
+          "jolt": 1.0404424404128956,
+          "sway": 0.4602264256018557,
+          "reason": ""
+        },
+        {
+          "jolt": 1.1410306756572708,
+          "sway": 0.4984601450670007,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "time": 110.07,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.6950797442899812,
+          "sway": 0.12107515373435829,
+          "reason": ""
+        },
+        {
+          "jolt": 0.4304086959032038,
+          "sway": 0.12715341520272327,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "time": 145.48,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.44647944379283305,
+          "sway": 0.12846959594243004,
+          "reason": ""
+        },
+        {
+          "jolt": 0.5190482097273004,
+          "sway": 0.12979901269497204,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "time": 138.33,
+      "condition": 100,
+      "stars": 2,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.7430401477734294,
+          "sway": 0.12941001660160126,
+          "reason": ""
+        },
+        {
+          "jolt": 0.5864103564638323,
+          "sway": 0.12299251085166199,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "time": 97.5,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.3017466076292732,
+          "sway": 0.48773681233140814,
+          "reason": ""
+        },
+        {
+          "jolt": 1.2342183266491946,
+          "sway": 0.4459915978165735,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "time": 137.25,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 2.062958689619132,
+          "sway": 0.47286332514175455,
+          "reason": ""
+        },
+        {
+          "jolt": 1.7034126851481832,
+          "sway": 0.4229693923627317,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "time": 178.38,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.3265380737103314,
+          "sway": 0.5054181077623118,
+          "reason": ""
+        },
+        {
+          "jolt": 0.9649561792014725,
+          "sway": 0.47087378122951606,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "time": 130.4,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.4613802020538684,
+          "sway": 0.409813593454022,
+          "reason": ""
+        },
+        {
+          "jolt": 2.0043270929812143,
+          "sway": 0.43282098104547967,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "time": 119.13,
+      "condition": 96,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.8399730266566432,
+          "sway": 0.464472264343945,
+          "reason": ""
+        },
+        {
+          "jolt": 0.9092442517052651,
+          "sway": 0.4373554790156611,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "time": 135.62,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.8749134703757706,
+          "sway": 0.4292205644262829,
+          "reason": ""
+        },
+        {
+          "jolt": 1.500894996625487,
+          "sway": 0.6233805847804813,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "time": 175.22,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.674997517498063,
+          "sway": 0.13248929434077567,
+          "reason": ""
+        },
+        {
+          "jolt": 0.4415518546507998,
+          "sway": 0.12676313533047848,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "time": 132.5,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0,
+          "sway": 1.0111880950588732,
+          "reason": ""
+        },
+        {
+          "jolt": 0,
+          "sway": 1.0135664953649524,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "time": 151.92,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0,
+          "sway": 1.0130229228501106,
+          "reason": ""
+        },
+        {
+          "jolt": 0,
+          "sway": 1.0142712717054743,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "time": 144.02,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0,
+          "sway": 1.0128098514841568,
+          "reason": ""
+        },
+        {
+          "jolt": 0,
+          "sway": 1.0094417126172617,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "time": 166.25,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0,
+          "sway": 1.010331054419754,
+          "reason": ""
+        },
+        {
+          "jolt": 0,
+          "sway": 1.0132871188832233,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "time": 131.93,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.2884080427617894,
+          "sway": 0.450276132433412,
+          "reason": ""
+        },
+        {
+          "jolt": 1.1992228413743016,
+          "sway": 0.5048378210246217,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "time": 117.2,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.7395917261115348,
+          "sway": 0.4552785567187775,
+          "reason": ""
+        },
+        {
+          "jolt": 1.6092644879426286,
+          "sway": 0.4295020180745842,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "time": 123.62,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.0639702038417378,
+          "sway": 0.4860929738046432,
+          "reason": ""
+        },
+        {
+          "jolt": 0.6196058582483307,
+          "sway": 0.25949112996741824,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "time": 120.67,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 2.391879885031642,
+          "sway": 0.5013330798407597,
+          "reason": ""
+        },
+        {
+          "jolt": 1.6827958413595818,
+          "sway": 0.6033030090998242,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "time": 159.88,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.0498844544214103,
+          "sway": 0.4581340987509968,
+          "reason": ""
+        },
+        {
+          "jolt": 1.4380747769355957,
+          "sway": 0.44124072776272255,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "time": 122.73,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.6147840501360566,
+          "sway": 0.4840558238571333,
+          "reason": ""
+        },
+        {
+          "jolt": 1.3270253908922718,
+          "sway": 0.4711214692961276,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "time": 142.82,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.6378188993059746,
+          "sway": 0.12176264917470613,
+          "reason": ""
+        },
+        {
+          "jolt": 0.6256840489262723,
+          "sway": 0.12376324892357467,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "time": 178.52,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0,
+          "sway": 1.0132292234317144,
+          "reason": ""
+        },
+        {
+          "jolt": 0,
+          "sway": 1.0142368233048829,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "time": 124.32,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.5040736833898216,
+          "sway": 0.4879588210941456,
+          "reason": ""
+        },
+        {
+          "jolt": 1.8026672506070978,
+          "sway": 0.4558213927316578,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "time": 140.45,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.4752919707834644,
+          "sway": 0.4754527108665847,
+          "reason": ""
+        },
+        {
+          "jolt": 0.4391330604359835,
+          "sway": 0.44452404372238,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "time": 123.28,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.8624013467889946,
+          "sway": 0.4492896527404285,
+          "reason": ""
+        },
+        {
+          "jolt": 0.5191499430576993,
+          "sway": 0.25319650067586447,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "time": 170.93,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0,
+          "sway": 1.0123164257118489,
+          "reason": ""
+        },
+        {
+          "jolt": 0,
+          "sway": 1.0129924679947997,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "time": 173.97,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.5360012442800695,
+          "sway": 0.12616288044665236,
+          "reason": ""
+        },
+        {
+          "jolt": 0.910030806122285,
+          "sway": 0.12430679478289967,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "time": 132.38,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 1.3927998604647363,
+          "sway": 0.4456250950813273,
+          "reason": ""
+        },
+        {
+          "jolt": 0.5075034037108314,
+          "sway": 0.43922635439453717,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "time": 116.07,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.7976266117453947,
+          "sway": 0.45845284552202586,
+          "reason": ""
+        },
+        {
+          "jolt": 0.5914678656461332,
+          "sway": 0.2585850016529832,
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "time": 134.5,
+      "condition": 100,
+      "stars": 3,
+      "landings": 0,
+      "landingBonus": 0,
+      "sectors": [
+        {
+          "jolt": 0.5206652446251884,
+          "sway": 0.41003696170018866,
+          "reason": ""
+        },
+        {
+          "jolt": 0.6517433126768952,
+          "sway": 0.4467092543536979,
+          "reason": ""
+        }
+      ]
+    }
+  ],
+  "airRestore": true,
+  "roughRestore": true,
+  "fastClean": true,
+  "archived": 7
+}

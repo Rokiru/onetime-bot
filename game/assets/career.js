@@ -14,7 +14,7 @@ function careerStatus(){return profile==='career'?'КАРЬЕРА · '+completed
 function openProfiles(){visibility('profiles',true);$('profile-current').textContent='Сейчас: '+careerStatus();}
 function switchProfile(next){
  if(!['test','career'].includes(next)||next===profile){visibility('profiles',false);return;}
- if(sim)leaveRun();persist();const settings={};for(const k of ['sound','music','volume','quality','effects','motion','bigPedals','dialogues','radio','ghostEnabled'])settings[k]=save[k];
+ if(sim)leaveRun();persist();const settings={};for(const k of ['sound','haptics','music','volume','quality','effects','motion','bigPedals','dialogues','radio','ghostEnabled'])settings[k]=save[k];
  const nextSave=loadSave(next==='career'?'cargo-career-v1':'cargo-save-v1');profile=next;save=nextSave;Object.assign(save,settings);
  selected=save.selected;if(!routeUnlocked(selected)){selected=nextCareerJob();save.selected=selected;}region=CP.routes[selected].region;
  resetCoach();visibility('profiles',false);persist();applySettings();home();

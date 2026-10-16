@@ -24,6 +24,7 @@
   if(s.edition===22)data.waterRun={edition:22,support:s.workshopSupport,pump:{...s.pump}};
   if(s.edition===23)data.recoveryRun={edition:23,tow:{...s.tow}};
   if(s.course26)data.course26={edition:26};
+  if(s.driving27)data.driving27=JSON.parse(JSON.stringify(s.driving27));
   if(s.edition===25)data.ridge25={edition:25,...s.ridge};
   if(s.dispatchTerms)data.dispatchTerms={...s.dispatchTerms};
   data.solver=solverCapture(s);data.motors=[...s.joints,...s.gates.map(g=>g.joint),...s.liftBridges.map(b=>b.joint)].map(j=>[j.isMotorEnabled(),j.getMotorSpeed(),j.getMaxMotorTorque()]);
@@ -41,6 +42,7 @@
    if(d.recoveryRun){const r=d.recoveryRun,t=r.tow;if(d.journey||d.expedition||d.waterRun||d.id!==4||r.edition!==23||!t||typeof t.attached!=='boolean'||typeof t.support!=='boolean'||t.delivered!==false||!finite(t.condition,100)||t.condition<0||!Number.isInteger(t.breaks)||t.breaks<0||t.breaks>10000||!finite(t.strain,100000)||t.strain<0||!finite(t.overload,2)||t.overload<0||!finite(t.cooldown,1)||t.cooldown<0||!finite(t.previousVx,500)||!finite(t.previousVy,500))return null;}
    if(d.ridge25&&!CP.ridge25.valid(d))return null;
    if(d.course26&&!CP.courses26.valid(d))return null;
+   if(d.driving27&&!CP.driving27.valid(d))return null;
    if(d.dispatchTerms&&(!d.journey||d.journey.edition!==20||!(typeof module==='object'?require('./dispatch-terms24.js'):root.DispatchTerms24).valid(d.dispatchTerms,d.id,20)))return null;
    if(d.drivetrain&&(typeof d.drivetrain.lowGear!=='boolean'||!finite(d.drivetrain.shiftCooldown)||d.drivetrain.shiftCooldown<0||d.drivetrain.shiftCooldown>1||!Number.isInteger(d.drivetrain.gearShifts)||d.drivetrain.gearShifts<0))return null;
    if(d.state.time<0||d.state.time>7200||d.state.fuel<0||d.state.fuel>100||d.state.condition<0||d.state.condition>100||d.state.winchCharges<0||d.state.winchCharges>3||d.state.coins<0||d.state.coins>10000)return null;
@@ -60,8 +62,9 @@
  function restore(data,CP){
   const d=validate(data,CP);if(!d)return null;
   try{
-   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
+   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{}),...(d.driving27?{skill:27}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
    for(const name of Object.keys(groups)){if(s[name].length!==d.groups[name].length)return null;for(let i=0;i<s[name].length;i++){const o=s[name][i],saved=d.groups[name][i];for(const k of groups[name]){if(saved[k]!==undefined){if(o[k]!==undefined&&typeof o[k]!==typeof saved[k])return null;o[k]=saved[k];}}if(name==='boxes')for(const k of ['strap','strap2']){if(!saved[k]&&o[k]){s.world.destroyJoint(o[k]);o[k]=null;}}}}
+   if(d.driving27)s.driving27=JSON.parse(JSON.stringify(d.driving27));
    if(q){const {edition,...state}=q;Object.assign(s.ridge,state);}
    if(d.dispatchTerms)s.dispatchTerms={...d.dispatchTerms};
    for(const k of fields){if(typeof s[k]!==typeof d.state[k])return null;s[k]=d.state[k];}
