@@ -185,7 +185,7 @@ const ExpeditionArt=(()=>{
   const y=H*.77;ctx.fillStyle='#293c28';ctx.fillRect(0,y,W,H-y);
   for(let x=-W;x<W;x+=60)line(W*.25,y,x,H,'#aab8901a',1);
   ctx.fillStyle='#72836a';ctx.fillRect(W*.11,H*.19,W*.27,3);for(let i=0;i<5;i++){line(W*.14+i*W*.042,H*.20,W*.14+i*W*.042,H*.25,'#c3c8a585',1.5);circle(W*.14+i*W*.042,H*.263,2,'#abb99a');}
-  const k=Math.min(W*.068,H*.142),x=W*.235;
+  const k=Math.min(W*.064,H*.105),x=W*.235;
   ctx.fillStyle='#182b1c';ctx.fillRect(x-k*2.6,y+9,k*5.2,7);for(const o of [-1.8,1.8])line(x+o*k,y+10,x+o*k,y+25,'#405c36',5);
   ctx.save();ctx.fillStyle='#101d13';ctx.globalAlpha=.4;ctx.beginPath();ctx.ellipse(x,y,k*2.1,k*.16,0,0,Math.PI*2);ctx.fill();ctx.restore();
   previewRig(x,y-k*(.5+currentVehicle().radius),k,false);

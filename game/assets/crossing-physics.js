@@ -21,7 +21,7 @@
   updateFords(dt){
    const p=this.car.getPosition(),v=this.car.getLinearVelocity(),m=this.vehicle;let ford=(this.route.fords||[]).find(f=>p.x>=f.from&&p.x<=f.to);if(!ford){const br=this.liftBridges.find(b=>p.x>=b.from&&p.x<=b.to);if(br)ford=br.water;}const bottom=Math.min(...this.wheels.map(w=>w.getPosition().y-m.radius));this.waterDepth=ford?Math.max(0,this.waterLevel(ford)-bottom):0;this.peakWaterDepth=Math.max(this.peakWaterDepth,this.waterDepth);
    if(this.waterDepth>.1){if(!this.inWater)this.events.push({type:'waterEnter'});this.inWater=true;const fraction=Math.min(1,this.waterDepth/1.4),mass=this.car.getMass();this.car.applyForce(V(-v.x*Math.abs(v.x)*mass*.10*fraction,mass*12*.16*fraction-v.y*mass*.08*fraction),this.car.getWorldCenter(),true);
-    const intake=this.car.getWorldPoint(V(m.width*(m.id==='mule'?.80:.55),m.id==='mule'?1.45:['timber','tanker'].includes(m.id)?.50:.25));if(intake.y<this.waterLevel(ford))this.intakeWet+=dt;else this.intakeWet=Math.max(0,this.intakeWet-dt*2);if(this.intakeWet>2.5)this.end('drowned');
+    const intake=this.car.getWorldPoint(V(m.width*((m.family||m.id)==='mule'?.80:.55),(m.family||m.id)==='mule'?1.45:['timber','tanker'].includes(m.family||m.id)?.50:.25));if(intake.y<this.waterLevel(ford))this.intakeWet+=dt;else this.intakeWet=Math.max(0,this.intakeWet-dt*2);if(this.intakeWet>2.5)this.end('drowned');
    }else{this.inWater=false;this.intakeWet=Math.max(0,this.intakeWet-dt*2);}
   }
  };}

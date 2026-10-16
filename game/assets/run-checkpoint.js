@@ -4,7 +4,7 @@
  const groups={items:['got'],boxes:['lost','delivered','out','stopIndex'],stops:['done','elapsed','boxIndex','warned'],services:['done','elapsed'],checkpoints:['done'],gates:['elapsed','requested','open'],liftBridges:['elapsed','wait','requested','done']};
  const finite=(v,limit=10000000)=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=limit;
  const copy=(o,keys)=>Object.fromEntries(keys.filter(k=>o[k]!==undefined).map(k=>[k,o[k]]));
- function fingerprint(CP,id,car,levels,setup){let h=2166136261;const text=JSON.stringify([CP.routes[id],CP.profiles[id],CP.preparedVehicle(car,setup),levels]);for(let n=0;n<text.length;n++)h=Math.imul(h^text.charCodeAt(n),16777619);return h>>>0;}
+ function fingerprint(CP,id,car,levels,setup,vehicle31){let h=2166136261;const text=JSON.stringify([CP.routes[id],CP.profiles[id],CP.preparedVehicle(car,setup),levels,...(vehicle31?[vehicle31]:[])]);for(let n=0;n<text.length;n++)h=Math.imul(h^text.charCodeAt(n),16777619);return h>>>0;}
  function bodies(s){const result=[];for(let b=s.world.getBodyList();b;b=b.getNext())if(!b.isStatic())result.push(b);return result;}
  function fixtures(b){const result=[];for(let f=b.getFixtureList();f;f=f.getNext())result.push(f);return result;}
  // Solver caches are version-pinned to the bundled Planck build. They preserve
@@ -17,7 +17,7 @@
  function capture(s,CP){
   if(!s||s.state!=='drive'||s.paid||s.started===false)return null;
   if(!s.attemptId)s.attemptId=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12);
-  const data={schema:1,engine:'river17',attempt:s.attemptId,id:s.id,car:s.vehicle.id,levels:s.levels.slice(),setup:s.vehicle.setup,signature:fingerprint(CP,s.id,s.vehicle.id,s.levels,s.vehicle.setup),state:copy(s,fields),drivetrain:{lowGear:!!s.lowGear,shiftCooldown:s.shiftCooldown||0,gearShifts:s.gearShifts||0},anchor:s.winchAnchor?{x:s.winchAnchor.x,y:s.winchAnchor.y}:null,trace:s.trace.map(p=>p.slice()),groups:{},bodies:[]};
+  const data={schema:1,engine:'river17',attempt:s.attemptId,id:s.id,car:s.vehicle.id,levels:s.levels.slice(),setup:s.vehicle.setup,signature:fingerprint(CP,s.id,s.vehicle.id,s.levels,s.vehicle.setup,s.vehicle31),state:copy(s,fields),drivetrain:{lowGear:!!s.lowGear,shiftCooldown:s.shiftCooldown||0,gearShifts:s.gearShifts||0},anchor:s.winchAnchor?{x:s.winchAnchor.x,y:s.winchAnchor.y}:null,trace:s.trace.map(p=>p.slice()),groups:{},bodies:[]};
   for(const [name,keys] of Object.entries(groups))data.groups[name]=s[name].map(x=>({...copy(x,keys),...(name==='boxes'?{strap:!!x.strap,strap2:!!x.strap2}:{})}));
   if(s.edition===20)data.journey={edition:20,sectors:s.sectors.map(o=>copy(o,['entered','done','passed','maxSpeed','initialCargo','initialHits']))};
   if(s.edition===21)data.expedition={edition:21,path:s.path,waiting:s.forkWaiting,powered:s.workshopPowered,machine:{...s.machine}};
@@ -25,6 +25,7 @@
   if(s.edition===23)data.recoveryRun={edition:23,tow:{...s.tow}};
   if(s.course26)data.course26={edition:26};
   if(s.driving27)data.driving27=JSON.parse(JSON.stringify(s.driving27));
+  if(s.vehicle31)data.vehicle31={...s.vehicle31};
   if(s.pace30)data.pace30={...s.pace30};
   if(s.logistics29)data.logistics29=JSON.parse(JSON.stringify(s.logistics29));
   if(s.ridge28)data.ridge28={...s.ridge28};
@@ -37,7 +38,7 @@
  function validate(d,CP){
   try{
    if(!d||d.schema!==1||d.engine!=='river17'||typeof d.attempt!=='string'||! /^[a-z0-9-]{4,60}$/.test(d.attempt)||!Number.isInteger(d.id)||!CP.routes[d.id]||!CP.vehicles.some(m=>m.id===d.car)||!CP.SETUPS[d.setup]||!Array.isArray(d.levels)||d.levels.length!==3||d.levels.some(x=>!Number.isInteger(x)||x<0||x>5))return null;
-   if(d.signature!==fingerprint(CP,d.id,d.car,d.levels,d.setup)||!d.state||!d.groups||!Array.isArray(d.bodies)||d.bodies.length>100||!Array.isArray(d.trace)||d.trace.length>800)return null;
+   if(d.signature!==fingerprint(CP,d.id,d.car,d.levels,d.setup,d.vehicle31)||!(CP.fleet31?CP.fleet31.valid(d):!d.vehicle31)||!d.state||!d.groups||!Array.isArray(d.bodies)||d.bodies.length>100||!Array.isArray(d.trace)||d.trace.length>800)return null;
    for(const k of fields)if(typeof d.state[k]!=='boolean'&&!finite(d.state[k]))return null;
    if(d.journey){const j=d.journey;if(j.edition!==20||!Array.isArray(j.sectors)||j.sectors.length!==(d.course26?CP.courses26.preview(d.id):CP.contractRoute(d.id,20)).sectors.length)return null;for(const o of j.sectors)if(!o||['entered','done','passed'].some(k=>typeof o[k]!=='boolean')||!finite(o.maxSpeed,500)||o.maxSpeed<0||!finite(o.initialCargo,5000)||o.initialCargo<0||!Number.isInteger(o.initialHits)||o.initialHits<0||o.initialHits>10000||o.passed&&(!o.done||!o.entered))return null;}
    if(d.expedition){const e=d.expedition,m=e.machine;if(d.journey||d.id!==0||e.edition!==21||!['pending','ridge','detour'].includes(e.path)||typeof e.waiting!=='boolean'||typeof e.powered!=='boolean'||e.waiting&&e.path!=='pending'||!m||!finite(m.integrity,100)||m.integrity<0||!finite(m.previousVy,500)||!finite(m.cooldown,1)||m.cooldown<0)return null;}
@@ -67,7 +68,7 @@
  function restore(data,CP){
   const d=validate(data,CP);if(!d)return null;
   try{
-   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load,...(d.ridge28?{trail:28}:{})}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{}),...(d.driving27?{skill:27}:{}),...(d.logistics29?{logistics:29}:{}),...(d.pace30?{pace:30}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
+   const e=d.expedition,w=d.waterRun,r=d.recoveryRun,q=d.ridge25,s=new CP.Drive(d.id,d.levels.slice(),d.car,d.setup,q?25:r?23:w?22:e?21:d.journey?20:0,{...(q?{load:q.load,...(d.ridge28?{trail:28}:{})}:r?{attached:r.tow.attached,support:r.tow.support}:w?{support:w.support}:e?{path:e.path,powered:e.powered}:{}),...(d.course26?{course:26}:{}),...(d.driving27?{skill:27}:{}),...(d.logistics29?{logistics:29}:{}),...(d.pace30?{pace:30}:{}),...(d.vehicle31?{fleet:31,customization:d.vehicle31,paint:d.vehicle31.paint}:{})}),list=bodies(s);if(list.length!==d.bodies.length)return null;
    for(const name of Object.keys(groups)){if(s[name].length!==d.groups[name].length)return null;for(let i=0;i<s[name].length;i++){const o=s[name][i],saved=d.groups[name][i];for(const k of groups[name]){if(saved[k]!==undefined){if(o[k]!==undefined&&typeof o[k]!==typeof saved[k])return null;o[k]=saved[k];}}if(name==='boxes')for(const k of ['strap','strap2']){if(!saved[k]&&o[k]){s.world.destroyJoint(o[k]);o[k]=null;}}}}
    if(d.driving27)s.driving27=JSON.parse(JSON.stringify(d.driving27));
    if(q){const {edition,...state}=q;Object.assign(s.ridge,state);}
