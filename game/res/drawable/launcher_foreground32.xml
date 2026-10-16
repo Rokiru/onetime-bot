@@ -1,0 +1,2 @@
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/app_icon32" android:inset="12%" />

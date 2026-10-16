@@ -43,14 +43,14 @@ case "$DUSTRIVO_BUILD_TYPE" in
 esac
 export DUSTRIVO_BUILD_TYPE
 mkdir -p artifacts
-cp "$DUSTRIVO_APK_SOURCE" artifacts/Dustrivo-0.31.apk
-.tools/android-sdk/build-tools/35.0.0/apksigner verify --verbose artifacts/Dustrivo-0.31.apk
+cp "$DUSTRIVO_APK_SOURCE" artifacts/Dustrivo-0.32.apk
+.tools/android-sdk/build-tools/35.0.0/apksigner verify --verbose artifacts/Dustrivo-0.32.apk
 python3 - <<'PY'
 from pathlib import Path
 import zipfile, subprocess, os
-apk=Path('artifacts/Dustrivo-0.31.apk')
+apk=Path('artifacts/Dustrivo-0.32.apk')
 badging=subprocess.check_output(['.tools/android-sdk/build-tools/35.0.0/aapt','dump','badging',str(apk)],text=True)
-assert "name='ru.rokiru.cargo' versionCode='32' versionName='0.31'" in badging
+assert "name='ru.rokiru.cargo' versionCode='33' versionName='0.32'" in badging
 if os.environ['DUSTRIVO_BUILD_TYPE']=='release':
     assert 'application-debuggable' not in badging, 'Release APK must not be debuggable'
     cert=subprocess.check_output(['.tools/android-sdk/build-tools/35.0.0/apksigner','verify','--print-certs',str(apk)],text=True)
@@ -63,5 +63,6 @@ with zipfile.ZipFile(apk) as z:
             assert z.read('assets/'+source.relative_to('game/assets').as_posix())==source.read_bytes(), 'APK asset mismatch: '+str(source)
 print('All bundled assets match the tested game.')
 PY
-sha256sum artifacts/Dustrivo-0.31.apk > artifacts/Dustrivo-0.31.apk.sha256
-printf 'APK: %s/artifacts/Dustrivo-0.31.apk\n' "$PWD"
+python3 tests/verify-apk32.py artifacts/Dustrivo-0.32.apk
+sha256sum artifacts/Dustrivo-0.32.apk > artifacts/Dustrivo-0.32.apk.sha256
+printf 'APK: %s/artifacts/Dustrivo-0.32.apk\n' "$PWD"
