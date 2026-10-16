@@ -19,12 +19,12 @@ function medalRewards(s,stats){
  const awards=[],whole=s.state==='win'&&s.wholeCargo();
  if(whole&&!stats.whole){stats.whole=true;awards.push({name:'ВЕСЬ ГРУЗ',amount:30});}
  if(whole&&s.hardLandings===0&&!stats.smooth){stats.smooth=true;awards.push({name:'МЯГКИЙ ХОД',amount:40});}
- if(s.state==='win'&&(s.stops||[]).length&&s.stops.every(x=>x.done)&&!stats.relay){stats.relay=true;awards.push({name:'РАЗВОЗЧИК',amount:60});}
+ if(s.state==='win'&&(s.stops||[]).length&&s.stops.every(x=>x.done)&&(!s.logistics29||s.logistics29.parking.every(p=>p.grade!=='skipped'))&&!stats.relay){stats.relay=true;awards.push({name:'РАЗВОЗЧИК',amount:60});}
  return awards;
 }
 function renderMedals(){
  const whole=sim.state==='win'&&sim.wholeCargo(),smooth=whole&&sim.hardLandings===0;
- $('result-medals').innerHTML=[['ВЕСЬ ГРУЗ',whole],['МЯГКИЙ ХОД',smooth],...(sim.stops.length?[['РАЗВОЗЧИК',sim.state==='win'&&sim.stops.every(s=>s.done)]]:[])].map(([name,done])=>'<span class="'+(done?'won':'')+'">'+(done?'✓ ':'')+name+'</span>').join('');
+ $('result-medals').innerHTML=[['ВЕСЬ ГРУЗ',whole],['МЯГКИЙ ХОД',smooth],...(sim.stops.length?[['РАЗВОЗЧИК',sim.state==='win'&&sim.stops.every(s=>s.done)&&(!sim.logistics29||sim.logistics29.parking.every(p=>p.grade!=='skipped'))]]:[])].map(([name,done])=>'<span class="'+(done?'won':'')+'">'+(done?'✓ ':'')+name+'</span>').join('');
  const bonus=(sim.awards||[]).reduce((a,b)=>a+b.amount,0),delivery=sim.reward()-sim.coins-DispatchTerms24.adjustment(sim);
  const sectors=sim.sectors||[],sectorBonus=sectors.filter(s=>s.passed).reduce((a,s)=>a+s.reward,0);$('result-breakdown').textContent='ДОРОГА +'+(sim.coins-sectorBonus)+(sectors.length?' · СПУСКИ '+sectors.filter(s=>s.passed).length+'/'+sectors.length+' +'+sectorBonus:'')+' · ГРУЗ +'+delivery+' · НОВЫЕ ЗНАКИ +'+bonus;
 }
