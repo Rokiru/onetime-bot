@@ -16,6 +16,7 @@ node tests/verify-opening24.cjs
 node tests/verify-ridge25.cjs
 node tests/verify-courses26.cjs
 node tests/verify-driving27.cjs
+node tests/verify-ridge28.cjs
 DUSTRIVO_BUILD_TYPE=${DUSTRIVO_BUILD_TYPE:-auto}
 if [ "$DUSTRIVO_BUILD_TYPE" = auto ]; then
   if [ -f .tools/dustrivo-signing/signing.properties ]; then DUSTRIVO_BUILD_TYPE=release; else DUSTRIVO_BUILD_TYPE=debug; fi
@@ -37,14 +38,14 @@ case "$DUSTRIVO_BUILD_TYPE" in
 esac
 export DUSTRIVO_BUILD_TYPE
 mkdir -p artifacts
-cp "$DUSTRIVO_APK_SOURCE" artifacts/Dustrivo-0.27.apk
-.tools/android-sdk/build-tools/35.0.0/apksigner verify --verbose artifacts/Dustrivo-0.27.apk
+cp "$DUSTRIVO_APK_SOURCE" artifacts/Dustrivo-0.28.apk
+.tools/android-sdk/build-tools/35.0.0/apksigner verify --verbose artifacts/Dustrivo-0.28.apk
 python3 - <<'PY'
 from pathlib import Path
 import zipfile, subprocess, os
-apk=Path('artifacts/Dustrivo-0.27.apk')
+apk=Path('artifacts/Dustrivo-0.28.apk')
 badging=subprocess.check_output(['.tools/android-sdk/build-tools/35.0.0/aapt','dump','badging',str(apk)],text=True)
-assert "name='ru.rokiru.cargo' versionCode='28' versionName='0.27'" in badging
+assert "name='ru.rokiru.cargo' versionCode='29' versionName='0.28'" in badging
 if os.environ['DUSTRIVO_BUILD_TYPE']=='release':
     assert 'application-debuggable' not in badging, 'Release APK must not be debuggable'
     cert=subprocess.check_output(['.tools/android-sdk/build-tools/35.0.0/apksigner','verify','--print-certs',str(apk)],text=True)
@@ -57,5 +58,5 @@ with zipfile.ZipFile(apk) as z:
             assert z.read('assets/'+source.relative_to('game/assets').as_posix())==source.read_bytes(), 'APK asset mismatch: '+str(source)
 print('All bundled assets match the tested game.')
 PY
-sha256sum artifacts/Dustrivo-0.27.apk > artifacts/Dustrivo-0.27.apk.sha256
-printf 'APK: %s/artifacts/Dustrivo-0.27.apk\n' "$PWD"
+sha256sum artifacts/Dustrivo-0.28.apk > artifacts/Dustrivo-0.28.apk.sha256
+printf 'APK: %s/artifacts/Dustrivo-0.28.apk\n' "$PWD"

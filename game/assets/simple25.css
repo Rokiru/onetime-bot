@@ -8,3 +8,4 @@ body[data-ridge25=true] .pedals.big .pedal{width:clamp(125px,24vw,215px)!importa
 #settings-open,body[data-ridge25=true] #pause{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
 #simple-links25 button{min-width:44px}
 #paused #resume,#paused #save-exit{min-height:44px!important}
+#camp-profile28{margin:7px 0 10px;padding:7px 9px 5px;background:#14261c55;border:1px solid #c7c99b22;border-radius:4px}#camp-profile28 svg{display:block;width:100%;height:49px}#camp-profile28 small{display:block;text-align:right;font-size:8px;color:#b9c6a6;letter-spacing:.5px}@media(max-height:370px){#camp-profile28{padding:3px 7px;margin:5px 0}#camp-profile28 svg{height:36px}.ridge-choice25 p{margin:6px 0}}

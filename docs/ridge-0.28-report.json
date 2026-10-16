@@ -1,0 +1,94 @@
+{
+  "rows": [
+    {
+      "load": 1,
+      "time": 90.52,
+      "cargo": 1,
+      "score": 760,
+      "soft": 10,
+      "camps": [
+        {
+          "camp": 1,
+          "cargo": 1,
+          "condition": 100,
+          "bank": 110
+        },
+        {
+          "camp": 2,
+          "cargo": 1,
+          "condition": 100,
+          "bank": 260
+        },
+        {
+          "camp": 3,
+          "cargo": 1,
+          "condition": 100,
+          "bank": 460
+        }
+      ],
+      "reckless": [
+        {
+          "camp": 2,
+          "state": "drive",
+          "reason": "",
+          "condition": 100,
+          "cargo": 1
+        },
+        {
+          "camp": 3,
+          "state": "fail",
+          "reason": "damage",
+          "condition": 0,
+          "cargo": 1
+        }
+      ]
+    },
+    {
+      "load": 3,
+      "time": 94.6,
+      "cargo": 2,
+      "score": 1530,
+      "soft": 30,
+      "camps": [
+        {
+          "camp": 1,
+          "cargo": 3,
+          "condition": 100,
+          "bank": 330
+        },
+        {
+          "camp": 2,
+          "cargo": 2,
+          "condition": 51,
+          "bank": 530
+        },
+        {
+          "camp": 3,
+          "cargo": 2,
+          "condition": 100,
+          "bank": 930
+        }
+      ],
+      "reckless": [
+        {
+          "camp": 2,
+          "state": "drive",
+          "reason": "",
+          "condition": 56,
+          "cargo": 2
+        },
+        {
+          "camp": 3,
+          "state": "fail",
+          "reason": "damage",
+          "condition": 0,
+          "cargo": 2
+        }
+      ]
+    }
+  ],
+  "protectedSamples": 371,
+  "lateJump": true,
+  "archived": 7,
+  "controller": "public pedals sampled at 60Hz; this proves a strategy, not a human playtest"
+}
