@@ -1,3 +1,19 @@
+# Current native game: 0.34 / code35
+
+The user explicitly requested a full Godot migration after 0.33. The Android delivery now uses `godot/` (Godot 4.6.3, GDScript, Compatibility renderer); no WebView or JavaScript ships in that APK. Legacy Java/Canvas sources and their historical invariants below are retained for preservation and reference.
+
+- Current entry: `godot/main.tscn`; runtime: `godot/scripts/{main,rig,landscape,audio,data}.gd`; content: `godot/data/catalog.json`. 72 stable road IDs 0..71, 16 stable vehicle IDs, eight regions plus the separate stock-ROVER Ridge.
+- Build: `bash scripts/build-apk.sh` -> `scripts/build-godot-apk.py`. Version/code and launcher resources live in `godot/export_presets.cfg`; also update the displayed native version and Python builder expectations for a future release. Do not bump preserved WebView Gradle/manifest to masquerade as the native release. Historical build is `bash scripts/build-webview-apk.sh`.
+- `scripts/export-godot-catalog.cjs` samples the preserved 50 original routes and adds 22 explicit native contracts. This is development conversion only, never runtime JS. New native profiles/physics use `godot34`, independent records/ghost signatures/checkpoints. Never reinterpret a suspended Planck solver snapshot as a Godot snapshot.
+- `data.gd` imports the same-package Android SharedPreferences on first native launch. Keep wallets, ownership, original stats/flags/kits and raw archived Planck trips. Native persistence has atomic replacement and a backup. Real Android update/migration and human playability still require device testing; XML fixture success is not that proof.
+- Wheels and cargo are real rigid bodies; suspension uses spring/groove joints. Never call another body's contact API inside chassis `_integrate_forces`: cache wheel contact signals. Fork rebuilding must preserve vehicle wheels/joints. Test drivers must use pedals/gears/actions, never overwrite driving poses to claim completion.
+- Driving profile is collapsed by default; keep the road visible. Reuse the existing native three-tab hub. Keep safe-area margins, finger scrolling, multitouch pedals and pause-on-focus-loss. No full-screen filters or runtime sample synthesis.
+- Focused integration is `godot --headless --path godot --script tests/native_smoke.gd --fixed-fps 60`; the native build runs it once and verifies content, package, permissions, signer and APK assets. Campaign drivers are developer-only and excluded from export. Do not repeat historical JS suites for native-only changes without cause.
+- Release key is the explicitly authorized 0.33 key under ignored `.tools/dustrivo-signing/`; certificate pinned by `scripts/signing-certificate.sha256`. Never generate a replacement or commit credentials. 0.34 updates 0.33 by package/signature; it cannot update original-signer 0.32. Never claim physical-device update/FPS or RuStore approval from desktop tests.
+- Deliver each completed release as signed APK + SHA-256 in `releases/` and a direct download link. No RuStore upload/moderation without separate permission.
+
+# Historical WebView instructions (through 0.33)
+
 # Working on Dustrivo
 
 - Work in the existing isolated checkout; do not create a worktree unless the user requests one.

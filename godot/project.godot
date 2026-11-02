@@ -1,0 +1,39 @@
+; Native Godot migration of the existing Dustrivo project.
+config_version=5
+[application]
+config/name="Dustrivo"
+config/quit_on_go_back=false
+boot_splash/show_image=false
+boot_splash/bg_color=Color(0.06, 0.09, 0.12, 1)
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://assets/icon.svg"
+config/description="Dustrivo — native suspension, physical cargo and the roads of Lisiy Brod."
+[autoload]
+Data="*res://scripts/data.gd"
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=0
+window/vsync/vsync_mode=1
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=false
+textures/canvas_textures/default_texture_filter=2
+environment/defaults/default_clear_color=Color(0.06, 0.09, 0.12, 1)
+[physics]
+common/physics_ticks_per_second=60
+2d/default_gravity=12.0
+2d/solver/contact_max_allowed_penetration=0.01
+2d/solver/contact_max_separation=0.05
+[debug]
+gdscript/warnings/untyped_declaration=0
+gdscript/warnings/inference_on_variant=0
+[audio]
+driver/enable_input=false
