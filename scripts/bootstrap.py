@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Install verified official Android and Gradle archives into the checkout's ignored .tools."""
-import hashlib, os, pathlib, subprocess, tarfile, urllib.request, xml.etree.ElementTree as ET, zipfile
+import hashlib, os, pathlib, shutil, subprocess, tarfile, urllib.request, xml.etree.ElementTree as ET, zipfile
+from urllib.parse import urlsplit
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 TOOLS = ROOT / '.tools'
 TOOLS.mkdir(exist_ok=True)
@@ -25,6 +26,26 @@ if not (jdk / 'bin/javac').exists():
     with tarfile.open(dest) as archive: archive.extractall(TOOLS, filter='data')
 os.environ['JAVA_HOME'] = str(jdk)
 os.environ['PATH'] = str(jdk / 'bin') + os.pathsep + os.environ['PATH']
+# sdkmanager is Java too: it must use the same proxy and verified trust as Gradle.
+sdk_props = []
+for protocol in ['https', 'http']:
+    proxy = os.getenv(protocol.upper() + '_PROXY') or os.getenv(protocol + '_proxy')
+    if proxy:
+        parsed = urlsplit(proxy)
+        if parsed.username or parsed.password:
+            raise RuntimeError('Authenticated proxy requires platform-supported Java configuration.')
+        sdk_props.extend(['-D' + protocol + '.proxyHost=' + parsed.hostname,
+                          '-D' + protocol + '.proxyPort=' + str(parsed.port or 80)])
+cert = os.getenv('CODEX_PROXY_CERT')
+if cert and pathlib.Path(cert).is_file():
+    trust = TOOLS / 'java-truststore'
+    if not trust.exists():
+        shutil.copyfile(jdk / 'lib/security/cacerts', trust)
+        subprocess.run([str(jdk / 'bin/keytool'), '-importcert', '-noprompt', '-trustcacerts',
+                        '-alias', 'dustrivo-platform-ca', '-file', cert, '-keystore', str(trust),
+                        '-storepass', 'changeit'], check=True)
+    sdk_props.extend(['-Djavax.net.ssl.trustStore=' + str(trust), '-Djavax.net.ssl.trustStorePassword=changeit'])
+os.environ['SDKMANAGER_OPTS'] = os.getenv('SDKMANAGER_OPTS', '') + ' ' + ' '.join(sdk_props)
 sdk = TOOLS / 'android-sdk'
 manager = sdk / 'cmdline-tools/19.0/bin/sdkmanager'
 if not manager.exists():

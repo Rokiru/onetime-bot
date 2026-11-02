@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 function clone(s){const d=C.capture(s,P);assert.ok(d,'capture '+s.id);const r=C.restore(JSON.parse(JSON.stringify(d)),P);assert.ok(r,'restore '+s.id);return r;}
 let protectedCount=0;const layout=[];
 for(let id=0;id<48;id++){for(const key of id===0?['light:pending','light:ridge','light:detour']:[id===3?'water:22':id===4?'recovery:23':id]){const d=P.courses26.build(id,key);assert.ok(d.hazards.length,'new terrain '+id);assert.equal(new Set(d.hazards.map(h=>h.from)).size,d.hazards.length);for(const [a,b] of d.protected)for(let x=Math.max(0,a);x<=Math.min(b,d.route.length);x+=.5){assert.ok(Math.abs(P.groundHeight(x,key)-P.groundHeight(x,d.key))<1e-8,'interaction terrain '+id+' '+x);protectedCount++;}layout.push({id,key:d.key,hazards:d.hazards.map(({type,from,to})=>({type,from,to}))});}}
-assert.equal(P.routes.length,48);assert.equal(P.profiles.length,48);
+assert.ok(P.routes.length>=48);assert.equal(P.profiles.length,P.routes.length);
 const rows=[];for(let id=0;id<48;id++){
  const r=P.contractRoute(id),s=new P.Drive(id,[0,0,0],r.requires||'rover','standard',P.courses26.edition(id),{course:26,support:true,recoveryBonus:true});let controls=[false,false],stall=0,warm=false;
  for(let n=0;n<18000&&s.state==='drive';n++){

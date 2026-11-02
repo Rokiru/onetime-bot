@@ -1,7 +1,7 @@
 'use strict';
 // Procedural sound; no network, recordings or audio assets required.
 const RoadAudio={
- context:null,master:null,engine:null,road:null,wind:null,filter:null,tones:[],lastVy:0,lastHit:-10,
+ context:null,master:null,engine:null,road:null,wind:null,filter:null,tones:[],lastVy:0,lastHit:-10,lastUpdate:-1,
  init(volume){
   if(!this.context){
    const a=this.context=new(window.AudioContext||window.webkitAudioContext)();
@@ -23,20 +23,22 @@ const RoadAudio={
  mute(){if(!this.context)return;const t=this.context.currentTime;for(const g of [this.engine,this.road,this.wind]){g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(0,t);}},
  update(sim,active,gas,brake){
   if(!this.context)return;if(!active||!sim){this.mute();this.lastVy=0;return;}
-  const a=this.context,t=a.currentTime,v=sim.car.getLinearVelocity(),speed=Math.abs(v.x),ground=sim.groundCount>0,surface=CargoPhysics.surfaceAt(sim.car.getPosition().x,sim.roadId).type;
-  const hz=32+Math.min(75,Math.abs(sim.wheels[0].getAngularVelocity())*2)+(gas?18:0)+(sim.vehicle.id==='scrambler'?15:sim.vehicle.id==='tanker'?-10:sim.vehicle.id==='timber'?-6:sim.vehicle.id==='mule'?-7:0);
+  const a=this.context,t=a.currentTime;if(t-this.lastUpdate<1/30)return;this.lastUpdate=t;
+  const v=sim.car.getLinearVelocity(),speed=Math.abs(v.x),ground=sim.groundCount>0,x=sim.car.getPosition().x,surface=CargoPhysics.surfaceAt(x,sim.roadId).type;
+  const family=CargoPhysics.fleet31.family(sim.vehicle),throttle=brake||sim.fuel<=0?0:Math.max(0,Math.min(1,Number(gas)||0)),bridge=CargoPhysics.bridges[sim.roadId];
+  const hz=32+Math.min(75,Math.abs(sim.wheels[0].getAngularVelocity())*(sim.lowGear?2.5:2))+throttle*18+(family==='scrambler'?15:family==='tanker'?-10:family==='timber'?-6:family==='mule'?-7:0);
   this.tones.forEach((o,i)=>o.frequency.setTargetAtTime(hz*[1,.5,2][i],t,.08));
-  this.filter.frequency.setTargetAtTime(gas?500:240,t,.15);this.engine.gain.setTargetAtTime(brake?.028:gas?.065:.032,t,.09);
-  this.roadFilter.frequency.setTargetAtTime(['wet','water'].includes(surface)?1600:surface==='mud'?320:sim.bridge.length&&sim.car.getPosition().x>CargoPhysics.bridges[sim.id].from&&sim.car.getPosition().x<CargoPhysics.bridges[sim.id].to?900:650,t,.2);
-  this.road.gain.setTargetAtTime(ground?Math.min(.055,speed*.003)*(surface==='wet'?1.35:1):0,t,.12);
+  this.filter.frequency.setTargetAtTime(240+throttle*260,t,.15);this.engine.gain.setTargetAtTime(sim.fuel<=0?0:brake?.028:.032+throttle*.033,t,.09);
+  this.roadFilter.frequency.setTargetAtTime(sim.waterDepth>.08||['wet','water'].includes(surface)?1600:surface==='mud'?320:bridge&&x>bridge.from&&x<bridge.to?900:650,t,.2);
+  this.road.gain.setTargetAtTime(ground?Math.min(.055,speed*.003)*(sim.waterDepth>.08?1.5:surface==='wet'?1.35:1):0,t,.12);
   this.wind.gain.setTargetAtTime(Math.min(.028,speed*.0009),t,.2);
   if(ground&&this.lastVy<-2&&v.y-this.lastVy>2.5&&sim.time-this.lastHit>.35){this.hit(Math.min(1,(v.y-this.lastVy)/10));this.lastHit=sim.time;}
   this.lastVy=v.y;
  },
- hit(strength=.5){if(!this.context)return;const a=this.context,t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(110,t);o.frequency.exponentialRampToValueAtTime(38,t+.15);g.gain.setValueAtTime(.06*strength,t);g.gain.exponentialRampToValueAtTime(.001,t+.18);o.connect(g);g.connect(this.master);o.start();o.stop(t+.2);},
+ hit(strength=.5){if(!this.context)return;const a=this.context,t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(110,t);o.frequency.exponentialRampToValueAtTime(38,t+.15);g.gain.setValueAtTime(.06*strength,t);g.gain.exponentialRampToValueAtTime(.001,t+.18);o.connect(g);g.connect(this.master);o.onended=()=>{o.disconnect();g.disconnect();};o.start();o.stop(t+.2);},
  event(kind){if(!this.context)return;const a=this.context,t=a.currentTime;
   const notes=kind==='win'?[392,494,587,784]:kind==='lost'?[190,110]:kind==='fuel'?[262,392]:[660,880];
-  notes.forEach((hz,i)=>{const o=a.createOscillator(),g=a.createGain(),at=t+i*.09;o.type=kind==='lost'?'triangle':'sine';o.frequency.value=hz;g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.04,at+.012);g.gain.exponentialRampToValueAtTime(.001,at+.16);o.connect(g);g.connect(this.master);o.start(at);o.stop(at+.18);});
+  notes.forEach((hz,i)=>{const o=a.createOscillator(),g=a.createGain(),at=t+i*.09;o.type=kind==='lost'?'triangle':'sine';o.frequency.value=hz;g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.04,at+.012);g.gain.exponentialRampToValueAtTime(.001,at+.16);o.connect(g);g.connect(this.master);o.onended=()=>{o.disconnect();g.disconnect();};o.start(at);o.stop(at+.18);});
  },
  musicGain:null,musicVoices:new Set(),musicNext:0,musicBeat:0,musicRegion:-1,
  stopMusic(){

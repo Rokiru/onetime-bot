@@ -1,8 +1,9 @@
 'use strict';
 // Developer-only: record successful public-control strategies, never synthesize poses/time.
-const fs=require('node:fs'),assert=require('node:assert/strict'),P=require('../game/assets/physics.js'),input=require('../tests/driving-input30.cjs');
-const traces={},strategies=[];
-for(let id=0;id<48;id++){
+const fs=require('node:fs'),assert=require('node:assert/strict'),P=require('../game/assets/physics.js'),input=require('../tests/driving-input30.cjs'),vm=require('node:vm');
+const append=process.argv.includes('--new33'),existing={window:{}};if(append)vm.runInNewContext(fs.readFileSync('game/assets/mechanic30.js','utf8'),existing);
+const traces=append?existing.window.Mechanic30:{},strategies=[];
+for(let id=append?48:0;id<P.routes.length;id++){
  const candidates=[];
  for(const sample of [12,6,9,15,18,3,4]){
   const r=P.contractRoute(id),s=new P.Drive(id,[0,0,0],r.requires||'rover','standard',P.courses26.edition(id),{course:26,skill:27,logistics:29,pace:30,support:true,recoveryBonus:true});let c=[false,false],stall=0;
@@ -16,5 +17,5 @@ for(let id=0;id<48;id++){
  assert.equal(candidates.length,3,'three actual clean recordings needed for road '+id);candidates.sort((a,b)=>a.duration-b.duration);traces['road'+id]={gold:candidates[0],silver:candidates[1],bronze:candidates[2]};
  fs.mkdirSync('artifacts',{recursive:true});fs.writeFileSync('artifacts/mechanic30-recordings.json',JSON.stringify({traces,strategies}));
 }
-fs.writeFileSync('game/assets/mechanic30.js',"'use strict';\n// 144 actual clean stock runs; simulation at 60Hz, recorded poses every 0.5s.\nwindow.Mechanic30="+JSON.stringify(traces)+';\n');
-console.log('PASS recorded 144 actual clean stock drives on 0.30 roads');
+fs.writeFileSync('game/assets/mechanic30.js',"'use strict';\n// "+(Object.keys(traces).length*3)+" actual clean stock runs; simulation at 60Hz, recorded poses every 0.5s.\nwindow.Mechanic30="+JSON.stringify(traces)+';\n');
+console.log('PASS recorded actual clean stock drives; total '+(Object.keys(traces).length*3)+' traces on pace30 roads');

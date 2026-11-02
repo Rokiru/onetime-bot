@@ -20,9 +20,9 @@ function resumeSavedRun(){
  setPage('pause');$('pause-copy').textContent='Рейс восстановлен. Продолжишь, когда будешь готов.';$('pause-save-status').textContent='Положение, груз, бак и время восстановлены.';$('pause-save-status').classList.remove('save-error');visibility('save-exit',true);last=performance.now();persist();return true;
 }
 function saveAndHome(){if(checkpointRun(true)){dispatch.phase=null;home();}}
-function requestNewRun(){newRunIntent=selected;$('replace-run-copy').textContent='Текущий рейс закончится. Собранные монеты сохранятся, доставку нужно будет начать заново.';visibility('replace-run',true);}
+function requestNewRun(onConfirm=null){newRunIntent={id:selected,onConfirm};$('replace-run-copy').textContent='Текущий рейс закончится. Собранные монеты сохранятся, доставку нужно будет начать заново.';visibility('replace-run',true);}
 function installRunSession(){
- $('save-exit').onclick=saveAndHome;$('replace-run-cancel').onclick=()=>{newRunIntent=null;visibility('replace-run',false);};$('replace-run-confirm').onclick=()=>{const id=newRunIntent;newRunIntent=null;visibility('replace-run',false);if(id===null)return;leaveRun();selected=id;save.selected=id;start();};
+ $('save-exit').onclick=saveAndHome;$('replace-run-cancel').onclick=()=>{newRunIntent=null;visibility('replace-run',false);};$('replace-run-confirm').onclick=()=>{const intent=newRunIntent;newRunIntent=null;visibility('replace-run',false);if(!intent)return;leaveRun();selected=intent.id;save.selected=intent.id;if(intent.onConfirm)intent.onConfirm();else start();};
  addEventListener('pagehide',()=>{clearInput();pause();checkpointRun(true);});
  let inputWidth=innerWidth,inputHeight=innerHeight;addEventListener('resize',()=>{if(innerWidth!==inputWidth||innerHeight!==inputHeight){inputWidth=innerWidth;inputHeight=innerHeight;clearInput();pause();}});
  window.androidResume=()=>{clearInput();last=performance.now();acc=0;};

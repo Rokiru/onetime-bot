@@ -301,3 +301,13 @@ body[data-hub29="true"] #garage .paint-panel{display:none}body[data-hub29="true"
 @media(max-height:370px){#boot .boot-content{padding-bottom:6px}#boot .boot-logo{margin:8px 0 12px;font-size:clamp(48px,9vw,84px)}#boot .boot-rule{margin-bottom:12px}#boot .boot-caption{font-size:11px}#boot .boot-top{top:max(16px,var(--safe-top,0px))}#boot .boot-bottom{bottom:max(16px,var(--safe-bottom,0px))}}
 @media(orientation:portrait){#boot-art{object-position:72% center}#boot .boot-content{width:100%;align-self:flex-start;padding-top:24vh}#boot .boot-shade{background:linear-gradient(90deg,#0b1b15de,#0d1f1740),linear-gradient(0deg,#0b1c18e6,transparent 40%)}#boot .boot-logo{font-size:16vw}#boot .boot-top{font-size:8px;letter-spacing:.8px}}
 @media(prefers-reduced-motion:reduce){#boot{transition:none}}
+
+/* Route colour and bridge marks are static SVG; driving keeps the same render budget. */
+.map-bridge33{fill:none;stroke:#d79462;stroke-width:7;stroke-dasharray:3 2}
+.dispatch-detail[data-region="3"] .map-fill{fill:#82b9ba25}
+.dispatch-detail[data-region="1"] .map-fill{fill:#b5a28125}
+.dispatch-detail[data-region="5"] .map-fill{fill:#d3dfd525}
+.garage-note33{font:10px/1.5 var(--font-body);color:var(--ui-muted);margin:0 0 8px;flex:none}
+#hub-tabs button,.hub-choice button,#garage-dispatch29{min-height:44px}
+.catalog-heading select{height:44px}
+#settings-open{min-width:44px;min-height:44px}

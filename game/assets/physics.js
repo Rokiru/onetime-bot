@@ -254,6 +254,20 @@ zones[47]=[{from:72,to:96,type:'gravel',friction:.93},{from:157,to:178,type:'gra
 landmarks[46]=[{x:35,type:'pine'},{x:105,type:'pine'},{x:153,type:'house'},{x:214,type:'pine'}];
 landmarks[47]=[{x:55,type:'rock'},{x:115,type:'crane'},{x:165,type:'rock'}];
 
+// 0.33: append-only authored contracts. No legacy route or fingerprint changes.
+routes.push(
+ {name:'Два лесных адреса',region:0,kind:'delivery',length:260,boxes:4,reward:620,seed:49,weather:'clear',stops:[{x:83,name:'Егерский дом',required:true},{x:177,name:'Высокий пост',required:true}]},
+ {name:'Тихая вода',region:3,kind:'delivery',length:265,boxes:3,reward:760,seed:50,weather:'clear',cargo:'liquid',requires:'tanker',litres:900,minLitres:500,stops:[{x:137,name:'Береговой резерв',litres:250,required:true}]}
+);
+profiles.push(
+ [[0,0],[20,0],[39,2.2],[51,2.2],[69,.3],[94,.3],[111,4.2],[122,4.2],[140,.5],[153,.5],[166,1.6],[188,1.6],[208,4.5],[220,4.5],[242,0],[260,0]],
+ [[0,0],[22,0],[41,2.4],[54,2.4],[77,.2],[92,.2],[112,2.7],[149,2.7],[169,.6],[182,.6],[204,3.2],[218,3.2],[245,0],[265,0]]
+);
+zones[48]=[{from:95,to:111,type:'mud',friction:.66},{from:190,to:210,type:'gravel',friction:.92}];
+zones[49]=[{from:63,to:91,type:'wet',friction:.72},{from:183,to:204,type:'sand',friction:.78}];
+landmarks[48]=[{x:35,type:'sign',text:'ДВА АДРЕСА · БЕРЕГИ ГРУЗ'},{x:83,type:'cabin',text:'ЕГЕРСКИЙ ДОМ'},{x:177,type:'cabin',text:'ВЫСОКИЙ ПОСТ'}];
+landmarks[49]=[{x:51,type:'sign',text:'ВОДА · ТОРМОЗИ ДО СПУСКА'},{x:137,type:'boat',text:'БЕРЕГОВОЙ РЕЗЕРВ'},{x:231,type:'lighthouse',text:'ТИХАЯ БУХТА'}];
+
 const firstLightFactory=typeof module==='object'?require('./first-light-model.js'):root.FirstLightModel;
 const firstLight=firstLightFactory({P,V,routes,profiles,bridges,zones,landmarks,height,groundHeight,groundVertices,fuelPlan});
 

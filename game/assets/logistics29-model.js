@@ -30,7 +30,7 @@
    const stop=s.nextStop();if(!stop)return;const r=s.logistics29,record=r.parking[stop.index],x=s.car.getPosition().x;
    if(!stop.warned&&x>stop.x-100){stop.warned=true;s.events.push({type:'stopApproach',index:stop.index});}
    if(x>stop.x+4&&!record.deadline){record.deadline=s.time+8;s.events.push({type:'overshoot29',index:stop.index});}
-   if(record.deadline&&s.time>record.deadline&&Math.abs(x-stop.x)>3.1&&stop.cargoIndex===undefined){record.grade='skipped';stop.done=true;stop.elapsed=0;stop.boxIndex=-1;r.penalty+=25;s.events.push({type:'missed29',index:stop.index,fee:25});return;}
+   if(record.deadline&&s.time>record.deadline&&Math.abs(x-stop.x)>3.1&&stop.cargoIndex===undefined&&!stop.required){record.grade='skipped';stop.done=true;stop.elapsed=0;stop.boxIndex=-1;r.penalty+=25;s.events.push({type:'missed29',index:stop.index,fee:25});return;}
    const quality=grade(s,stop.x,gas,brake);if(!quality){stop.elapsed=0;stop.boxIndex=-1;return;}s.parkingHold=true;
    const duration=(s.fluidCapacity?2:stop.duration||1.3)*(quality==='perfect'?.60:1);
    if(s.fluidCapacity){if(s.fluidLitres<stop.litres+(s.route.minLitres||0)){s.end('liquid');return;}stop.elapsed+=dt;if(stop.elapsed>=duration){s.fluidLitres-=stop.litres;s.fluidDelivered+=stop.litres;s.syncFluidMass();stop.done=true;stop.elapsed=duration;record.grade=quality;if(quality==='perfect'){r.parkingBonus+=15;s.coins+=15;}s.events.push({type:'stopComplete',index:stop.index,name:stop.name,litres:stop.litres,quality});}return;}

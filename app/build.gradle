@@ -6,8 +6,8 @@ android {
         applicationId 'ru.rokiru.cargo'
         minSdk 26
         targetSdk 35
-        versionCode 33
-        versionName '0.32'
+        versionCode 34
+        versionName '0.33'
     }
     sourceSets {
         main {
@@ -22,7 +22,7 @@ android {
     if (signingFile.exists()) {
         signingFile.withInputStream { signingProperties.load(it) }
         signingConfigs {
-            originalDevelopment {
+            dustrivoRelease {
                 storeFile file(signingProperties['storeFile'])
                 storePassword signingProperties['storePassword']
                 keyAlias signingProperties['keyAlias']
@@ -32,11 +32,11 @@ android {
     }
     buildTypes {
         debug {
-            if (signingFile.exists()) signingConfig signingConfigs.originalDevelopment
+            if (signingFile.exists()) signingConfig signingConfigs.dustrivoRelease
         }
         release {
             minifyEnabled false
-            if (signingFile.exists()) signingConfig signingConfigs.originalDevelopment
+            if (signingFile.exists()) signingConfig signingConfigs.dustrivoRelease
         }
     }
     compileOptions {

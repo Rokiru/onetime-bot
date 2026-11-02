@@ -1,0 +1,29 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),{chromium,executablePath,serveGame,readyGame}=require('./browser-tools.cjs'),P=require('../game/assets/physics'),C=require('../game/assets/run-checkpoint');
+const checkpoint=C.capture(new P.Drive(7,[1,2,3],'rivet','trail',20,{fleet:31,course:26,skill:27,logistics:29,pace:30}),P);
+(async()=>{const server=await serveGame('game/assets'),browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']}),errors=[];try{
+ for(const [width,height] of [[640,320],[640,360],[800,360],[873,393],[960,432]]){
+  const page=await browser.newPage({viewport:{width,height},hasTouch:true});page.on('pageerror',e=>errors.push(e.stack));await page.goto(server.url);await readyGame(page);
+  assert.ok((await page.locator('#hub-briefing').innerText()).includes('генератор ≥60%'));assert.ok((await page.locator('#hub-readiness').innerText()).includes('улучшения не нужны'));
+  await page.evaluate(()=>{androidInsets(12,0,12,8);DispatchHub29.select(48);});assert.equal(await page.locator('#hub-drive').isDisabled(),true);assert.ok((await page.locator('#hub-readiness').innerText()).includes('Каменная лестница'));
+  await page.evaluate(d=>{switchProfile('test');save.wallet=12345;save.owned=CP.vehicles.map(v=>v.id);save.vehicle='rivet';save.vehicleLevels.rivet=[1,2,3];save.builds31.rivet.livery='number';save.paints.rivet='rescue';save.stats=save.stats.slice(0,48);save.stats[7].wins=4;save.stats[7].stars=3;save.activeRun=d;save.hubJob29=7;save.selected=7;persist();},checkpoint);
+  await page.reload();await readyGame(page);assert.deepEqual(await page.evaluate(()=>[save.stats.length,save.wallet,save.owned.length,save.stats[7].wins,save.stats[7].stars,save.vehicleLevels.rivet,save.builds31.rivet.livery,save.paints.rivet]),[50,12345,9,4,3,[1,2,3],'number','rescue']);
+  assert.ok((await page.locator('#hub-drive').innerText()).includes('ПРОДОЛЖИТЬ'));assert.ok((await page.locator('#hub-briefing').innerText()).includes('1/5 · 2/5 · 3/5'));
+  await page.evaluate(()=>DispatchHub29.select(48));assert.equal(await page.locator('#hub-briefing h1').textContent(),'Два лесных адреса');assert.ok(!(await page.locator('#hub-drive').innerText()).includes('ПРОДОЛЖИТЬ'));await page.locator('#hub-drive').click();assert.equal(await page.locator('#replace-run').isVisible(),true);await page.locator('#replace-run-cancel').click();assert.equal(await page.evaluate(()=>save.activeRun.attempt),checkpoint.attempt);
+  await page.evaluate(()=>DispatchHub29.select(7));await page.locator('#hub-drive').click();await page.waitForFunction(()=>CargoGame.mode==='drive');assert.equal(await page.evaluate(()=>sim.vehicle.id),'rivet');assert.deepEqual(await page.evaluate(()=>sim.levels),[1,2,3]);
+  await page.evaluate(()=>{checkpointRun(true);home();DispatchHub29.select(1);});await page.locator('[data-hub-terms=urgent]').click();await page.locator('#hub-drive').click();await page.locator('#replace-run-confirm').click();await page.waitForFunction(()=>CargoGame.mode==='drive'&&sim.id===1);assert.equal(await page.evaluate(()=>!!sim.dispatchTerms),true);
+  await page.evaluate(()=>{home();save.activeRun=null;DispatchHub29.select(49);});assert.equal(await page.locator('#hub-briefing h1').textContent(),'Тихая вода');assert.ok((await page.locator('#hub-briefing').innerText()).includes('250'));assert.ok((await page.locator('#hub-briefing').innerText()).includes('500'));
+  const bounds=async sel=>{const r=await page.locator(sel).boundingBox();assert.ok(r&&r.x>=0&&r.y>=0&&r.x+r.width<=width+1&&r.y+r.height<=height+1,sel+' fits '+width+'x'+height);assert.ok(r.height>=43.9,sel+' touch size '+r.height);};
+  for(const sel of ['#hub-drive','#hub-filter','#settings-open','#hub-tabs button:first-child'])await bounds(sel);
+  await page.locator('#hub-garage').click();await bounds('#garage-dispatch29');await page.locator('[data-tool31=equipment31]').click();assert.ok((await page.locator('#equipment31').innerText()).includes('бесплатно'));await page.locator('[data-tool31=style31]').click();assert.ok((await page.locator('#style31').innerText()).includes('бесплатны'));
+  await page.evaluate(()=>goPage('stats'));assert.ok((await page.locator('#career29').innerText()).includes('/ 150 звезды'));await page.close();console.log('PASS release UI33',width,height);
+ }
+ const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.stack));await page.goto(server.url);await readyGame(page);
+ const audio=await page.evaluate(async()=>{
+  RoadAudio.init(60);await RoadAudio.context.resume();const s=new CP.Drive(46,[0,0,0],'rover','standard',20,{course:26,skill:27,logistics:29,pace:30}),b=CP.bridges[s.roadId];s.car.setTransform({x:(b.from+b.to)/2,y:b.y+1},0);s.groundCount=2;
+  const values={},intercept=(param,key)=>{const fn=param.setTargetAtTime.bind(param);param.setTargetAtTime=(v,...args)=>{values[key]=v;return fn(v,...args);};};intercept(RoadAudio.roadFilter.frequency,'surface');intercept(RoadAudio.engine.gain,'gain');intercept(RoadAudio.tones[0].frequency,'hz');
+  RoadAudio.lastUpdate=-1;RoadAudio.update(s,true,.25,false);const low={...values};RoadAudio.lastUpdate=-1;RoadAudio.update(s,true,1,false);const high={...values};RoadAudio.update(s,false,1,false);const muted=RoadAudio.engine.gain.value;
+  const privacy=document.querySelector('#privacy-policy33').textContent;return {low,high,muted,privacy};
+ });assert.equal(audio.low.surface,900);assert.ok(audio.high.gain>audio.low.gain);assert.ok(audio.high.hz>audio.low.hz);assert.equal(audio.muted,0);assert.ok(audio.privacy.includes('Sergey Kempinen')&&audio.privacy.includes('arturovich2k19@gmail.com'));
+ await page.close();assert.deepEqual(errors,[]);console.log('PASS audio33: actual versioned bridge, analog throttle, mute; local privacy and no browser exceptions');
+ }finally{await browser.close();await server.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

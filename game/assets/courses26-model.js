@@ -27,7 +27,7 @@
    const original=key.toString().startsWith('light:')?{...contractRoute(0,21),...routes[key]}:contractRoute(id,edition(id));
    const r={...original,...(id===6?{limit:130}:id===8?{limit:180}:{})};
    const road='course:26:'+tag,avoid=protectedRanges(id,key,r),hazards=[];let points=profiles[key].map(p=>p.slice());
-   const kinds=sequence[id];
+   const kinds=sequence[id]||({48:'rc',49:'ss'})[id];
    for(let n=0;n<kinds.length;n++){
     const type=kinds[n],m=motifs[type],full=m.points.at(-1)[0];let found=null;
     // Two authored target regions per route. Short fallback fits crowded roads,
